@@ -1,0 +1,48 @@
+﻿@inject IJSRuntime jsRuntime
+<div class="collapsible-button  @clickedClassCollapsible">
+	@if (Collapsible)
+	{
+		<button type="button" class="nav-link collapsible-chevron "><span class="oi oi-plus"></span></button>
+	}
+	else
+	{
+		<button type="button" class="nav-link sidenav-large-clickable-sub @clickedClassCollapsible" @onclick="@InvokeParentMethod">@ButtonText</button>		
+	}
+	<div class="collapsible-content">
+		@ChildContent
+	</div>
+</div>
+@code {
+	[Parameter] public string ButtonText { get; set; }
+	[Parameter] public EventCallback<object> ParentMethod { get; set; }
+	[Parameter] public object ParentObject { get; set; }
+	[Parameter] public RenderFragment ChildContent { get; set; }
+	[Parameter] public bool Collapsible { get; set; }
+	[Parameter] public bool Collapsed { get; set; }
+
+	private string clickedClassCollapsible = "";
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		await jsRuntime.InvokeAsync<object>("setupCollapsibleChevron", false);
+		if(!Collapsed)
+		{
+			await jsRuntime.InvokeAsync<object>("CollapsibleExpand", false);			
+		}
+		else
+		{
+			await jsRuntime.InvokeAsync<object>("CollapsibleCollapse", false);
+		}
+	}
+	private void InvokeParentMethod()
+	{
+		if (clickedClassCollapsible == "")
+		{
+			clickedClassCollapsible = "active";
+		}
+		else
+		{
+			clickedClassCollapsible = "";
+		}
+		ParentMethod.InvokeAsync(ParentObject);
+	}
+}

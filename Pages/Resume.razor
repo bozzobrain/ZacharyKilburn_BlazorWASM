@@ -1,0 +1,31 @@
+﻿@page "/resume"
+
+<h3>Resume</h3>
+
+<style>
+	.pdf-embed {
+		overflow: hidden !important;
+		height: auto;
+		width: 100%;
+		padding-bottom: 47%;
+		position: relative;
+		margin: auto;
+	}
+
+	.pdf-embed embed,
+	.pdf-embed iframe,
+	.pdf-embed object {
+		height: 100%;
+		position: absolute;
+		margin: auto;
+		width: 100%;
+	}
+</style>
+<div class="pdf-embed">
+	<embed src="Zachary Kilburn - Resume 20220630.pdf#toolbar=0&navpanes=0&view=Fit"  />
+</div>
+
+
+@code {
+
+}

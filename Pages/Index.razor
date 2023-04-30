@@ -1,0 +1,30 @@
+﻿@page "/"
+
+@inject IMessageService MessageService
+<PageTitle>Index</PageTitle>
+
+<h1>Hi, I'm Zac Kilburn an Engineer</h1>
+
+
+<img src="headshot1.jpg" style="height: 25vh;" />
+
+@code {
+	private List<string> messages = new List<string>();
+	protected override void OnInitialized()
+	{
+		// subscribe to OnMessage event
+		MessageService.OnMessage += MessageHandler;
+		MessageService.SendMessage("Refresh Nav");
+	}
+
+	public void Dispose()
+	{
+		// unsubscribe from OnMessage event
+		MessageService.OnMessage -= MessageHandler;
+	}
+
+	private void MessageHandler(string message)
+	{
+
+	}
+}

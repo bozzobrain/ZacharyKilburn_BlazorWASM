@@ -1,0 +1,52 @@
+﻿@page "/projects/{projecttitle?}"
+@inject IMessageService MessageService
+@inject ProjectLoader _projects
+@if (selectedProject == null)
+{
+	<h3>Projects</h3>
+}
+else if(selectedProject!=null)
+{
+	<h3>@selectedProject.ProjectTitle</h3>
+	<p>@selectedProject.ProjectDescription</p>
+}
+
+@code {
+	[Parameter] public string? projectTitle { get; set; }
+
+	private Project? selectedProject;
+
+	protected override void OnParametersSet()
+	{
+		_projects.LoadProjects();
+		if (projectTitle != null)
+		{
+			selectedProject = _projects.GetProjectByHref(projectTitle);
+		}
+		else
+		{
+			selectedProject = null;
+		}
+		MessageService.SendMessage("Refresh Nav");
+		base.OnParametersSet();
+	}
+	
+
+	private List<string> messages = new List<string>();
+	protected override void OnInitialized()
+	{
+		// subscribe to OnMessage event
+		MessageService.OnMessage += MessageHandler;
+	}
+
+	public void Dispose()
+	{
+		// unsubscribe from OnMessage event
+		MessageService.OnMessage -= MessageHandler;
+	}
+
+	private void MessageHandler(string message)
+	{
+
+	}
+}
