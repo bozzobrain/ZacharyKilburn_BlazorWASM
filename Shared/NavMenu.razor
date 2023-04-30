@@ -1,0 +1,97 @@
+﻿@inject NavigationManager _nav
+@inject IMessageService MessageService
+@inject ProjectLoader _projects
+<div class="top-row ps-3 navbar navbar-dark">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="">Zachary Kilburn</a>
+		<button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+	</div>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+	<nav class="flex-column">
+		<div class="nav-item px-3">
+			<NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+				<span class="oi oi-home" aria-hidden="true"></span> Home
+			</NavLink>
+		</div>
+		<div class="nav-item px-3">
+			<NavLink class="nav-link" href="projects">
+				<span style="padding:25px;"></span> Projects
+			</NavLink>
+			<CollapsibleButton Collapsible="true" Collapsed="@projectCollapsibleCollapsed">
+				@foreach (var p in _projects.projects)
+				{
+					<NavLink class="nav-link" href="@BuildProjectLink(p.ProjectHref)">
+						<span class="oi oi-minus" aria-hidden="true"></span> @p.ProjectTitle
+					</NavLink>
+				}
+			</CollapsibleButton>
+
+
+		</div>
+		<div class="nav-item px-3">
+			<NavLink class="nav-link" href="resume">
+				<span class="oi oi-list-rich" aria-hidden="true"></span> Resume
+			</NavLink>
+		</div>
+		<div class="nav-item px-3">
+			<NavLink class="nav-link" href="aboutme">
+				<span class="oi oi-list-rich" aria-hidden="true"></span> About Me
+			</NavLink>
+		</div>
+	</nav>
+</div>
+
+@code {
+	protected override void OnInitialized()
+	{
+		// subscribe to OnMessage event
+		MessageService.OnMessage += MessageHandler;
+		_projects.LoadProjects();
+
+		base.OnInitialized();
+	}
+	private bool collapseNavMenu = true;
+
+	private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+	private void ToggleNavMenu()
+	{
+		collapseNavMenu = !collapseNavMenu;
+	}
+	bool projectCollapsibleCollapsed = true;
+	string projectsPageRoot = "projects";
+	private void NavigateTo(object uri)
+	{
+		_nav.NavigateTo((string)uri);
+	}
+	private string BuildProjectLink(string projectHref)
+	{
+		return projectsPageRoot + "/" + projectHref;
+	}
+	private List<string> messages = new List<string>();
+
+
+	public void Dispose()
+	{
+		// unsubscribe from OnMessage event
+		MessageService.OnMessage -= MessageHandler;
+	}
+
+	private void MessageHandler(string message)
+	{
+		if (_nav.Uri.Contains(projectsPageRoot) && projectCollapsibleCollapsed)
+		{
+			projectCollapsibleCollapsed = false;
+			StateHasChanged();
+		}
+		else if (!_nav.Uri.Contains(projectsPageRoot) && !projectCollapsibleCollapsed)
+		{
+			projectCollapsibleCollapsed = true;
+			StateHasChanged();
+		}
+	}
+}

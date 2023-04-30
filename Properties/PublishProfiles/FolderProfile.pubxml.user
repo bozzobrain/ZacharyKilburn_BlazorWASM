@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\owner\Dropbox\ZacharyKilburn_BlazorWASM\bin\Release\net7.0\browser-wasm\publish\</_PublishTargetUrl>
+    <History>True|2023-04-30T21:56:29.4564964Z;True|2023-04-30T17:55:56.0681861-04:00;True|2023-04-30T17:54:35.5560863-04:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>
