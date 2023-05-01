@@ -2,7 +2,7 @@
 <div class="collapsible-button  @clickedClassCollapsible">
 	@if (Collapsible)
 	{
-		<button type="button" class="nav-link collapsible-chevron "><span class="oi oi-plus"></span></button>
+		<button type="button" class="nav-link collapsible-chevron @collapsibleClass "><span class="oi oi-plus"></span></button>
 	}
 	else
 	{
@@ -19,19 +19,20 @@
 	[Parameter] public RenderFragment ChildContent { get; set; }
 	[Parameter] public bool Collapsible { get; set; }
 	[Parameter] public bool Collapsed { get; set; }
+	[Parameter] public string collapsibleClass { get; set; }
 
 	private string clickedClassCollapsible = "";
 	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{
-		await jsRuntime.InvokeAsync<object>("setupCollapsibleChevron", false);
-		if(!Collapsed)
-		{
-			await jsRuntime.InvokeAsync<object>("CollapsibleExpand", false);			
-		}
-		else
-		{
-			await jsRuntime.InvokeAsync<object>("CollapsibleCollapse", false);
-		}
+		await jsRuntime.InvokeAsync<object>("setupCollapsibleChevron", collapsibleClass);
+		//if(!Collapsed)
+		//{
+		//	await jsRuntime.InvokeAsync<object>("CollapsibleExpand", collapsibleClass);
+		//}
+		//else
+		//{
+		//	await jsRuntime.InvokeAsync<object>("CollapsibleCollapse", collapsibleClass);
+		//}
 	}
 	private void InvokeParentMethod()
 	{

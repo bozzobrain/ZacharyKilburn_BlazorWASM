@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\owner\Dropbox\ZacharyKilburn_BlazorWASM\bin\Release\net7.0\browser-wasm\publish\</_PublishTargetUrl>
-    <History>True|2023-04-30T21:56:29.4564964Z;True|2023-04-30T17:55:56.0681861-04:00;True|2023-04-30T17:54:35.5560863-04:00;</History>
+    <History>True|2023-05-01T13:17:08.4382850Z;True|2023-05-01T08:29:20.3430372-04:00;True|2023-04-30T18:57:59.9632747-04:00;True|2023-04-30T18:08:09.0823971-04:00;True|2023-04-30T17:56:29.4564964-04:00;True|2023-04-30T17:55:56.0681861-04:00;True|2023-04-30T17:54:35.5560863-04:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>
