@@ -1,0 +1,102 @@
+﻿@page "/boards/{boardpn?}"
+@inject IMessageService MessageService
+@inject BoardLoader _boards
+@inject NavigationManager _nav
+
+@if (selectedBoard == null)
+{
+	<div class="top-row">
+	</div>
+	<div class="px-4">
+		<h3>Boards</h3>
+		<div class="grid-container">
+			@{
+
+				int index = 0;
+				foreach (var b in _boards.boards)
+				{
+					<div class="grid-item" @onclick="(()=>SelectProject(b.BoardHref))">
+
+						<img src="@b.BoardMainImage" height="200px">
+						<br />
+						<h6 style="align-items:center;">@b.BoardTitle</h6>
+					</div>
+					index++;
+				}
+				@while (index % 3 != 0)
+				{
+					index++;
+					<div class="grid-item"> Coming Soon	</div>
+				}
+			}
+		</div>
+	</div>
+}
+else if (selectedBoard != null)
+{
+	<div class="top-row">
+		@if(ViewMode==modeOverview)
+		{
+			<button class="mode-btn active" @onclick="(()=>ViewMode=modeOverview)">Overview</button>
+			<button class="mode-btn" @onclick="(()=>ViewMode=modePDF)">PDF</button>
+
+		}
+		else if(ViewMode == modePDF)
+		{
+			<button class="mode-btn" @onclick="(()=>ViewMode=modeOverview)">Overview</button>
+			<button class="mode-btn active" @onclick="(()=>ViewMode=modePDF)">PDF</button>
+			
+		}
+	</div>
+	<div class="px-4">
+		<BoardLandingContent board="@selectedBoard" ViewMode="@ViewMode"></BoardLandingContent>
+	</div>
+}
+@code {
+	[Parameter] public string? boardPN { get; set; }
+
+	private static readonly string modeOverview = "overview";
+	private static readonly string modePDF = "pdf";
+	private string ViewMode = modeOverview;
+
+	private Board? selectedBoard;
+
+	private void SelectProject(string pref)
+	{
+		_nav.NavigateTo(pref);
+
+	}
+	protected override void OnParametersSet()
+	{
+		if (boardPN != null)
+		{
+			selectedBoard = _boards.GetBoardByPN(boardPN);
+		}
+		else
+		{
+			selectedBoard = null;
+		}
+		ViewMode = modeOverview;
+		MessageService.SendMessage("board");
+		base.OnParametersSet();
+	}
+
+
+	private List<string> messages = new List<string>();
+	protected override void OnInitialized()
+	{
+		// subscribe to OnMessage event
+		MessageService.OnMessage += MessageHandler;
+	}
+
+	public void Dispose()
+	{
+		// unsubscribe from OnMessage event
+		MessageService.OnMessage -= MessageHandler;
+	}
+
+	private void MessageHandler(string message)
+	{
+
+	}
+}

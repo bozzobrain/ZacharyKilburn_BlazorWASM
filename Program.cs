@@ -13,5 +13,6 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddScoped<IMessageService, MessageService>();
 builder.Services.AddScoped<NavMenu>();
 builder.Services.AddScoped<ProjectLoader>();
+builder.Services.AddScoped<BoardLoader>();
 
 await builder.Build().RunAsync();

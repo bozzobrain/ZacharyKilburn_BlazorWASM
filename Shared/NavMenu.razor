@@ -1,6 +1,7 @@
 ﻿@inject NavigationManager _nav
 @inject IMessageService MessageService
 @inject ProjectLoader _projects
+@inject BoardLoader _boards
 <div class="top-row ps-3 navbar navbar-dark">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="">Zachary Kilburn</a>
@@ -10,22 +11,36 @@
 	</div>
 </div>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+<div class="@NavMenuCssClass" >
 	<nav class="flex-column">
 		<div class="nav-item px-3">
-			<NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+			<NavLink class="nav-link" href="" Match="NavLinkMatch.All" @onclick="ToggleNavMenu">
 				<span class="oi oi-home" aria-hidden="true"></span> Home
 			</NavLink>
 		</div>
 		<div class="nav-item px-3">
 			<NavLink class="nav-link" href="projects">
-				<span style="padding:25px;"></span> Projects
+				<span style="padding:15px;"></span> Projects
 			</NavLink>
-			<CollapsibleButton Collapsible="true" Collapsed="@projectCollapsibleCollapsed">
+			<CollapsibleButton Collapsible="true" Collapsed="@projectCollapsibleCollapsed" collapsibleClass="project">
 				@foreach (var p in _projects.projects)
 				{
-					<NavLink class="nav-link" href="@BuildProjectLink(p.ProjectHref)">
-						<span class="oi oi-minus" aria-hidden="true"></span> @p.ProjectTitle
+					<NavLink class="nav-link" href="@p.ProjectHref" @onclick="ToggleNavMenu">
+						@p.ProjectTitle
+					</NavLink>
+				}
+			</CollapsibleButton>
+
+
+		</div><div class="nav-item px-3">
+			<NavLink class="nav-link" href="boards">
+				<span style="padding:15px;"></span> Boards
+			</NavLink>
+			<CollapsibleButton Collapsible="true" Collapsed="@boardCollapsibleCollapsed" collapsibleClass="board">
+				@foreach (var b in _boards.boards)
+				{
+					<NavLink class="nav-link" href="@b.BoardHref" @onclick="ToggleNavMenu">
+						@b.BoardTitle
 					</NavLink>
 				}
 			</CollapsibleButton>
@@ -33,12 +48,12 @@
 
 		</div>
 		<div class="nav-item px-3">
-			<NavLink class="nav-link" href="resume">
+			<NavLink class="nav-link" href="resume" @onclick="ToggleNavMenu">
 				<span class="oi oi-list-rich" aria-hidden="true"></span> Resume
 			</NavLink>
 		</div>
 		<div class="nav-item px-3">
-			<NavLink class="nav-link" href="aboutme">
+			<NavLink class="nav-link" href="aboutme" @onclick="ToggleNavMenu">
 				<span class="oi oi-list-rich" aria-hidden="true"></span> About Me
 			</NavLink>
 		</div>
@@ -50,7 +65,6 @@
 	{
 		// subscribe to OnMessage event
 		MessageService.OnMessage += MessageHandler;
-		_projects.LoadProjects();
 
 		base.OnInitialized();
 	}
@@ -63,7 +77,9 @@
 		collapseNavMenu = !collapseNavMenu;
 	}
 	bool projectCollapsibleCollapsed = true;
+	bool boardCollapsibleCollapsed = true;
 	string projectsPageRoot = "projects";
+	string boardPageRoot = "board";
 	private void NavigateTo(object uri)
 	{
 		_nav.NavigateTo((string)uri);
@@ -83,15 +99,42 @@
 
 	private void MessageHandler(string message)
 	{
-		if (_nav.Uri.Contains(projectsPageRoot) && projectCollapsibleCollapsed)
+		if (message.Contains("project"))
 		{
-			projectCollapsibleCollapsed = false;
-			StateHasChanged();
+			if (_nav.Uri.Contains(projectsPageRoot) && projectCollapsibleCollapsed)
+			{
+				projectCollapsibleCollapsed = false;
+				//StateHasChanged();
+			}
+			else if (!_nav.Uri.Contains(projectsPageRoot) && !projectCollapsibleCollapsed)
+			{
+				projectCollapsibleCollapsed = true;
+				//StateHasChanged();
+			}
+			if (!boardCollapsibleCollapsed)
+			{
+				boardCollapsibleCollapsed = true;
+				//StateHasChanged();
+			}
 		}
-		else if (!_nav.Uri.Contains(projectsPageRoot) && !projectCollapsibleCollapsed)
+		if (message.Contains("board"))
 		{
-			projectCollapsibleCollapsed = true;
-			StateHasChanged();
+			if (_nav.Uri.Contains(boardPageRoot) && boardCollapsibleCollapsed)
+			{
+				boardCollapsibleCollapsed = false;
+				//StateHasChanged();
+			}
+			else if (!_nav.Uri.Contains(boardPageRoot) && !boardCollapsibleCollapsed)
+			{
+				boardCollapsibleCollapsed = true;
+				//StateHasChanged();
+			}
+			if (!projectCollapsibleCollapsed)
+			{
+				projectCollapsibleCollapsed = true;
+				//StateHasChanged();
+			}
 		}
+
 	}
 }

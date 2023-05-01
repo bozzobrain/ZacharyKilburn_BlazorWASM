@@ -1,24 +1,55 @@
 ﻿@page "/projects/{projecttitle?}"
 @inject IMessageService MessageService
 @inject ProjectLoader _projects
+@inject NavigationManager _nav
+
+<div class="top-row"> Top Row Test</div>
+<div class="px-4">
 @if (selectedProject == null)
 {
 	<h3>Projects</h3>
+	<div class="grid-container">
+		@{
+
+			int index = 0;
+			foreach (var p in _projects.projects)
+			{
+				<div class="grid-item" @onclick="(()=>SelectProject(p.ProjectHref))">
+
+					<img src="@p.ProjectMainImage" height="200px;">
+					<br />
+					<h6 style="align-items:center;">@p.ProjectTitle</h6>
+				</div>
+				index++;
+			}
+			@while (index % 3 != 0)
+			{
+				index++;
+				<div class="grid-item"> Coming Soon	</div>
+			}
+		}
+	</div>
 }
-else if(selectedProject!=null)
+else if (selectedProject != null)
 {
 	<h3>@selectedProject.ProjectTitle</h3>
 	<p>@selectedProject.ProjectDescription</p>
-}
+	<img src="@selectedProject.ProjectMainImage" width="50%">
+	}
+</div>
 
 @code {
 	[Parameter] public string? projectTitle { get; set; }
 
 	private Project? selectedProject;
 
+	private void SelectProject(string pref)
+	{
+		_nav.NavigateTo(pref);
+
+	}
 	protected override void OnParametersSet()
 	{
-		_projects.LoadProjects();
 		if (projectTitle != null)
 		{
 			selectedProject = _projects.GetProjectByHref(projectTitle);
@@ -27,10 +58,10 @@ else if(selectedProject!=null)
 		{
 			selectedProject = null;
 		}
-		MessageService.SendMessage("Refresh Nav");
+		MessageService.SendMessage("project");
 		base.OnParametersSet();
 	}
-	
+
 
 	private List<string> messages = new List<string>();
 	protected override void OnInitialized()

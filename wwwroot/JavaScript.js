@@ -1,5 +1,5 @@
-﻿function setupCollapsibleChevron(markactive) {
-    var coll = document.getElementsByClassName("collapsible-chevron");
+﻿function setupCollapsibleChevron(classname) {
+    var coll = document.getElementsByClassName(classname);
     var i;
 
     for (i = 0; i < coll.length; i++) {
@@ -24,8 +24,8 @@
         }
     }
 }
-function CollapsibleExpand(markactive) {
-    var coll = document.getElementsByClassName("collapsible-chevron");
+function CollapsibleExpand(classname) {
+    var coll = document.getElementsByClassName(classname);
     var i;
 
     for (i = 0; i < coll.length; i++) {
@@ -47,8 +47,8 @@ function CollapsibleExpand(markactive) {
     }
 }
 
-function CollapsibleCollapse(markactive) {
-    var coll = document.getElementsByClassName("collapsible-chevron");
+function CollapsibleCollapse(classname) {
+    var coll = document.getElementsByClassName(classname);
     var i;
 
     for (i = 0; i < coll.length; i++) {
