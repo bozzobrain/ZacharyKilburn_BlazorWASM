@@ -31,17 +31,17 @@ a, .btn-link {
     align-items: center;
 }
 
-    .top-row  a, .top-row  .btn-link {
+    .top-row a, .top-row .btn-link {
         white-space: nowrap;
         margin-left: 1.5rem;
         text-decoration: none;
     }
 
-        .top-row  a:hover, .top-row  .btn-link:hover {
+        .top-row a:hover, .top-row .btn-link:hover {
             text-decoration: underline;
         }
 
-        .top-row  a:first-child {
+        .top-row a:first-child {
             overflow: hidden;
             text-overflow: ellipsis;
         }
@@ -53,7 +53,7 @@ a, .btn-link {
         justify-content: space-between;
     }
 
-    .top-row  a, .top-row  .btn-link {
+    .top-row a, .top-row .btn-link {
         margin-left: 0;
     }
 }
@@ -76,7 +76,7 @@ a, .btn-link {
         z-index: 1;
     }
 
-        .top-row.auth  a:first-child {
+        .top-row.auth a:first-child {
             flex: 1;
             text-align: right;
             width: 0;
@@ -85,11 +85,13 @@ a, .btn-link {
     .top-row {
         padding-left: 0rem !important;
         padding-right: 0rem !important;
-    } 
+    }
+
     .article {
         padding-left: 1.5rem !important;
         padding-right: 1.5rem !important;
     }
+
     .navbar-toggler {
         display: none;
     }
@@ -109,8 +111,7 @@ a, .btn-link {
 .content {
     padding-top: 0rem;
     padding-left: 0rem;
-    padding-right:0rem;
-
+    padding-right: 0rem;
 }
 
 .valid.modified:not([type=checkbox]) {
@@ -373,7 +374,7 @@ a, .btn-link {
     background-color: #2196F3;
     padding: 10px;
 }
-    
+
 
 .grid-item {
     background-color: rgba(255, 255, 255, 0.8);
@@ -382,9 +383,10 @@ a, .btn-link {
     font-size: 30px;
     text-align: center;
 }
-.grid-item:hover {
-    background-color: rgba(255,255,255,0.1) !important;
-}
+
+    .grid-item:hover {
+        background-color: rgba(255,255,255,0.1) !important;
+    }
 
 @media (min-width: 641px) {
     .grid-container {
