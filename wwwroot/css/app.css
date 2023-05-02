@@ -262,8 +262,11 @@ a, .btn-link {
 }
 /* Style the collapsible content. Note: hidden by default */
 .collapsible-button {
-    display: block;
+    display: inline-flex;
     overflow: hidden;
+    width: 100% !important;
+    padding-left: 1rem;
+    border-radius: 4px;
 }
     /* When you mouse over the navigation links, change their color */
     .collapsible-button:hover {
@@ -342,9 +345,11 @@ a, .btn-link {
     outline: none;
     font-size: 18px;
     background-color: transparent;
-    position: absolute;
+    position: relative;
     height: 2.8em;
-    margin-top: -2.5em;
+    padding-left: 0.05rem;
+    padding-right: 0;
+    padding-top: 1rem;
 }
 
     /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
