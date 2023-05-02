@@ -34,6 +34,8 @@ function CollapsibleExpand(classname) {
         if (icon.classList.contains('oi-plus')) {
             icon.classList.toggle('oi-plus');
             icon.classList.toggle('oi-minus');
+        }
+        if (!coll[i].classList.contains("active")){
             coll[i].classList.toggle("active");
         }
 
@@ -57,9 +59,10 @@ function CollapsibleCollapse(classname) {
         if (icon.classList.contains('oi-minus')) {
             icon.classList.toggle('oi-plus');
             icon.classList.toggle('oi-minus');
+        }
+        if (coll[i].classList.contains("active")){
             coll[i].classList.toggle("active");
         }
-
         var content = coll[i].nextElementSibling;
         if (content.style.display === "block") {
             content.style.display = "none";

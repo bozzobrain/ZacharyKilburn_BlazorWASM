@@ -1,16 +1,20 @@
 ﻿@inject IJSRuntime jsRuntime
-<div class="collapsible-button  @clickedClassCollapsible">
+@inject IMessageService MessageService
+<div class="collapsible-button" @onclick="ToggleCollapsibleButton">
 	@if (Collapsible)
 	{
-		<button type="button" class="nav-link collapsible-chevron @collapsibleClass "><span class="oi oi-plus"></span></button>
+		<button type="button" class="collapsible-chevron "><span class="oi oi-plus"></span></button>
 	}
 	else
 	{
-		<button type="button" class="nav-link sidenav-large-clickable-sub @clickedClassCollapsible" @onclick="@InvokeParentMethod">@ButtonText</button>		
+		<button type="button" class="nav-link sidenav-large-clickable-sub " @onclick="@InvokeParentMethod">@ButtonText</button>
 	}
-	<div class="collapsible-content">
-		@ChildContent
-	</div>
+	<NavLink class="nav-item-collapsible nav-link" style="width: 100% !important; padding-left: 1rem; background-color:transparent !important" href="@collapsibleClass">
+		@ButtonText
+	</NavLink>
+</div>
+<div class="collapsible-content" style="display:@collapsibleDisplay">
+	@ChildContent
 </div>
 @code {
 	[Parameter] public string ButtonText { get; set; }
@@ -21,18 +25,29 @@
 	[Parameter] public bool Collapsed { get; set; }
 	[Parameter] public string collapsibleClass { get; set; }
 
+	private string collapsibleDisplay = "none";
+
 	private string clickedClassCollapsible = "";
-	protected override async Task OnAfterRenderAsync(bool firstRender)
+	protected override void OnParametersSet()
 	{
-		await jsRuntime.InvokeAsync<object>("setupCollapsibleChevron", collapsibleClass);
-		//if(!Collapsed)
-		//{
-		//	await jsRuntime.InvokeAsync<object>("CollapsibleExpand", collapsibleClass);
-		//}
-		//else
-		//{
-		//	await jsRuntime.InvokeAsync<object>("CollapsibleCollapse", collapsibleClass);
-		//}
+		if (Collapsed && collapsibleDisplay == "block")
+		{
+			ToggleCollapsibleButton();
+		}
+		base.OnParametersSet();
+	}
+	private void ToggleCollapsibleButton()
+	{
+		if(collapsibleDisplay=="none")
+		{
+			collapsibleDisplay = "block";
+			MessageService.SendMessage(collapsibleClass + "expand");
+		}
+		else
+		{
+			collapsibleDisplay = "none";
+			MessageService.SendMessage(collapsibleClass + "collapse");
+		}
 	}
 	private void InvokeParentMethod()
 	{
