@@ -1,0 +1,19 @@
+﻿body {
+}
+
+@media (max-width: 640.98px) {
+    .project-container {
+    }
+
+        .project-container img {
+            width: 50vw !important;
+        }
+}
+
+@media (min-width: 641px) {
+    .project-container {
+    }
+        .project-container img {
+            width: 300px;
+        }
+}

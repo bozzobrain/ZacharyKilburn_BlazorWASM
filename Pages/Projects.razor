@@ -5,36 +5,38 @@
 
 <div class="top-row"></div>
 <div class="px-4">
-@if (selectedProject == null)
-{
-	<h3>Projects</h3>
-	<div class="grid-container">
-		@{
+	@if (selectedProject == null)
+	{
+		<h3>Projects</h3>
+		<div class="grid-container">
+			@{
 
-			int index = 0;
-			foreach (var p in _projects.projects)
-			{
-				<div class="grid-item" @onclick="(()=>SelectProject(p.ProjectHref))">
+				int index = 0;
+				foreach (var p in _projects.projects)
+				{
+					<div class="grid-item" @onclick="(()=>SelectProject(p.ProjectHref))">
 
-					<img src="@p.ProjectMainImage" height="200px;">
-					<br />
-					<h6 style="align-items:center;">@p.ProjectTitle</h6>
-				</div>
-				index++;
+						<img src="@p.ProjectMainImage" height="200px;">
+						<br />
+						<h6 style="align-items:center;">@p.ProjectTitle</h6>
+					</div>
+					index++;
+				}
+				@while (index % 3 != 0)
+				{
+					index++;
+					<div class="grid-item"> Coming Soon	</div>
+				}
 			}
-			@while (index % 3 != 0)
-			{
-				index++;
-				<div class="grid-item"> Coming Soon	</div>
-			}
-		}
-	</div>
-}
-else if (selectedProject != null)
-{
-	<h3>@selectedProject.ProjectTitle</h3>
-	<p>@selectedProject.ProjectDescription</p>
-	<img src="@selectedProject.ProjectMainImage" width="50%">
+		</div>
+	}
+	else if (selectedProject != null)
+	{
+		<div class="project-container">
+			<h3>@selectedProject.ProjectTitle</h3>
+			<p>@selectedProject.ProjectDescription</p>
+			<img src="@selectedProject.ProjectMainImage">
+		</div>
 	}
 </div>
 

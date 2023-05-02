@@ -49,7 +49,9 @@ else if (selectedBoard != null)
 		}
 	</div>
 	<div class="px-4">
-		<BoardLandingContent board="@selectedBoard" ViewMode="@ViewMode"></BoardLandingContent>
+		<div class="board-container">
+			<BoardLandingContent board="@selectedBoard" ViewMode="@ViewMode"></BoardLandingContent>
+		</div>
 	</div>
 }
 @code {
