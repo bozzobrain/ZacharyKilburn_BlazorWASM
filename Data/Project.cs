@@ -8,6 +8,9 @@ namespace ZacharyKilburn_BlazorWASM.Data
 		public string ProjectDescription { get; set; } = string.Empty;
 		public string ProjectHref { get; set; } = string.Empty;
 		public string ProjectMainImage { get; set; } = string.Empty;
+		public string CollapsedImage { get; set; } = string.Empty;
+		public string ExplodingImage { get; set; } = string.Empty;
+		public string CollapsingImage { get; set; } = string.Empty;
 
 	}
 	public class ProjectLoader
@@ -18,6 +21,9 @@ namespace ZacharyKilburn_BlazorWASM.Data
 			ProjectHref = "projects/Scoreboard",
 			ProjectDescription = "A custom scoreboard with bluetooth and manual score entry featuring an Android application, custom PCB designs and lots of 3D printing",
 			ProjectMainImage = "Scoreboard-Iso.png",
+			CollapsedImage = "ScoreboardCollapsed.bmp",
+			ExplodingImage = "ScoreboardExploding.gif",
+			CollapsingImage = "ScoreboardCollapsing.gif",
 		}; 
 	
 		public static readonly Project FireworkProject = new()
