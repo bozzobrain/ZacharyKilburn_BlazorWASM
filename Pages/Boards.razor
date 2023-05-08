@@ -19,7 +19,8 @@
 
 						<img src="@b.BoardMainImage" height="200px">
 						<br />
-						<h6 style="align-items:center;">@b.BoardTitle</h6>
+						<br />
+						<h5 style="align-items:center;">@b.BoardPN - @b.BoardTitle</h5>
 					</div>
 					index++;
 				}
@@ -38,13 +39,13 @@ else if (selectedBoard != null)
 		@if(ViewMode==modeOverview)
 		{
 			<button class="mode-btn active" @onclick="(()=>ViewMode=modeOverview)">Overview</button>
-			<button class="mode-btn" @onclick="(()=>ViewMode=modePDF)">PDF</button>
+			<button class="mode-btn" @onclick="(()=>ViewMode=modePDF)">Design</button>
 
 		}
 		else if(ViewMode == modePDF)
 		{
 			<button class="mode-btn" @onclick="(()=>ViewMode=modeOverview)">Overview</button>
-			<button class="mode-btn active" @onclick="(()=>ViewMode=modePDF)">PDF</button>
+			<button class="mode-btn active" @onclick="(()=>ViewMode=modePDF)">Design</button>
 			
 		}
 	</div>

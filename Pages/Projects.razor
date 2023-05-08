@@ -15,10 +15,10 @@
 				foreach (var p in _projects.projects)
 				{
 					<div class="grid-item" @onclick="(()=>SelectProject(p.ProjectHref))">
-
-						<img src="@p.ProjectMainImage" height="200px;">
+						<img src="@p.ProjectMainImage" style="width: 250px;">
 						<br />
-						<h6 style="align-items:center;">@p.ProjectTitle</h6>
+						<br />
+						<h5 style="align-items:center; ">@p.ProjectTitle</h5>
 					</div>
 					index++;
 				}
@@ -34,8 +34,25 @@
 	{
 		<div class="project-container">
 			<h3>@selectedProject.ProjectTitle</h3>
+
+			<div style="display:inline-flex">
+			<div style="display:flex; padding:50px;">
+				@if (selectedProject.CollapsedImage != "")
+				{
+					<img src="@gifAnimation" @onclick="OnClickExplodedView" style="width:100vh;">
+
+				}
+				else
+				{
+					<img src="@selectedProject.ProjectMainImage">
+				}
+			</div>
+				<div style="display:flex; padding:50px;">
 			<p>@selectedProject.ProjectDescription</p>
-			<img src="@selectedProject.ProjectMainImage">
+				</div>
+
+			</div>
+
 		</div>
 	}
 </div>
@@ -50,11 +67,40 @@
 		_nav.NavigateTo(pref);
 
 	}
+	string gifAnimation = "";
+	bool OnLoadExploded = true;
+	bool Exploded = false;
+
+	private void OnClickExplodedView()
+	{
+		if(selectedProject!=null)
+		if (OnLoadExploded)
+		{
+			OnLoadExploded = false;
+			gifAnimation = selectedProject.ExplodingImage;
+		}
+		else
+		{
+			if (Exploded)
+			{
+				Exploded = false;
+				gifAnimation = selectedProject.CollapsingImage;
+			}
+			else
+			{
+				Exploded = true;
+				gifAnimation = selectedProject.ExplodingImage;
+			}
+		}
+		StateHasChanged();
+	}
 	protected override void OnParametersSet()
 	{
 		if (projectTitle != null)
 		{
 			selectedProject = _projects.GetProjectByHref(projectTitle);
+			if (selectedProject!=null && selectedProject.CollapsedImage != "")
+				gifAnimation = selectedProject.CollapsedImage;
 		}
 		else
 		{
