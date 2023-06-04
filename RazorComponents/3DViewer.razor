@@ -1,0 +1,185 @@
+﻿@implements IDisposable
+
+<div class="row justify-content-center">
+    <div class="col-6 threed-viewer">
+        <Viewer @ref="View3D1" Scene=scene />
+    </div>
+</div>
+
+@code {
+
+    private Viewer View3D1 = new();
+    private Scene scene = new Scene();
+    private Guid loadedObjectGuid = Guid.NewGuid();
+    private string msg = string.Empty;
+
+    [Parameter]
+    public string stlFile { get; set; }
+    [Parameter]
+    public string objFile { get; set; }
+    [Parameter]
+    public string objTexture { get; set; }
+    [Parameter]
+    public string textureFile { get; set; }
+    [Parameter]
+    public Vector3 CameraPosition { get; set; }
+    [Parameter]
+    public Vector3 CameraLook { get; set; }
+    [Parameter]
+    public Vector3 ScaleFactor { get; set; }
+
+    private Camera camera;
+
+
+    private async Task LoadModel()
+    {
+        await Task.Delay(1000);
+        OnLoadObjButtonClick();
+
+    }
+    private void SetCamera()
+    {
+        camera = new OrthographicCamera(left: -1, right: 1, top: 1, bottom: -1, zoom: 0.5f, near: 0.1)
+            {
+                Position = CameraPosition,
+                AnimateRotationSettings = new AnimateRotationSettings(true, 0.1, 0, 0.1, radius: CameraPosition.X)
+                {
+                    StopAnimationOnOrbitControlMove = true
+                },
+                LookAt = CameraLook,
+                Scale = ScaleFactor,
+            };
+    }
+
+    public void Dispose()
+    {
+        View3D1.ObjectLoaded -= OnObjectLoaded;
+        View3D1.JsModuleLoaded -= OnJsModuleLoaded;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        scene.BackGroundColor = "rgb(210,210,210)";
+        AddLights();
+
+        SetCamera();
+        View3D1.UpdateCamera(camera);
+        await base.OnInitializedAsync();
+    }
+    protected override async Task OnParametersSetAsync()
+    {
+        await base.OnParametersSetAsync();
+    }
+    private void AddLights()
+    {
+        scene.Add(new AmbientLight()
+        {
+                Intensity = 0.2f,
+            });
+        scene.Add(new PointLight()
+            {
+                Intensity = 0.2f,
+                Position = new Vector3(400, 200, 300)
+            });
+        scene.Add(new PointLight()
+            {
+                Intensity = 0.2f,
+                Position = new Vector3(-400, 200, 300)
+            });
+        //scene.Add(new ArrowHelper(new Vector3(1, 1, 1), new Vector3(1, 1, 1), 600, "red", 1, 0.2));
+    }
+  
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // subscribe events only once
+            View3D1.ObjectLoaded += OnObjectLoaded;
+            View3D1.JsModuleLoaded += OnJsModuleLoaded;
+            await LoadModel();
+        }
+
+        await base.OnAfterRenderAsync(firstRender);
+    }
+    
+
+    private async Task OnJsModuleLoaded()
+    {
+        var settings = new ImportSettings
+            {
+                Format = Import3DFormats.Gltf,
+                FileURL = "/assets/blazor3d.glb",
+            };
+        loadedObjectGuid = await View3D1.Import3DModelAsync(settings);
+        await View3D1.UpdateCamera(camera);
+    }
+
+
+    private Task OnObjectLoaded(Object3DArgs e)
+    {
+        // After object is loaded to component scene, you can locate it's C# clone in the scene.Children
+        // At the moment, only  Object3D.Uuid and Object3D.Type properties are syncronized.
+        foreach (var item in scene.Children)
+        {
+            if (item.Uuid == e.UUID)
+            {
+                this.msg = $"loaded object with id = {e.UUID} and type {item.Type}. Initial guid was {loadedObjectGuid}";
+                StateHasChanged();
+                break;
+            }
+        }
+        return Task.CompletedTask;
+    }
+
+
+    private async Task OnLoadObjButtonClick()
+    {
+        // if you need to control the loaded object uuid, generate it here.
+        loadedObjectGuid = Guid.NewGuid();
+        var settings = new ImportSettings
+            {
+                Format = Import3DFormats.Obj,//choose appropriate format
+                FileURL = objFile,// link to your model file
+                TextureURL = objTexture, // link to the texture or skip this,
+                Uuid = loadedObjectGuid //// skip this, or set null if you don't care the uuid of loaded mesh or group
+            };
+        await View3D1.Import3DModelAsync(settings);
+
+        // set camera position to view your loaded model
+        await View3D1.UpdateCamera(camera);
+    }
+
+    private async Task OnLoadObjNoTexturesButtonClick()
+    {
+        var settings = new ImportSettings
+            {
+                Format = Import3DFormats.Obj,
+                FileURL = objFile,
+            };
+        // Also you can get the uuid of object to be imported before its loaded completely
+        loadedObjectGuid = await View3D1.Import3DModelAsync(settings);
+        await View3D1.UpdateCamera(camera);
+    }
+
+
+
+    // this one clears scene completely. it removes all items: lights, helpers, meshes, etc.
+    private async Task OnClearAllClick()
+    {
+        await View3D1.ClearSceneAsync();
+        AddLights();
+        await View3D1.UpdateScene();
+    }
+
+    // this one removes last item in scene.Children collection.
+    // notice, that first two items are lights
+    private async Task OnDeleteLast()
+    {
+        if (scene.Children.Count > 0)
+        {
+            var last = scene.Children.Last();
+            // removes item by its unique identifier
+            await View3D1.RemoveByUuidAsync(last.Uuid);
+        }
+    }
+}

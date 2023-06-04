@@ -3,10 +3,10 @@
 @inject ProjectLoader _projects
 @inject NavigationManager _nav
 
-<div class="top-row"></div>
-<div class="px-4">
-	@if (selectedProject == null)
-	{
+@if (selectedProject == null)
+{
+	<div class="top-row"></div>
+	<div class="px-4">
 		<h3>Projects</h3>
 		<div class="grid-container">
 			@{
@@ -29,36 +29,74 @@
 				}
 			}
 		</div>
+	</div>
+}
+else if (selectedProject != null)
+{
+	<div class="top-row">
+		@if (currentViewMode == ViewMode.Main)
+		{
+			<button class="mode-btn active" @onclick="(()=>currentViewMode=ViewMode.Main)">Overview</button>
+			@if (selectedProject.ThreeDeeModel != string.Empty)
+			{
+				<button class="mode-btn" @onclick="(()=>currentViewMode=ViewMode.ThreeDModel)">3D Model</button>
+			}
+
 	}
-	else if (selectedProject != null)
-	{
-		<div class="project-container">
-			<h3>@selectedProject.ProjectTitle</h3>
+		else if (currentViewMode == ViewMode.ThreeDModel)
+		{
+			<button class="mode-btn" @onclick="(()=>currentViewMode=ViewMode.Main)">Overview</button>
+			@if (selectedProject.ThreeDeeModel != string.Empty)
+			{
+				<button class="mode-btn active" @onclick="(()=>currentViewMode=ViewMode.ThreeDModel)">3D Model</button>
+			}
+		}
+	</div>
+	<div class="px-4">
+		@if (currentViewMode == ViewMode.Main)
+		{
+			<div class="project-container">
+				<div class="project-subcontainer">
+					<div>
+						<h3>@selectedProject.ProjectTitle</h3>
+					</div>
+					<div class="project-image">
+						@if (selectedProject.CollapsedImage != "")
+						{
+							<img src="@gifAnimation" @onclick="OnClickExplodedView" style="width:100vh;">
 
-			<div style="display:inline-flex">
-			<div style="display:flex; padding:50px;">
-				@if (selectedProject.CollapsedImage != "")
-				{
-					<img src="@gifAnimation" @onclick="OnClickExplodedView" style="width:100vh;">
+						}
+						else
+						{
+							<img src="@selectedProject.ProjectMainImage">
+						}
+					</div>
 
-				}
-				else
-				{
-					<img src="@selectedProject.ProjectMainImage">
-				}
-			</div>
-				<div style="display:flex; padding:50px;">
-			<p>@selectedProject.ProjectDescription</p>
 				</div>
-
+				<div class="project-description">
+					<p>@selectedProject.ProjectDescription</p>
+				</div>
 			</div>
-
-		</div>
-	}
-</div>
+		}
+		else if (currentViewMode == ViewMode.ThreeDModel)
+		{
+			<div>
+				<ZacharyKilburn_BlazorWASM.RazorComponents._3DViewer  objFile=@selectedProject.ThreeDeeModel objTexture=@selectedProject.ThreeDeeModelTexture CameraLook=@selectedProject.CameraLook CameraPosition=@selectedProject.CameraPosition ScaleFactor=@selectedProject.ScaleFactor />
+			</div>
+		}
+	</div>
+}
 
 @code {
 	[Parameter] public string? projectTitle { get; set; }
+
+	enum ViewMode
+	{
+		Main,
+		ThreeDModel
+	}
+
+	private ViewMode currentViewMode = ViewMode.Main;
 
 	private Project? selectedProject;
 
@@ -73,33 +111,34 @@
 
 	private void OnClickExplodedView()
 	{
-		if(selectedProject!=null)
-		if (OnLoadExploded)
-		{
-			OnLoadExploded = false;
-			gifAnimation = selectedProject.ExplodingImage;
-		}
-		else
-		{
-			if (Exploded)
+		if (selectedProject != null)
+			if (OnLoadExploded)
 			{
-				Exploded = false;
-				gifAnimation = selectedProject.CollapsingImage;
+				OnLoadExploded = false;
+				gifAnimation = selectedProject.ExplodingImage;
 			}
 			else
 			{
-				Exploded = true;
-				gifAnimation = selectedProject.ExplodingImage;
+				if (Exploded)
+				{
+					Exploded = false;
+					gifAnimation = selectedProject.CollapsingImage;
+				}
+				else
+				{
+					Exploded = true;
+					gifAnimation = selectedProject.ExplodingImage;
+				}
 			}
-		}
 		StateHasChanged();
 	}
 	protected override void OnParametersSet()
 	{
 		if (projectTitle != null)
 		{
+			currentViewMode = ViewMode.Main;
 			selectedProject = _projects.GetProjectByHref(projectTitle);
-			if (selectedProject!=null && selectedProject.CollapsedImage != "")
+			if (selectedProject != null && selectedProject.CollapsedImage != "")
 				gifAnimation = selectedProject.CollapsedImage;
 		}
 		else
