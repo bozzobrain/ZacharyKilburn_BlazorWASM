@@ -3,17 +3,40 @@
 
 @media (max-width: 640.98px) {
     .project-container {
+        display: flex;
+        flex-direction: column;
     }
 
         .project-container img {
-            width: 50vw !important;
+            width: 75vw !important;
         }
+    .project-subcontainer {
+        display: flex;
+        flex-direction: column;
+    }
+    .project-image {
+        padding: 50px;
+    }
+    .project-description {
+        padding: 50px;
+    }
 }
 
 @media (min-width: 641px) {
     .project-container {
+        display: inline-flex;
     }
         .project-container img {
             width: 300px;
         }
+    .project-subcontainer {
+        display: flex;
+        flex-direction: column;
+    }
+    .project-image {
+        padding: 50px;
+    }
+    .project-description {
+        padding: 50px;
+    }
 }
