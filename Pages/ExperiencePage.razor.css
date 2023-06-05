@@ -1,0 +1,37 @@
+﻿body {
+}
+
+div.experience-body {
+    padding-left: 50px;
+    padding-bottom: 50px;
+}
+
+div.job-header {
+    padding-top: 50px;
+}
+
+div.job-container {
+    padding-top: 20px;
+}
+
+div.job-title {
+    font-size: 1.5em;
+}
+
+div.job-description {
+    padding-bottom: 20px;
+    width: 75%;
+}
+
+div.job-date {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: rgb(100,100,100);
+}
+
+div.bulleted-header {
+}
+
+div.bulleted-item {
+    padding-left: 40px;
+}
