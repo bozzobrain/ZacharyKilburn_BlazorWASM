@@ -4,6 +4,10 @@
     <div class="col-6 threed-viewer">
         <Viewer @ref="View3D1" Scene=scene />
     </div>
+
+</div>
+<div class="row justify-content-end">
+    <button @onclick=SetCamera>Reset Camera</button>
 </div>
 
 @code {
@@ -49,6 +53,7 @@
                 LookAt = CameraLook,
                 Scale = ScaleFactor,
             };
+        View3D1.UpdateCamera(camera);
     }
 
     public void Dispose()
@@ -62,7 +67,6 @@
         scene.BackGroundColor = "rgb(210,210,210)";
         AddLights();
         SetCamera();
-        View3D1.UpdateCamera(camera);
         await base.OnInitializedAsync();
     }
     protected override async Task OnParametersSetAsync()
