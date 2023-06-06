@@ -34,7 +34,7 @@
     private async Task LoadModel()
     {
         await Task.Delay(1000);
-        OnLoadObjButtonClick();
+        await OnLoadObjNoTexturesButtonClick();
 
     }
     private void SetCamera()
@@ -61,7 +61,6 @@
     {
         scene.BackGroundColor = "rgb(210,210,210)";
         AddLights();
-
         SetCamera();
         View3D1.UpdateCamera(camera);
         await base.OnInitializedAsync();
@@ -140,7 +139,7 @@
             {
                 Format = Import3DFormats.Obj,//choose appropriate format
                 FileURL = objFile,// link to your model file
-                TextureURL = objTexture, // link to the texture or skip this,
+                //TextureURL = objTexture, // link to the texture or skip this,
                 Uuid = loadedObjectGuid //// skip this, or set null if you don't care the uuid of loaded mesh or group
             };
         await View3D1.Import3DModelAsync(settings);
