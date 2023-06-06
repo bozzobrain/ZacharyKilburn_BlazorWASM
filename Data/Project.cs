@@ -50,7 +50,7 @@ namespace ZacharyKilburn_BlazorWASM.Data
 			CameraPosition = new Vector3(400, 200, 0),
 			CameraLook = new Vector3(0, 50, 0),
             ScaleFactor = new Vector3(400, 400, 400),
-        }; 
+        };
 
 		public static readonly Project CombatRobot = new()
 		{
@@ -62,14 +62,24 @@ namespace ZacharyKilburn_BlazorWASM.Data
 			ThreeDeeModelTexture = "CombatRobot.mtl",
 			CameraPosition = new Vector3(600, 300, 0),
 			CameraLook = new Vector3(0, 50, 0),
-            ScaleFactor = new Vector3(500, 500, 500),
-        };
+			ScaleFactor = new Vector3(500, 500, 500),
+		};
+
+		public static readonly Project SumoRobot = new()
+		{
+			ProjectTitle = "Sumo Bot Compeition",
+			ProjectHref = "projects/Sumo",
+			ProjectDescription = "",
+			ProjectMainImage = "sumo-bot2.png",
+		};
+
 
 		public List<Project> projects { get; set; } = new()
 		{
 			ScoreboardProject,
 			FireworkProject,
 			CombatRobot,
+			SumoRobot,
 		};
 		public Project? GetProjectByHref(string href)
 		{
