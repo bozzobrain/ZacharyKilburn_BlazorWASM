@@ -8,7 +8,7 @@
 }
 @media (min-width: 891px) {
     div.threed-viewer {
-        width: 75%;
+        width: 100%;
         height: 500px;
     }
 }
