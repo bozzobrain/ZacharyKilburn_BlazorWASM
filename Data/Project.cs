@@ -91,7 +91,12 @@ namespace ZacharyKilburn_BlazorWASM.Data
 			ProjectHref = "projects/EDMPSU",
 			ProjectDate = "2013",
 			ProjectDescription = "",
-			ProjectMainImage = "sumo-bot2.png",
+			ProjectMainImage = "EDMPSU.png",
+			ThreeDeeModel = "EDMPSU-Open.obj",
+			ThreeDeeModelTexture = "EDMPSU-Open.mtl",
+			CameraPosition = new Vector3(600, 600, 0),
+			CameraLook = new Vector3(0, 50, 0),
+			ScaleFactor = new Vector3(500, 500, 500),
 		};
 		public static readonly Project BMEBike = new()
 		{
@@ -111,7 +116,8 @@ namespace ZacharyKilburn_BlazorWASM.Data
 			CombatRobot,
 			SumoRobot,
             BMEBike,
-        };
+			EDMPowerSupply,
+		};
 		public Project? GetProjectByHref(string href)
 		{
 			return projects.Where(p => p.ProjectHref.Contains(href)).FirstOrDefault();
