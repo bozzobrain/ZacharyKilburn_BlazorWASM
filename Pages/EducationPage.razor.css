@@ -7,7 +7,9 @@ div.education-body {
 }
 
 div.education-header {
-    padding-top: 50px;
+    justify-content: flex-start;
+    display: flex;
+    width: 100%;
 }
 
 div.education-container {
@@ -16,6 +18,9 @@ div.education-container {
 
 div.education-title {
     font-size: 1.5em;
+    justify-content: flex-start;
+    display: flex;
+    width: 100%;
 }
 
 div.education-description {
