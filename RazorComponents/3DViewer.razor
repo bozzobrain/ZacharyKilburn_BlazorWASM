@@ -91,20 +91,19 @@
             });
         //scene.Add(new ArrowHelper(new Vector3(1, 1, 1), new Vector3(1, 1, 1), 600, "red", 1, 0.2));
     }
-  
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
             // subscribe events only once
             View3D1.ObjectLoaded += OnObjectLoaded;
-            View3D1.JsModuleLoaded += OnJsModuleLoaded;
             await LoadModel();
         }
 
         await base.OnAfterRenderAsync(firstRender);
     }
-    
+
 
     private async Task OnJsModuleLoaded()
     {
@@ -146,6 +145,15 @@
                 //TextureURL = objTexture, // link to the texture or skip this,
                 Uuid = loadedObjectGuid //// skip this, or set null if you don't care the uuid of loaded mesh or group
             };
+        if(objFile.Contains("fbx"))
+        {
+            settings.Format = Import3DFormats.Fbx;
+        }
+        else if (objFile.Contains("gltf"))
+        {
+            settings.Format = Import3DFormats.Gltf;
+            
+        }
         await View3D1.Import3DModelAsync(settings);
 
         // set camera position to view your loaded model
@@ -160,6 +168,10 @@
                 Format = Import3DFormats.Obj,
                 FileURL = objFile,
             };
+        if (objFile.Contains("fbx"))
+        {
+            settings.Format = Import3DFormats.Fbx;
+        }
         // Also you can get the uuid of object to be imported before its loaded completely
         loadedObjectGuid = await View3D1.Import3DModelAsync(settings);
         await View3D1.UpdateCamera(camera);

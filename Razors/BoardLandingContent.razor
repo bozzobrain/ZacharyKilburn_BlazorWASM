@@ -28,7 +28,6 @@
 
 @if (ViewMode == "overview")
 {
-	<h3>@board.BoardPN - @board.BoardTitle - Overview</h3>
 	@if (board.Projects != null && board.Projects.Count == 1)
 	{
 		<div>Part of the <a href="@board.Projects.First().ProjectHref">@board.Projects.First().ProjectTitle</a> Project</div>
@@ -52,7 +51,6 @@
 }
 else if (ViewMode == "pdf")
 {
-	<h3>@board.BoardPN - @board.BoardTitle - PDF</h3>
 
 	<div class="pdf-embed">
 		<object data="@normalPDF(board.BoardPDF)" type="application/pdf">

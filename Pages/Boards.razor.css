@@ -2,6 +2,17 @@
 }
 
 
+.board-title {
+    justify-content: flex-start;
+    display: flex;
+    width: 100%;
+}
+
+.board-controls {
+    justify-content: flex-end;
+    display: flex;
+    width: 50%;
+}
 
 .mode-btn {
     color: #FFFFFF;
@@ -29,13 +40,13 @@
 
 @media (max-width: 890.98px) {
 
-    .top-row.auth {
+/*    .top-row.auth {
         justify-content: space-between;
     }
 
     .top-row ::deep a, .top-row ::deep .btn-link {
         margin-left: 0;
-    }
+    }*/
 
     .board-container ::deep {
     }
@@ -51,7 +62,7 @@
     }
 
 
-    .top-row {
+/*    .top-row {
         position: sticky;
         top: 0;
         z-index: 1;
@@ -66,7 +77,7 @@
     .top-row {
         padding-left: 0rem !important;
         padding-right: 0rem !important;
-    }
+    }*/
 
     .article {
         padding-left: 1.5rem !important;

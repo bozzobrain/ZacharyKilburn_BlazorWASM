@@ -34,7 +34,7 @@ namespace ZacharyKilburn_BlazorWASM.Data
 			//CollapsedImage = "ScoreboardCollapsed.bmp",
 			//ExplodingImage = "ScoreboardExploding.gif",
 			//CollapsingImage = "ScoreboardCollapsing.gif",
-			ThreeDeeModel = "CornholeScoreViewer.obj",
+			ThreeDeeModel = "CornholeScoreViewer.fbx",
 			ThreeDeeModelTexture = "CornholeScoreViewer.mtl",
 			CameraPosition = new Vector3(300, 150, 0),
             CameraLook = new Vector3(0, 50, 0),

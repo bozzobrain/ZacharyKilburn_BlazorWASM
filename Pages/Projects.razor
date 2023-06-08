@@ -5,9 +5,10 @@
 
 @if (selectedProject == null)
 {
-    <div class="top-row"></div>
+    <div class="top-row">
+        <h3>Projects</h3>    
+    </div>
     <div class="px-4">
-        <h3>Projects</h3>
         <div class="grid-container">
             @{
 
@@ -34,6 +35,10 @@
 else if (selectedProject != null)
 {
     <div class="top-row">
+        <div class="project-title">
+            <h3>@selectedProject.ProjectTitle</h3>
+        </div>
+        <div class="project-controls">
         @if (currentViewMode == ViewMode.Main)
         {
             <button class="mode-btn active" @onclick="(()=>currentViewMode=ViewMode.Main)">Overview</button>
@@ -41,7 +46,6 @@ else if (selectedProject != null)
             {
                 <button class="mode-btn" @onclick="(()=>currentViewMode=ViewMode.ThreeDModel)">3D Model</button>
             }
-
         }
         else if (currentViewMode == ViewMode.ThreeDModel)
         {
@@ -50,16 +54,14 @@ else if (selectedProject != null)
             {
                 <button class="mode-btn active" @onclick="(()=>currentViewMode=ViewMode.ThreeDModel)">3D Model</button>
             }
-        }
+            }
+        </div>
     </div>
     <div class="px-4">
         @if (currentViewMode == ViewMode.Main)
         {
             <div class="project-container">
                 <div class="project-subcontainer">
-                    <div class="project-title">
-                        <h3>@selectedProject.ProjectTitle</h3>
-                    </div>
                     <div class="project-image">
                         @if (selectedProject.CollapsedImage != "")
                         {
