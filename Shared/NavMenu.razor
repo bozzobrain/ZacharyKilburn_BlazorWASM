@@ -1,7 +1,5 @@
-﻿@inject NavigationManager _nav
-@inject IMessageService MessageService
-@inject ProjectLoader _projects
-@inject BoardLoader _boards
+﻿
+
 <div class="top-row ps-3 navbar navbar-dark">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="">Zachary Kilburn</a>
@@ -65,78 +63,12 @@
 	</nav>
 </div>
 
-@code {
+@code{
 	protected override void OnInitialized()
 	{
 		// subscribe to OnMessage event
 		MessageService.OnMessage += MessageHandler;
 
 		base.OnInitialized();
-	}
-	private bool collapseNavMenu = true;
-
-	private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-	private void ToggleNavMenu()
-	{
-		collapseNavMenu = !collapseNavMenu;
-	}
-	bool projectCollapsibleCollapsed = true;
-	bool boardCollapsibleCollapsed = true;
-	string projectsPageRoot = "projects";
-	string boardPageRoot = "board";
-	private void NavigateTo(object uri)
-	{
-		_nav.NavigateTo((string)uri);
-	}
-	private string BuildProjectLink(string projectHref)
-	{
-		return projectsPageRoot + "/" + projectHref;
-	}
-	private List<string> messages = new List<string>();
-
-
-	public void Dispose()
-	{
-		// unsubscribe from OnMessage event
-		MessageService.OnMessage -= MessageHandler;
-	}
-
-	private void MessageHandler(string message)
-	{
-		if(message == "boardsexpand")
-		{
-			boardCollapsibleCollapsed = false;
-		}
-		if(message == "boardscollapse")
-		{
-			boardCollapsibleCollapsed = true;
-		}
-		if (message == "projectsexpand")
-		{
-			projectCollapsibleCollapsed = false;
-		}
-		if (message == "projectscollapse")
-		{
-			projectCollapsibleCollapsed = true;
-		}
-		if (message == "projectsload")
-		{			
-			if (!boardCollapsibleCollapsed)
-			{
-				boardCollapsibleCollapsed = true;
-				StateHasChanged();
-			}
-		}
-		if (message.Contains("boardsload"))
-		{		
-			if (!projectCollapsibleCollapsed)
-			{
-				projectCollapsibleCollapsed = true;
-				StateHasChanged();
-			}
-		}
-
-
 	}
 }
