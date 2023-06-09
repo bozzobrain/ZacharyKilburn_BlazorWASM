@@ -20,7 +20,15 @@
     .project-container img {
         height: 40vh;
     }
-@media (max-width: 640.98px) {
+.project-description {
+    display: flex;
+    padding: 50px;
+    justify-content:center;
+    width: 80%;
+    margin: 0 10%;
+    background-color: rgb(240,240,240);
+}
+@media (max-width: 890.98px) {
 
     .project-subcontainer {
         display: flex;
@@ -31,12 +39,10 @@
         justify-content: center;
         padding: 50px;
     }
-    .project-description {
-        padding: 50px;
-    }
+  
 }
 
-@media (min-width: 641px) {
+@media (min-width: 891px) {
     .project-subcontainer {
         display: flex;
         flex-direction: column;
@@ -46,7 +52,5 @@
         justify-content: center;
         padding: 50px;
     }
-    .project-description {
-        padding: 50px;
-    }
+   
 }
