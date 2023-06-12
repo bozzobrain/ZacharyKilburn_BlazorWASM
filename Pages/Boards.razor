@@ -13,7 +13,7 @@
 			@{
 
 				int index = 0;
-				foreach (var b in _boards.boards)
+				foreach (var b in BoardLoader.Boards)
 				{
 					<div class="grid-item" @onclick="(()=>SelectProject(b.BoardHref))">
 
@@ -84,7 +84,7 @@ else if (selectedBoard != null)
 	{
 		if (boardPN != null)
 		{
-			selectedBoard = _boards.GetBoardByPN(boardPN);
+			selectedBoard = BoardLoader.GetBoardByPN(boardPN);
 		}
 		else
 		{

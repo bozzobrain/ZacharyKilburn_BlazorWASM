@@ -6,7 +6,7 @@
 @if (selectedProject == null)
 {
     <div class="top-row">
-        <h3>Projects</h3>    
+        <h3>Projects</h3>
     </div>
     <div class="px-4">
         <div class="grid-container">
@@ -39,21 +39,48 @@ else if (selectedProject != null)
             <h3>@selectedProject.ProjectTitle</h3>
         </div>
         <div class="project-controls">
-        @if (currentViewMode == ViewMode.Main)
-        {
-            <button class="mode-btn active" @onclick="(()=>currentViewMode=ViewMode.Main)">Overview</button>
-            @if (selectedProject.ThreeDeeModel != string.Empty)
+            @if (currentViewMode == ViewMode.Main)
             {
-                <button class="mode-btn" @onclick="(()=>currentViewMode=ViewMode.ThreeDModel)">3D Model</button>
+                <button class="mode-btn active" @onclick="(()=>SelectPage(ViewMode.Main))">Overview</button>
+                @if (selectedProject.ThreeDView != null)
+                {
+                    <button class="mode-btn" @onclick="(()=>SelectPage(ViewMode.ThreeDModel))">3D Model</button>
+                }
+                foreach (var p in selectedProject.SubPages)
+                {
+                    <button class="mode-btn" @onclick="(()=>SelectPage(p))">@p.SubPageTitle</button>
+                }
             }
-        }
-        else if (currentViewMode == ViewMode.ThreeDModel)
-        {
-            <button class="mode-btn" @onclick="(()=>currentViewMode=ViewMode.Main)">Overview</button>
-            @if (selectedProject.ThreeDeeModel != string.Empty)
+            else if (currentViewMode == ViewMode.ThreeDModel)
             {
-                <button class="mode-btn active" @onclick="(()=>currentViewMode=ViewMode.ThreeDModel)">3D Model</button>
+                <button class="mode-btn" @onclick="(()=>SelectPage(ViewMode.Main))">Overview</button>
+                @if (selectedProject.ThreeDView != null)
+                {
+                    <button class="mode-btn active" @onclick="(()=>SelectPage(ViewMode.ThreeDModel))">3D Model</button>
+                }
+                foreach (var p in selectedProject.SubPages)
+                {
+                    <button class="mode-btn" @onclick="(()=>SelectPage(p))">@p.SubPageTitle</button>
+                }
             }
+            else if (currentViewMode == ViewMode.Subpages)
+            {
+                <button class="mode-btn" @onclick="(()=>SelectPage(ViewMode.Main))">Overview</button>
+                @if (selectedProject.ThreeDView != null)
+                {
+                    <button class="mode-btn" @onclick="(()=>SelectPage(ViewMode.ThreeDModel))">3D Model</button>
+                }
+                foreach (var p in selectedProject.SubPages)
+                {
+                    if (currentSubPage == p)
+                    {
+                        <button class="mode-btn active" @onclick="(()=>SelectPage(p))">@p.SubPageTitle</button>
+                    }
+                    else
+                    {
+                        <button class="mode-btn" @onclick="(()=>SelectPage(p))">@p.SubPageTitle</button>
+                    }
+                }
             }
         </div>
     </div>
@@ -63,28 +90,29 @@ else if (selectedProject != null)
             <div class="project-container">
                 <div class="project-subcontainer">
                     <div class="project-image">
-                        @if (selectedProject.CollapsedImage != "")
-                        {
-                            <img src="@gifAnimation" @onclick="OnClickExplodedView" style="width:100vh;">
 
-                        }
-                        else
-                        {
-                            <img src="@selectedProject.ProjectMainImage">
-                        }
+                        <img src="@selectedProject.ProjectMainImage">
+
                     </div>
 
                 </div>
                 <div class="project-description">
-                    <p>@selectedProject.ProjectDescription</p>
+                    <p>@selectedProject.ProjectDescription</p>  <hr />
                 </div>
+                <div class="project-description">
+                    @if (selectedProject.Link != null)
+                    {
+                        <p>Click to view  <a href="@selectedProject.Link.Link">@selectedProject.Link.Name</a></p>
+                        <br />
+                    }
+                </div>
+               
                 @if (selectedProject.DownloadLink != "")
                 {
-
                     <div class="project-description">
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="42" viewBox="0 0 40 42" class="MM7Wh">
                             <g fill="none" fill-rule="evenodd">
-                                <path  d="M0 0H4823V3877H0z" transform="translate(-1717 -3612)">
+                                <path d="M0 0H4823V3877H0z" transform="translate(-1717 -3612)">
 
                                 </path>
                                 <path d="M1717 3612H1757V3654H1717z" transform="translate(-1717 -3612)">
@@ -127,8 +155,57 @@ else if (selectedProject != null)
         else if (currentViewMode == ViewMode.ThreeDModel)
         {
             <div>
-                <ZacharyKilburn_BlazorWASM.RazorComponents._3DViewer objFile=@selectedProject.ThreeDeeModel objTexture=@selectedProject.ThreeDeeModelTexture CameraLook=@selectedProject.CameraLook CameraPosition=@selectedProject.CameraPosition ScaleFactor=@selectedProject.ScaleFactor />
+                <ZacharyKilburn_BlazorWASM.RazorComponents._3DViewer threeDView=@selectedProject.ThreeDView />
             </div>
+        }
+        else if (currentViewMode == ViewMode.Subpages)
+        {
+            <div class="project-container">
+                <div class="project-subcontainer">
+                    @if (currentSubPage.threeDViews.Count > 0)
+                    {
+                        <div>
+                            <ZacharyKilburn_BlazorWASM.RazorComponents._3DViewer threeDViews=@currentSubPage.threeDViews />
+                        </div>
+                    }
+                    else if (currentSubPage.SubPageImage!="")
+                    {
+                        <div class="project-image">
+
+                            <img src="@currentSubPage.SubPageImage">
+
+                        </div>
+                    }
+                    @if (currentSubPage.ContainedBoardDesigns != null)
+                    {
+                        <div class="project-boards">
+                            <table class=" board-table">
+                                <tbody>
+                                    @foreach (var b in currentSubPage.ContainedBoardDesigns)
+                                    {
+                                        Board brd = BoardLoader.GetBoardByPN(b);
+                                        if (brd != null)
+                                        {
+                                            <tr>
+
+                                                <td> <img src="@brd.BoardMainImage" /></td>
+                                                <td> <a href="@brd.BoardHref">@brd.BoardTitle</a></td>
+
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+                <div class="project-description">
+                    <p>@currentSubPage.SubPageDescription</p>
+                </div>
+
+
+            </div>
+
         }
     </div>
 }
@@ -139,8 +216,11 @@ else if (selectedProject != null)
     enum ViewMode
     {
         Main,
-        ThreeDModel
+        ThreeDModel,
+        Subpages,
     }
+
+    public ProjectSubPage? currentSubPage = null;
 
     private ViewMode currentViewMode = ViewMode.Main;
 
@@ -151,41 +231,26 @@ else if (selectedProject != null)
         _nav.NavigateTo(pref);
 
     }
-    string gifAnimation = "";
-    bool OnLoadExploded = true;
-    bool Exploded = false;
 
-    private void OnClickExplodedView()
+    private void SelectPage(ProjectSubPage page)
     {
-        if (selectedProject != null)
-            if (OnLoadExploded)
-            {
-                OnLoadExploded = false;
-                gifAnimation = selectedProject.ExplodingImage;
-            }
-            else
-            {
-                if (Exploded)
-                {
-                    Exploded = false;
-                    gifAnimation = selectedProject.CollapsingImage;
-                }
-                else
-                {
-                    Exploded = true;
-                    gifAnimation = selectedProject.ExplodingImage;
-                }
-            }
-        StateHasChanged();
+        currentViewMode = ViewMode.Subpages;
+        currentSubPage = page;
+
     }
+    private void SelectPage(ViewMode v)
+    {
+
+        currentViewMode = v;
+        currentSubPage = null;
+    }
+
     protected override void OnParametersSet()
     {
         if (projectTitle != null)
         {
             currentViewMode = ViewMode.Main;
             selectedProject = _projects.GetProjectByHref(projectTitle);
-            if (selectedProject != null && selectedProject.CollapsedImage != "")
-                gifAnimation = selectedProject.CollapsedImage;
         }
         else
         {

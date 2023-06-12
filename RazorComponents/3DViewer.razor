@@ -1,13 +1,24 @@
 ﻿@implements IDisposable
 
-<div class="row justify-content-center">
-    <div class="col-6 threed-viewer">
+<div class="threed-container">
+    <div class="flex-column col-6 threed-viewer">
         <Viewer @ref="View3D1" Scene=scene />
     </div>
 
-</div>
-<div class="row justify-content-end">
-    <button @onclick=SetCamera>Reset Camera</button>
+    <div class="threed-controls">
+        <div class="threed-control-button">
+            <button @onclick=SetCamera>Reset Camera</button>
+        </div>
+        @if(threeDViews.Count>0)
+        {
+            foreach(var v in threeDViews)
+            {
+                <div class="threed-control-button">
+                    <button @onclick="(()=>Select3dView(v))">View: @v.ThreeDeeViewName</button>
+                </div>
+            }
+        }
+    </div>
 </div>
 
 @code {
@@ -18,19 +29,14 @@
     private string msg = string.Empty;
 
     [Parameter]
-    public string stlFile { get; set; }
+    public ThreeDView? threeDView { get; set; } = null;
     [Parameter]
-    public string objFile { get; set; }
+    public List<ThreeDView> threeDViews { get; set; } = new List<ThreeDView>();
+
     [Parameter]
-    public string objTexture { get; set; }
+    public string DivWidth { get; set; } = "90%";
     [Parameter]
-    public string textureFile { get; set; }
-    [Parameter]
-    public Vector3 CameraPosition { get; set; }
-    [Parameter]
-    public Vector3 CameraLook { get; set; }
-    [Parameter]
-    public Vector3 ScaleFactor { get; set; }
+    public string DivHeight { get; set; } = "500px";
 
     private Camera camera;
 
@@ -41,18 +47,32 @@
         await OnLoadObjNoTexturesButtonClick();
 
     }
+
+    private void Select3dView(ThreeDView v)
+    {
+        threeDView = v; 
+        OnClearAllClick();
+        LoadModel();
+    }
     private void SetCamera()
     {
-        camera = new OrthographicCamera(left: -1, right: 1, top: 1, bottom: -1, zoom: 0.5f, near: 0.1)
+        if(threeDView!=null)
+        {
+            camera = new OrthographicCamera(left: -2, right: 2, top: 2, bottom: -2, zoom: 0.5f, near:-10, far: 100)
             {
-                Position = CameraPosition,
-                AnimateRotationSettings = new AnimateRotationSettings(true, 0.1, 0, 0.1, radius: CameraPosition.X)
+                    Position = threeDView.CameraPosition,
+                    AnimateRotationSettings = new AnimateRotationSettings(true, 0.1, 0, 0.1, radius: threeDView.CameraPosition.X)
                 {
                     StopAnimationOnOrbitControlMove = true
                 },
-                LookAt = CameraLook,
-                Scale = ScaleFactor,
+                    LookAt = threeDView.CameraLook,
+                    Scale = threeDView.ScaleFactor,
             };
+        }
+        else
+        {
+
+        }
         View3D1.UpdateCamera(camera);
     }
 
@@ -64,6 +84,10 @@
 
     protected override async Task OnInitializedAsync()
     {
+        if (threeDViews.Count > 0)
+        {
+            threeDView = threeDViews.First();
+        }
         scene.BackGroundColor = "rgb(210,210,210)";
         AddLights();
         SetCamera();
@@ -88,6 +112,16 @@
             {
                 Intensity = 0.2f,
                 Position = new Vector3(-400, 200, 300)
+            });
+        scene.Add(new PointLight()
+            {
+                Intensity = 0.5f,
+                Position = new Vector3(20, 20, 20)
+            });
+        scene.Add(new PointLight()
+            {
+                Intensity = 0.5f,
+                Position = new Vector3(-20, 20, 20)
             });
         //scene.Add(new ArrowHelper(new Vector3(1, 1, 1), new Vector3(1, 1, 1), 600, "red", 1, 0.2));
     }
@@ -141,18 +175,17 @@
         var settings = new ImportSettings
             {
                 Format = Import3DFormats.Obj,//choose appropriate format
-                FileURL = objFile,// link to your model file
+                FileURL = threeDView.ThreeDeeModel,// link to your model file
                 //TextureURL = objTexture, // link to the texture or skip this,
                 Uuid = loadedObjectGuid //// skip this, or set null if you don't care the uuid of loaded mesh or group
             };
-        if(objFile.Contains("fbx"))
+       if (threeDView.ThreeDeeModel.Contains("fbx"))
         {
             settings.Format = Import3DFormats.Fbx;
         }
-        else if (objFile.Contains("gltf"))
+        else if (threeDView.ThreeDeeModel.Contains("gltf"))
         {
-            settings.Format = Import3DFormats.Gltf;
-            
+            settings.Format = Import3DFormats.Gltf;            
         }
         await View3D1.Import3DModelAsync(settings);
 
@@ -166,9 +199,9 @@
         var settings = new ImportSettings
             {
                 Format = Import3DFormats.Obj,
-                FileURL = objFile,
+                FileURL = threeDView.ThreeDeeModel,
             };
-        if (objFile.Contains("fbx"))
+        if (threeDView.ThreeDeeModel.Contains("fbx"))
         {
             settings.Format = Import3DFormats.Fbx;
         }

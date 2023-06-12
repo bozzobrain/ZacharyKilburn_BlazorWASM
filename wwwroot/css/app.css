@@ -50,8 +50,11 @@ a, .btn-link {
 
 @media (max-width: 890.98px) {
 
+    .top-row {
+        flex-direction:column;
+    }
 
-    .top-row.auth {
+        .top-row.auth {
         justify-content: space-between;
     }
 
@@ -73,6 +76,7 @@ a, .btn-link {
     }
 
     .top-row {
+        flex-direction: row;
         position: sticky;
         top: 0;
         z-index: 1;

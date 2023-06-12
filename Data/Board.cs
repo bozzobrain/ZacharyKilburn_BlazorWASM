@@ -236,7 +236,7 @@
                 ProjectLoader.ScoreboardProject,
             },
 		};
-		public List<Board> boards { get; set; } = new()
+		public static List<Board> Boards { get; set; } = new()
         {
 			Z28,
 			Z27,
@@ -259,13 +259,13 @@
 			Z1,
 
         };
-		public Board? GetBoardByHref(string href)
+		public static Board? GetBoardByHref(string href)
 		{
-			return boards.Where(p => p.BoardHref.Contains(href)).FirstOrDefault();
+			return Boards.Where(p => p.BoardHref.Contains(href)).FirstOrDefault();
 		}
-		public Board? GetBoardByPN(string PN)
+		public static Board? GetBoardByPN(string PN)
 		{
-			return boards.Where(p => p.BoardPN == PN).FirstOrDefault();
+			return Boards.Where(p => p.BoardPN == PN).FirstOrDefault();
 		}
 	}
 }

@@ -1,39 +1,49 @@
 ﻿body {
 }
 
-div.experience-body {
-    padding-left: 50px;
-    padding-bottom: 50px;
-}
-
 div.job-header {
     justify-content: flex-start;
     display: flex;
     width: 100%;
+    font-size: 1em;
 }
 
+div.experience-body {
+    background-color: rgb(255,255,255);
+    margin: 0em 5em;
+}
+
+
 div.job-container {
-    padding-top: 20px;
+    margin: 0em 5em;
 }
 
 div.job-title {
+
     font-size: 1.5em;
+    text-align: center;
+}
+div.job-location {
+    text-align: center;
 }
 
 div.job-description {
+    text-align: center;
     padding-bottom: 20px;
-    width: 75%;
+    padding-top: 20px;
+    margin: 0em 5em;
 }
 
 div.job-date {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    text-align: center;
     color: rgb(100,100,100);
 }
 
 div.bulleted-header {
+    margin: 0em 5vw;
 }
 
 div.bulleted-item {
-    padding-left: 40px;
+    margin: 0em 5vw;
+    padding-left: 3em;
 }

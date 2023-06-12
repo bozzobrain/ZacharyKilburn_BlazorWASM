@@ -2,8 +2,8 @@
 }
 
 div.education-body {
-    padding-left: 50px;
-    padding-bottom: 50px;
+    margin: 0em 5em;
+    background-color: rgb(255,255,255);
 }
 
 div.education-header {
@@ -13,13 +13,14 @@ div.education-header {
 }
 
 div.education-container {
+    font-size: 1.5em;
+    text-align: center;
     padding-top: 20px;
 }
 
 div.education-title {
     font-size: 1.5em;
-    justify-content: flex-start;
-    display: flex;
+    text-align: center;
     width: 100%;
 }
 
