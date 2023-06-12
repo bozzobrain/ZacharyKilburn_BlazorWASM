@@ -15,16 +15,23 @@
     width: 100%;
 }
     .project-container img {
-        height: 40vh;
+        display: block;
+        width: auto;
+        height: auto;
+       max-height: 40vh;
+        max-width: 100vw;
     }
 .project-description {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding: 25px;
     justify-content:center;
     width: 80%;
     margin: 0 10%;
     background-color: rgb(240,240,240);
+}
+.project-description a {
+    display:contents !important;
 }
 .project-boards {
     display: flex;

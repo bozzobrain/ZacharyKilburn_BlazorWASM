@@ -21,26 +21,28 @@
 
 @if (ViewMode == "overview")
 {
-    if (board.Projects != null)
-    {
-        if (board.Projects.Count == 1)
+
+    <div class="boardlanding-container">
+
+        @if (board.Projects != null)
         {
-            <div>Part of the <a href="@board.Projects.First().ProjectHref">@board.Projects.First().ProjectTitle</a> Project</div>
+            if (board.Projects.Count == 1)
+            {
+                <div class="boardlanding-partof">Part of the &nbsp<a href="@board.Projects.First().ProjectHref">@board.Projects.First().ProjectTitle</a>&nbsp Project</div>
+            }
+            else if (board.Projects.Count == 2)
+            {
+                <div class="boardlanding-partof">Part of the &nbsp <a href="@board.Projects.First().ProjectHref">@board.Projects.First().ProjectTitle</a>&nbsp and &nbsp<a href="@board.Projects.ElementAt(1).ProjectHref">@board.Projects.ElementAt(1).ProjectTitle</a>  &nbsp Projects</div>
+            }
         }
-        else if (board.Projects.Count == 2)
-        {
-            <div>Part of the <a href="@board.Projects.First().ProjectHref">@board.Projects.First().ProjectTitle</a> and <a href="@board.Projects.ElementAt(1).ProjectHref">@board.Projects.ElementAt(1).ProjectTitle</a>  Projects</div>
-        }
-    }
-    <div style="display:inline-flex">
-        <div style="display:flex; padding:50px;">
+        <div class="boardlanding-image">
             <img src="@board.BoardMainImage">
         </div>
-        <div style="display:flex; padding:50px;">
+    </div>
+    <div class="boardlanding-description">
 
-            <div>
-                @((MarkupString)Regex.Replace(HttpUtility.HtmlEncode(board.BoardDescription), "\n", "<br />"))
-            </div>
+        <div>
+            @((MarkupString)Regex.Replace(HttpUtility.HtmlEncode(board.BoardDescription), "\n", "<br />"))
         </div>
     </div>
 }

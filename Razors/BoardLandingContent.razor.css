@@ -1,0 +1,48 @@
+﻿body {
+}
+
+.boardlanding-container {
+    display: flex;
+    justify-content: center;
+}
+.boardlanding-image {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+.boardlanding-image img{
+    display: block;
+    width: auto;
+    height: auto;
+    max-height: 40vh;
+    max-width: 100vw;
+}
+.boardlanding-partof {
+    display: flex;
+    flex-direction: row;
+    padding: 25px;
+    width: 80%;
+}
+.boardlanding-description {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    justify-content: center;
+    width: 80%;
+    margin: 0 10%;
+    background-color: rgb(240,240,240);
+}
+@media (max-width: 890.98px) {
+
+    .boardlanding-container {
+        display: flex;
+        flex-direction: column;
+    }    
+}
+
+@media (min-width: 891px) {
+    .boardlanding-container {
+        display: flex;
+        flex-direction: column;
+    }  
+}

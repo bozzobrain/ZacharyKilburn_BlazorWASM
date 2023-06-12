@@ -9,15 +9,13 @@
 }
 
 .board-controls {
-    justify-content: flex-end;
     display: flex;
-    width: 50%;
 }
 
 .mode-btn {
     color: #FFFFFF;
     border-radius: 4px;
-    height: 3rem;
+    height: 2rem;
     display: flex;
     align-items: center;
     line-height: 3rem;
@@ -40,20 +38,18 @@
 
 @media (max-width: 890.98px) {
 
-/*    .top-row.auth {
-        justify-content: space-between;
-    }
-
-    .top-row ::deep a, .top-row ::deep .btn-link {
-        margin-left: 0;
-    }*/
 
     .board-container ::deep {
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
     }
 
-        .board-container ::deep img {
-            width: 50vw !important;
-        }
+    .board-controls {
+        justify-content: flex-start;
+        width: 100%;
+    }
 }
 
 @media (min-width: 891px) {
@@ -62,22 +58,6 @@
     }
 
 
-/*    .top-row {
-        position: sticky;
-        top: 0;
-        z-index: 1;
-    }
-
-        .top-row.auth ::deep a:first-child {
-            flex: 1;
-            text-align: right;
-            width: 0;
-        }
-
-    .top-row {
-        padding-left: 0rem !important;
-        padding-right: 0rem !important;
-    }*/
 
     .article {
         padding-left: 1.5rem !important;
@@ -85,9 +65,14 @@
     }
 
     .board-container {
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
     }
 
-        .board-container ::deep img {
-            width: 300px;
-        }
+    .board-controls {
+        justify-content: flex-end;
+        width: 60%;
+    }
 }
