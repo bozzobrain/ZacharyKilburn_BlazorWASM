@@ -2,6 +2,8 @@
 @inject IMessageService MessageService
 @inject ProjectLoader _projects
 @inject NavigationManager _nav
+@using System.Text.RegularExpressions;
+@using System.Web
 
 @if (selectedProject == null)
 {
@@ -97,7 +99,8 @@ else if (selectedProject != null)
 
                 </div>
                 <div class="project-description">
-                    <p>@selectedProject.ProjectDescription</p>  <hr />
+                    @((MarkupString)Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(HttpUtility.HtmlEncode(selectedProject.ProjectDescription), "\n", "<br/>"), "hstart", "<h4>"), "hend", "</h4>"), "linkstart", "<a style=\"display:contents;\""), "hrefend", ">"), "linkend", "</a>"))
+                    
                 </div>
                 <div class="project-description">
                     @if (selectedProject.Link != null)
