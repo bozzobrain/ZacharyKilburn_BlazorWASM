@@ -4,12 +4,9 @@
 .project-title {
     justify-content: flex-start;
     display: flex;
-    width: 100%;
 }
 .project-controls {
-    justify-content: flex-end;
     display: flex;
-    width:50%;
 }
 .project-container {
     justify-content: center;
@@ -22,12 +19,34 @@
     }
 .project-description {
     display: flex;
-    padding: 50px;
+    flex-direction: row;
+    padding: 25px;
     justify-content:center;
     width: 80%;
     margin: 0 10%;
     background-color: rgb(240,240,240);
 }
+.project-boards {
+    display: flex;
+    flex-direction: row;
+    padding: 25px;
+    justify-content: center;
+    width: 80%;
+    margin: 0 10%;
+    background-color: rgb(240,240,240);
+}
+.board-table {
+    width: 80%;
+}
+    .board-table td {
+        height: 10em;
+        border: 1px solid rgb(127,127,127);
+        text-align:center;
+    }
+    .board-table img {
+        height: 10em;
+    }
+
 @media (max-width: 890.98px) {
 
     .project-subcontainer {
@@ -38,6 +57,13 @@
         display: flex;
         justify-content: center;
         padding: 50px;
+    }
+    .project-title {
+        width: 100%;
+    }
+    .project-controls {
+        justify-content: flex-start;
+        width: 100%;
     }
   
 }
@@ -51,6 +77,13 @@
         display: flex;
         justify-content: center;
         padding: 50px;
+    }
+    .project-title {
+        width: 20%;
+    }
+    .project-controls {
+        justify-content: flex-end;
+        width: 80%;
     }
    
 }

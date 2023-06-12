@@ -1,125 +1,277 @@
 ﻿using Blazor3D.Maths;
 using System.Diagnostics;
+using ZacharyKilburn_BlazorWASM.Pages;
 
 namespace ZacharyKilburn_BlazorWASM.Data
 {
-	public class Project
-	{
-		public string ProjectTitle { get; set; } = string.Empty;
-		public string ProjectDescription { get; set; } = string.Empty;
-		public string ProjectHref { get; set; } = string.Empty;
+    public class Project
+    {
+        public string ProjectTitle { get; set; } = string.Empty;
+        public string ProjectDescription { get; set; } = string.Empty;
+        public string ProjectHref { get; set; } = string.Empty;
         public string ProjectDate { get; set; } = string.Empty;
         public string ProjectMainImage { get; set; } = string.Empty;
-		public string CollapsedImage { get; set; } = string.Empty;
-		public string ExplodingImage { get; set; } = string.Empty;
+        public string CollapsedImage { get; set; } = string.Empty;
+        public string ExplodingImage { get; set; } = string.Empty;
         public string CollapsingImage { get; set; } = string.Empty;
-		public string ThreeDeeModel { get; set; } = string.Empty;
-		public string ThreeDeeModelTexture { get; set; } = string.Empty;
-		public Vector3 CameraPosition { get; set; } = new Vector3();
-        public Vector3 CameraLook { get; set; } = new Vector3();
-        public Vector3 ScaleFactor { get; set; } = new Vector3();
+        public ThreeDView? ThreeDView { get; set; } = null;
+        public HyperLink? Link { get; set; } = null;
         public string DownloadLink { get; set; } = string.Empty;
+        public List<ProjectSubPage> SubPages { get; set; } = new List<ProjectSubPage>();
 
     }
-	public class ProjectLoader
-	{
-		public static readonly Project ScoreboardProject = new()
-		{
-			ProjectTitle = "Scoreboard",
-			ProjectHref = "projects/Scoreboard",
+    public class ProjectLoader
+    {
+        public static readonly Project ScoreboardProject = new()
+        {
+            ProjectTitle = "Scoreboard",
+            ProjectHref = "projects/Scoreboard",
             ProjectDate = "2021",
             ProjectDescription = "A custom scoreboard with bluetooth and manual score entry featuring an Android application, custom PCB designs and lots of 3D printing",
-			ProjectMainImage = "Scoreboard-Iso.png",
-			//CollapsedImage = "ScoreboardCollapsed.bmp",
-			//ExplodingImage = "ScoreboardExploding.gif",
-			//CollapsingImage = "ScoreboardCollapsing.gif",
-			ThreeDeeModel = "CornholeScoreViewer.fbx",
-			ThreeDeeModelTexture = "CornholeScoreViewer.mtl",
-			CameraPosition = new Vector3(300, 150, 0),
-            CameraLook = new Vector3(0, 50, 0),
-            ScaleFactor = new Vector3(300, 300, 300),
+            ProjectMainImage = "CornholeScoreViewer/Scoreboard-Iso.png",
+
+            SubPages = new List<ProjectSubPage>()
+            {
+                new ProjectSubPage() {
+                SubPageTitle = "App",
+                SubPageHref = "Android",
+                SubPageImage = "CornholeScoreViewer/AndroidFootballScreen.png",
+                SubPageDescription = "Android app to control the ScoreViewer",
+                },
+                new ProjectSubPage() {
+                SubPageTitle = "3D",
+                SubPageDescription = "One of the 8 LED segments",
+                threeDViews = new List<ThreeDView> {
+                     new ThreeDView()
+                    {
+                        ThreeDeeViewName = "Scorebord",
+                        ThreeDeeModel = "CornholeScoreViewer/CornholeScoreViewer.fbx",
+                        CameraPosition = new Vector3(20, 10, 0),
+                        CameraLook = new Vector3(0, 0, 0),
+                        ScaleFactor = new Vector3(20, 20, 20),
+                    },
+                    new ThreeDView()
+                    {
+                        ThreeDeeViewName = "LED Collapsed",
+                        ThreeDeeModel = "CornholeScoreViewer/LEDDigit-Collapsed.fbx",
+                        CameraPosition = new Vector3(3, 2.5, 0),
+                        CameraLook = new Vector3(0, 3, 0),
+                        ScaleFactor = new Vector3(6,6,6),
+                    },
+                    new ThreeDView()
+                    {
+                        ThreeDeeViewName = "LED Exploded",
+                        ThreeDeeModel = "CornholeScoreViewer/LEDDigit-Exploded.fbx",
+                        CameraPosition = new Vector3(3, 3, 0),
+                        CameraLook = new Vector3(0, 3, 0),
+                        ScaleFactor = new Vector3(8, 8, 8),
+                    },
+                },
+
+            },
+            new ProjectSubPage()
+            {
+                SubPageTitle = "Boards",
+                SubPageHref = "Boards",
+                ContainedBoardDesigns = new List<String>()
+                {
+                    "Z3",
+                    "Z21",
+                   "Z25",
+                    "Z26",
+                    "Z27",
+                    "Z28",
+                },
+            },
+            },
 
 
         };
 
-		public static readonly Project FireworkProject = new()
-		{
-			ProjectTitle = "Fireworks Mortar Launcher",
-			ProjectHref = "projects/Fireworks",
+        public static readonly Project FireworkProject = new()
+        {
+            ProjectTitle = "Fireworks Mortar Launcher",
+            ProjectHref = "projects/Fireworks",
             ProjectDate = "2021",
             ProjectDescription = "A 12 shot custom fireworks mortar launcher with bluetooth controlled app, automated timing, quick reloading connections, custom PCB designs and 3D printed enclosures.",
-			ProjectMainImage = "FireworksMortar-Iso.png",
-			ThreeDeeModel = "FireworkMortarRack.obj",
-			ThreeDeeModelTexture = "FireworkMortarRack.mtl",
-			CameraPosition = new Vector3(400, 200, 0),
-			CameraLook = new Vector3(0, 50, 0),
-            ScaleFactor = new Vector3(400, 400, 400),
+            ProjectMainImage = "FireworksMortar-Iso.png",
+
+            SubPages = new List<ProjectSubPage>()
+            {
+                new ProjectSubPage() {
+                SubPageTitle = "App",
+                SubPageHref = "Android",
+                SubPageImage = "FireworksMortar/FireworksMortarAndroid.png",
+                SubPageDescription = "Android app to control the ScoreViewer",
+                },
+                new ProjectSubPage() {
+                SubPageTitle = "3D",
+                threeDViews = new List<ThreeDView> {
+                       new ThreeDView()
+                        {
+                            ThreeDeeViewName = "Mortar Rack",
+                            ThreeDeeModel = "FireworksMortar/FireworksMortarRack.fbx",
+                            CameraPosition = new Vector3(20, 10, 0),
+                            CameraLook = new Vector3(0, 0, 0),
+                            ScaleFactor = new Vector3(20, 20, 20),
+                        },
+                        new ThreeDView()   
+                        {
+                            ThreeDeeViewName = "Electronics Box",
+                            ThreeDeeModel = "FireworksMortar/FireworksElectronicsBox.fbx",
+                            CameraPosition = new Vector3(3, 3, 0),
+                            CameraLook = new Vector3(0, 3, 0),
+                            ScaleFactor = new Vector3(8, 8, 8),
+                        }
+                    }
+                },
+                new ProjectSubPage() {
+                SubPageTitle = "Boards",
+                SubPageHref = "Boards",
+            ContainedBoardDesigns = new List<string>()
+                {
+                   "Z22",
+                    "Z23",
+                    "Z24",
+                },
+                },
+
+            },
+
         };
 
-		public static readonly Project CombatRobot = new()
-		{
-			ProjectTitle = "200lb Combat Robot",
-			ProjectHref = "projects/Combot",
+        public static readonly Project CombatRobot = new()
+        {
+            ProjectTitle = "200lb Combat Robot",
+            ProjectHref = "projects/Combot",
             ProjectDate = "2018",
             ProjectDescription = "Senior design project from The University of Akron. " +
-			"With drive wheels located outside of the body on top and bottom, the robot was capable of driving after being inverted. " +
-			"Competing in the 200lb weight class, the robot was praised as the first combat robot to feature autonomous operation." +
-			"Nested within the exterior rotating weapon, 8 uni-directional LIDAR sensors gathered data about the robots position within the arena. " +
-			"The sensors were timed to aquire measurements while the weapon windows were not obscuring the sensor view." +
-			"Measurement data was then combined into robot postition data via a neural network, trained in Matlab, running in an onboard microcontroller.",
-			ProjectMainImage = "CombatRobot.png",
-			ThreeDeeModel = "CombatRobot.obj",
-			ThreeDeeModelTexture = "CombatRobot.mtl",
-			CameraPosition = new Vector3(600, 300, 0),
-			CameraLook = new Vector3(0, 50, 0),
-			ScaleFactor = new Vector3(500, 500, 500),
-			DownloadLink = "Autonomous Combat Robot Report.pdf",
-		};
+            "With drive wheels located outside of the body on top and bottom, the robot was capable of driving after being inverted. " +
+            "Competing in the 200lb weight class, the robot was praised as the first combat robot to feature autonomous operation." +
+            "Nested within the exterior rotating weapon, 8 uni-directional LIDAR sensors gathered data about the robots position within the arena. " +
+            "The sensors were timed to aquire measurements while the weapon windows were not obscuring the sensor view." +
+            "Measurement data was then combined into robot postition data via a neural network, trained in Matlab, running in an onboard microcontroller.",
+            ProjectMainImage = "CombatRobot.png",
+       
+            DownloadLink = "Autonomous Combat Robot Report.pdf",
+            SubPages = new List<ProjectSubPage>()
+            {
+                new ProjectSubPage()
+                {
+                    SubPageTitle = "3D",
+                    SubPageHref = "3D",
+                    threeDViews = new List<ThreeDView> {
+                          new ThreeDView()
+                        {
+                            ThreeDeeViewName = "Combat Robot",
+                            ThreeDeeModel = "CombatRobot.obj",
+                            CameraPosition = new Vector3(600, 300, 0),
+                            CameraLook = new Vector3(0, 50, 0),
+                            ScaleFactor = new Vector3(500, 500, 500),
+                        },
+                          
+                        }
+                }
+            },
+        };
 
         public static readonly Project SumoRobot = new()
         {
             ProjectTitle = "Sumo Bot Competition",
             ProjectHref = "projects/Sumo",
             ProjectDate = "2013",
-            ProjectDescription = "",
+            ProjectDescription = "Competiting at RoboGames in San Mateo, California. As a team of three members, my role was for the software development. The team took 2nd place at the compeition.",
             ProjectMainImage = "sumo-bot2.png",
         };
-		public static readonly Project EDMPowerSupply = new()
-		{
-			ProjectTitle = "EDM Power Supply",
-			ProjectHref = "projects/EDMPSU",
-			ProjectDate = "2013",
-			ProjectDescription = "",
-			ProjectMainImage = "EDMPSU.png",
-			ThreeDeeModel = "EDMPSU-Open.obj",
-			ThreeDeeModelTexture = "EDMPSU-Open.mtl",
-			CameraPosition = new Vector3(600, 600, 0),
-			CameraLook = new Vector3(0, 50, 0),
-			ScaleFactor = new Vector3(500, 500, 500),
-		};
-		public static readonly Project BMEBike = new()
-		{
-			ProjectTitle = "Outreach - Assisted Bike Brake",
-			ProjectHref = "projects/BMEBike",
-			ProjectDate = "2018",
-            ProjectDescription = "",
-            ProjectMainImage = "BMEBike.jpg",
+        public static readonly Project EDMPowerSupply = new()
+        {
+            ProjectTitle = "EDM Power Supply",
+            ProjectHref = "projects/EDMPSU",
+            ProjectDate = "2013",
+            ProjectDescription = "Designed as a contract engineer, the EDM PSU was a variable AC/DC power supply intended for use with a CNC controlled manufacturing machine.",
+            ProjectMainImage = "EDMPSU.png",
+           
+            SubPages = new List<ProjectSubPage>()
+            {new ProjectSubPage()
+                {
+                    SubPageTitle = "3D",
+                    SubPageHref = "3D",
+                    threeDViews = new List<ThreeDView> {
+                         new ThreeDView()
+                        {
+                            ThreeDeeViewName = "EDM PSU",
+                            ThreeDeeModel = "EDMPSU-Open.obj",
+                            CameraPosition = new Vector3(600, 600, 0),
+                            CameraLook = new Vector3(0, 50, 0),
+                            ScaleFactor = new Vector3(500, 500, 500),
+                        },
+
+                        }
+                },
+                new ProjectSubPage() {
+                SubPageTitle = "Boards",
+                SubPageHref = "Boards",
+            ContainedBoardDesigns = new List<string>()
+                {
+                    "Z1",
+                    "Z2",
+                },
+                },
+            },
         };
-        
+        public static readonly Project BMEBike = new()
+        {
+            ProjectTitle = "Outreach - Assisted Bike Brake",
+            ProjectHref = "projects/BMEBike",
+            ProjectDate = "2018",
+            ProjectDescription = "A small team of The University of Akron engineering students designed/constructed a local boy a device that helped him utilize a bicycle despite his disability." +
+            "The design consisted of an assisted braking method powered by batteries and a servo as well as larger pedals with straps for holding his feet into the pedals.",
+            ProjectMainImage = "BMEBike.jpg",
+            Link = new HyperLink()
+            {
+                Link = "https://www.thepostnewspapers.com/norton/local_news/students-help-design-assemble-bike-for-norton-boy/article_7bab3de4-eaf0-575a-aa62-1edae7f0d13b.html",
+                Name = "Article"
+            },
+        };
+
 
 
         public List<Project> projects { get; set; } = new()
-		{
-			ScoreboardProject,
-			FireworkProject,
-			CombatRobot,
-			SumoRobot,
+        {
+            ScoreboardProject,
+            FireworkProject,
+            CombatRobot,
+            SumoRobot,
             BMEBike,
-			EDMPowerSupply,
-		};
-		public Project? GetProjectByHref(string href)
-		{
-			return projects.Where(p => p.ProjectHref.Contains(href)).FirstOrDefault();
-		}
-	}
+            EDMPowerSupply,
+        };
+        public Project? GetProjectByHref(string href)
+        {
+            return projects.Where(p => p.ProjectHref.Contains(href)).FirstOrDefault();
+        }
+    }
+    public class ProjectSubPage
+    {
+        public string SubPageTitle = string.Empty;
+        public string SubPageImage = string.Empty;
+        public string SubPageHref = string.Empty;
+        public string SubPageDescription = string.Empty;
+        public List<ThreeDView> threeDViews { get; set; } = new List<ThreeDView>();
+        public List<string>? ContainedBoardDesigns { get; set; } = null;
+    }
+
+    public class ThreeDView
+    {
+        public string ThreeDeeViewName { get; set; } = string.Empty;
+        public string ThreeDeeModel { get; set; } = string.Empty;
+        public Vector3 CameraPosition { get; set; } = new Vector3();
+        public Vector3 CameraLook { get; set; } = new Vector3();
+        public Vector3 ScaleFactor { get; set; } = new Vector3();
+
+    }
+    public class HyperLink
+    {
+        public string Name { get; set; } = string.Empty;
+        public string Link { get; set; } = string.Empty;
+    }
 }

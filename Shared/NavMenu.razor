@@ -40,7 +40,7 @@
 
 		</div><div class="nav-item px-3">
 			<CollapsibleButton Collapsible="true" Collapsed="@boardCollapsibleCollapsed" collapsibleClass="boards" ButtonText="Boards">
-				@foreach (var b in _boards.boards)
+				@foreach (var b in BoardLoader.Boards)
 				{
 					<NavLink class="nav-link" href="@b.BoardHref" @onclick="ToggleNavMenu">
 						@b.BoardTitle
