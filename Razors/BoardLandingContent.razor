@@ -42,7 +42,8 @@
     <div class="boardlanding-description">
 
         <div>
-            @((MarkupString)Regex.Replace(HttpUtility.HtmlEncode(board.BoardDescription), "\n", "<br />"))
+            @((MarkupString)Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(HttpUtility.HtmlEncode(board.BoardDescription), "\n", "<br/>"), "hstart", "<h4>"), "hend", "</h4>"), "linkstart", "<a style=\"display:contents;\""), "hrefend", ">"), "linkend", "</a>"))
+
         </div>
     </div>
 }

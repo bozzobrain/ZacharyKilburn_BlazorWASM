@@ -395,6 +395,11 @@ a, .btn-link {
     font-size: 30px;
     text-align: center;
 }
+    .grid-item img {
+        max-width: 200px;
+        width:auto;
+        max-height:200px;
+    }
 
     .grid-item:hover {
         background-color: rgba(255,255,255,0.1) !important;
@@ -404,9 +409,15 @@ a, .btn-link {
     .grid-container {
         grid-template-columns: auto auto;
     }
+    .grid-item img {
+        max-width: 250px;
+    }
 }
 @media (min-width: 1280px) {
     .grid-container {
         grid-template-columns: auto auto auto;
+    }
+    .grid-item img {
+        max-width: 250px;
     }
 }

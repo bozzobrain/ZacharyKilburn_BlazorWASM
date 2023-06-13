@@ -14,13 +14,6 @@
     flex-direction: column;
     width: 100%;
 }
-    .project-container img {
-        display: block;
-        width: auto;
-        height: auto;
-       max-height: 40vh;
-        max-width: 100vw;
-    }
 .project-description {
     display: flex;
     flex-direction: column;
@@ -36,10 +29,7 @@
 .project-boards {
     display: flex;
     flex-direction: row;
-    padding: 25px;
     justify-content: center;
-    width: 80%;
-    margin: 0 10%;
     background-color: rgb(240,240,240);
 }
 .board-table {
@@ -60,6 +50,13 @@
         display: flex;
         flex-direction: column;
     }
+    .project-container img {
+        display: block;
+        width: auto;
+        height: auto;
+        max-height: 60vh;
+        max-width: 100vw;
+    }
     .project-image {
         display: flex;
         justify-content: center;
@@ -72,6 +69,29 @@
         justify-content: flex-start;
         width: 100%;
     }
+    .project-boards {
+        padding: 5px;
+        width: 100%;
+        margin: 0 5%;
+    }
+    .board-table {
+        width: 100%;
+    }
+
+        .board-table td {
+            height: 10em;
+            border: 1px solid rgb(127,127,127);
+            text-align: center;
+        }
+        .board-table img {
+            display: inline;
+            width: auto;
+            height: auto;
+            max-height: 25vh;
+            max-width:35vw;
+            justify-content: center;
+        }
+
   
 }
 
@@ -79,6 +99,13 @@
     .project-subcontainer {
         display: flex;
         flex-direction: column;
+    }
+    .project-container img {
+        display: block;
+        width: auto;
+        height: auto;
+        max-height:60vh;
+        max-width: 100vw;
     }
     .project-image {
         display: flex;
@@ -92,5 +119,30 @@
         justify-content: flex-end;
         width: 80%;
     }
-   
+    .project-boards {
+        padding: 25px;
+        width: 80%;
+        margin: 0 10%;
+    }
+    .board-table {
+        width: 80%;
+    }
+
+        .board-table td {
+            height: 10em;
+            border: 1px solid rgb(127,127,127);
+            text-align: center;
+        }
+        .board-table img {
+            display: inline;
+            width: auto;
+            height: auto;
+            max-height: 40vh;
+            max-width: 100vw;
+            justify-content:center;
+        }
+
+        .board-table img {
+            height: 10em;
+        }
 }

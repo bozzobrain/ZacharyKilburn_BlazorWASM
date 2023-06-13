@@ -47,3 +47,103 @@ div.bulleted-item {
     margin: 0em 5vw;
     padding-left: 3em;
 }
+@media (max-width: 890.98px) {
+    div.job-header {
+        justify-content: flex-start;
+        display: flex;
+        vertical-align:central;
+        width: 100%;
+        font-size: 1em;
+    }
+
+    div.experience-body {
+        background-color: rgb(255,255,255);
+        margin: 0em .5em;
+    }
+
+
+    div.job-container {
+        margin: 0em .5em;
+    }
+
+    div.job-title {
+        font-size: 1em;
+        text-align: center;
+    }
+
+    div.job-location {
+        text-align: center;
+    }
+
+    div.job-description {
+        text-align: center;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        margin: 0em 0.5em;
+    }
+
+    div.job-date {
+        text-align: center;
+        color: rgb(100,100,100);
+    }
+
+    div.bulleted-header {
+        margin: 0em 0vw;
+    }
+
+    div.bulleted-item {
+        margin: 0em 0.5vw;
+        padding-left: 1em;
+    }
+}
+
+@media (min-width: 891px) {
+    div.job-header {
+        justify-content: flex-start;
+        display: flex;
+        width: 100%;
+        font-size: 1em;
+    }
+
+    div.experience-body {
+        background-color: rgb(255,255,255);
+        margin: 0em 5em;
+    }
+
+
+    div.job-container {
+        margin: 0em 5em;
+    }
+
+    div.job-title {
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    div.job-location {
+        text-align: center;
+    }
+
+    div.job-description {
+        text-align: center;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        margin: 0em 5em;
+    }
+
+    div.job-date {
+        text-align: center;
+        color: rgb(100,100,100);
+    }
+
+    div.bulleted-header {
+        margin: 0em 5vw;
+    }
+
+    div.bulleted-item {
+        margin: 0em 5vw;
+        padding-left: 3em;
+    }
+
+
+}
