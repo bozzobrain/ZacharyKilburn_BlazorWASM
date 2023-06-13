@@ -3,6 +3,7 @@
     public class Board
     {
 		public string BoardPN { get; set; } = string.Empty;
+        public string BoardDate { get; set; } = string.Empty;
         public string BoardTitle { get; set; } = string.Empty;
         public string BoardDescription { get; set; } = string.Empty;
         public string BoardHref { get; set; } = string.Empty;
@@ -16,14 +17,15 @@
 		public static readonly Board Z1 = new()
 		{
 			BoardPN = "Z1",
+            BoardDate = "2019",
 			BoardTitle = "Power Supply",
 			BoardHref = "boards/Z1",
 			BoardMainImage = "Z1-PowerSupply.png",
 			BoardPDF = "Z1 - PowerSupply.pdf",
             BoardDescription =
-            "This power supply board... makes me very nostaglic for knowing as little as I did at the time. While this board did work, its approach was very different to the approach that I would take considering the 5 years of experience that I have now." +
-			" Somehow this board did not immediately blow up while testing. Anyway, I digress. AC input to the board was filtered and rectified into a large capacitor bank and then fed to a buck regulator that could be controlled by " +
-            "linkstart href=boards/Z2 hrefend Z2 - Brainbox linkend. " +		
+            "This power supply board... makes me very nostaglic for knowing as little as I did at the time. While this board did work, its approach was very different to the approach that I would take considering the 5 years of experience that I have now. " +
+			"Somehow this board did not immediately blow up while testing. Anyway, I digress. AC input to the board was filtered and rectified into a large capacitor bank and then fed to a buck regulator that could be controlled by " +
+            "linkstart href=boards/Z2 hrefend Z2 - Brainbox linkend." +		
              "\n\n hstart Design hend" +
             "Its intention was to be the power supply of an EDM CNC unit. Probably one of the scariest devices I have built and it never did get its chance to do some serious regulation and power delivery. The YouTuber that this was created for is still making videos," +
 			"so I am very sure he is still alive, but the unit never did get the chance to have its own video. We all have to start our design experience somewhere.",
@@ -35,7 +37,8 @@
 		public static readonly Board Z2 = new()
         {
             BoardPN = "Z2",
-            BoardTitle = "Brainbox",
+			BoardDate = "2019",
+			BoardTitle = "Brainbox",
 			BoardHref = "boards/Z2",
 			BoardMainImage = "Z2-Brainbox.png",
             BoardPDF = "Z2 - Brainbox.pdf",
@@ -43,8 +46,7 @@
             "This board was build with purpose in mind. As both a HMI device and control unit for the EDM Power Supply project, this board served as the face of the enclosure. " +
             "It also interfaced with the " +
             "linkstart href=boards/Z1 hrefend Z1 - Power Supply board linkend" +
-			" to " +
-			"gather feedback and close the loop for the constant voltage and constant current control.",
+			" to gather feedback and close the loop for the constant voltage and constant current control.",
             Projects = new()
             {
                 ProjectLoader.EDMPowerSupply,
@@ -53,7 +55,8 @@
 		public static readonly Board Z3 = new()
         {
             BoardPN = "Z3",
-            BoardTitle = "Neopixel",
+			BoardDate = "2019",
+			BoardTitle = "Neopixel",
 			BoardHref = "boards/Z3",
 			BoardMainImage = "Z3-NeopixelBoard.png",
             BoardPDF = "Z3 - Neopixel Board.pdf",
@@ -71,7 +74,8 @@
 		public static readonly Board Z4 = new()
         {
             BoardPN = "Z4",
-            BoardTitle = "PIC32 Board",
+			BoardDate = "2019",
+			BoardTitle = "PIC32 Board",
 			BoardHref = "boards/Z4",
 			BoardMainImage = "Z4-PIC32Board.png",
             BoardPDF = "Z4 - PIC32 Board.pdf",
@@ -88,20 +92,20 @@
 		public static readonly Board Z5 = new()
         {
             BoardPN = "Z5",
-            BoardTitle = "RF Amp",
+			BoardDate = "2019",
+			BoardTitle = "RF Amp",
 			BoardHref = "boards/Z5",
 			BoardMainImage = "Z5-RFAmp.png",
             BoardPDF = "Z5 - RF Amp.pdf",
 			BoardDescription =
-			"A research concept piece that allows for amplification of RF signals " +
-			"for monitoring with an embedded controller. " +
-			"More of a curiousity and fun project that never really went into " +
-			"a finalized version. Maybe more usage coming in the future",
+			"A research concept piece that allows for amplification of RF signals for monitoring with an embedded controller. " +
+			"More of a curiousity and fun project that never really went into a finalized version. Maybe more usage coming in the future",
 		};
 		public static readonly Board Z6 = new()
         {
             BoardPN = "Z6",
-            BoardTitle = "RF Amp Array",
+			BoardDate = "2019",
+			BoardTitle = "RF Amp Array",
 			BoardHref = "boards/Z6",
 			BoardMainImage = "Z6-RFAmpArray.png",
             BoardPDF = "Z6 - RF Amp Array Board.pdf",
@@ -109,22 +113,21 @@
 			"Board was never actually ordered, due to cost and lack of pushing the project further. "+
             "\n\n hstart Design hend" +
             "This board would adapt to 16 of the " +
-            "linkstart href=boards/Z5 hrefend Z5 - RF Amp boards linkend" +
-			" in an array to measure " +
-			"RF signals in a 2D plane, providing an 4x4 pixel image of RF power " +
-			"Still very curious if there would be any value in this, especially without " +
-			"a super fast sampling front end to actually gather any meaningful data",
+            "linkstart href=boards/Z5 hrefend Z5 - RF Amp boards linkend " +
+			"in an array to measure " +
+			"RF signals in a 2D plane, providing an 4x4 pixel image of RF power. " +
+			"Still very curious if there would be any value in this, especially without a super fast sampling front end to actually gather any meaningful data",
 		};
 		public static readonly Board Z7 = new()
         {
             BoardPN = "Z7",
-            BoardTitle = "Level Translator",
+			BoardDate = "2019",
+			BoardTitle = "Level Translator",
 			BoardHref = "boards/Z7",
 			BoardMainImage = "Z7-LevelTranslator.png",
             BoardPDF = "Z7 - Level Translator.pdf",
 			BoardDescription =
 			"This board has actually come in handy multiple times when needing to level translate signals between different voltage domains on an odds and ends project. " +
-			" " +
 			"Based on the " +
             "linkstart href=https://www.ti.com/product/SN74LV4T125 hrefend SN74LV4T125 linkend, " +
 			"the board supports 4 channels of up-converting from 2 volts up to 5V signals with 16mA of drive current. " +
@@ -135,7 +138,8 @@
 		public static readonly Board Z12 = new()
         {
             BoardPN = "Z12",
-            BoardTitle = "Neopixel V2",
+			BoardDate = "2019",
+			BoardTitle = "Neopixel V2",
 			BoardHref = "boards/Z12",
 			BoardMainImage = "Z12-NeopixelBoardV2.png",
             BoardPDF = "Z12 - Neopixel Board V2.pdf",
@@ -147,7 +151,8 @@
 		public static readonly Board Z18 = new()
         {
             BoardPN = "Z18",
-            BoardTitle = "Index Frunk Fan",
+			BoardDate = "2020",
+			BoardTitle = "Index Frunk Fan",
 			BoardHref = "boards/Z18",
 			BoardMainImage = "Z18-IndexFrunkFan.png",
             BoardPDF = "Z18 - Index Frunk Fan.pdf",
@@ -162,7 +167,8 @@
 		public static readonly Board Z19 = new()
         {
             BoardPN = "Z19",
-            BoardTitle = "Index Frunk Power",
+			BoardDate = "2020",
+			BoardTitle = "Index Frunk Power",
 			BoardHref = "boards/Z19",
 			BoardMainImage = "Z19-IndexFrunkPower.png",
             BoardPDF = "Z19 - Index Frunk Power.pdf",
@@ -177,7 +183,8 @@
 		public static readonly Board Z20 = new()
         {
             BoardPN = "Z20",
-            BoardTitle = "ESP Breakout",
+			BoardDate = "2020",
+			BoardTitle = "ESP Breakout",
 			BoardHref = "boards/Z20",
 			BoardMainImage = "Z20-ESPBreakout.png",
             BoardPDF = "Z20 - ESP32 Breakout.pdf",
@@ -187,14 +194,15 @@
             "Very similar to " +
             "linkstart href=boards/Z21 hrefend Z21 - ESP Holder linkend, " +
 			"except that this variant was intended to utilize the " +
-            "linkstart href=https://www.digikey.com/short/h8j7mmqr hrefend ESP32-WROOM-32E-H4 linkend" +
-            " in an SMT package instead of the finished 0.1\" pitch header version to simplify the BOM cost of the platform. " +
+            "linkstart href=https://www.digikey.com/short/h8j7mmqr hrefend ESP32-WROOM-32E-H4 linkend " +
+            "in an SMT package instead of the finished 0.1\" pitch header version to simplify the BOM cost of the platform. " +
             "I'm 100% sure that I never ordered this, and for that, I feel much shame. It will live on in my data library and my heart. "
         };
 		public static readonly Board Z21 = new()
         {
             BoardPN = "Z21",
-            BoardTitle = "ESP Holder",
+			BoardDate = "2021",
+			BoardTitle = "ESP Holder",
 			BoardHref = "boards/Z21",
 			BoardMainImage = "Z21-ESPHolder.png",
             BoardPDF = "Z21 - ESP32 Holder.pdf",
@@ -209,7 +217,8 @@
 		public static readonly Board Z22 = new()
         {
             BoardPN = "Z22",
-            BoardTitle = "Relay Platform",
+			BoardDate = "2021",
+			BoardTitle = "Relay Platform",
 			BoardHref = "boards/Z22",
 			BoardMainImage = "Z22-RelayPlatform.png",
             BoardPDF = "Z22 - Relay Platform.pdf",
@@ -217,9 +226,8 @@
             "Build specifically for the fireworks mortar project, this board was the backbone of the fireworks ignitor. " +
             "\n\n hstart Design hend" +
             "This relay board was designed to take 5V CMOS control signals to actuate relays that would short the battery terminals over a small electric ignitor. " +
-			"While the battery is sure to complain about the sudden short appearing on it for a very brief moment," +
-			" it would be relieved a few microseconds later when the filament bursts into sparky flames and opens the circuit. Not sure what the lifetime of these relays will be over time, but surely they are a wear component when it comes to firework goodness.",
-
+			"While the battery is sure to complain about the sudden short appearing on it for a very brief moment, it would be relieved a few microseconds later when the filament bursts into sparky flames and opens the circuit. " +
+            "Not sure what the lifetime of these relays will be over time, but surely they are a wear component when it comes to firework goodness.",
             Projects = new()
 			{
 				ProjectLoader.FireworkProject,
@@ -228,16 +236,16 @@
 		public static readonly Board Z23 = new()
         {
             BoardPN = "Z23",
-            BoardTitle = "Quick Connect",
+			BoardDate = "2021",
+			BoardTitle = "Quick Connect",
 			BoardHref = "boards/Z23",
 			BoardMainImage = "Z23-QuickConnect2Pos.png",
             BoardPDF = "Z23 - Quick Connect 2Pos.pdf",
             BoardDescription =
             "Build specifically for the fireworks mortar project, this small interconnect board provides what was planned to be a rapid connection point for firework ignitors to be connected between reloads of the mortar tubes. " +
             "\n\n hstart Design hend" +
-            "Hindsight showed that these quick connectors were not as robust as one would have hoped, or nearly as easy to insert wires into when the sun goes down (typically when you are reloading fireworks). A new revision is definitely necessary to improve this in the future, " +
-			"but that is what engineering is all about, right?",
-
+            "Hindsight showed that these quick connectors were not as robust as one would have hoped, or nearly as easy to insert wires into when the sun goes down (typically when you are reloading fireworks). " +
+            "A new revision is definitely necessary to improve this in the future, but that is what engineering is all about, right?",
             Projects = new()
 			{
 				ProjectLoader.FireworkProject,
@@ -246,7 +254,8 @@
 		public static readonly Board Z24 = new()
         {
             BoardPN = "Z24",
-            BoardTitle = "Arduino Mega Adapter",
+			BoardDate = "2021",
+			BoardTitle = "Arduino Mega Adapter",
 			BoardHref = "boards/Z24",
 			BoardMainImage = "Z24-ArduinoMegaAdapter.png",
             BoardPDF = "Z24 - Arduino Mega Adapter.pdf",
@@ -255,7 +264,6 @@
             "\n\n hstart Design hend" +
 			"This breakout board provides 30 I/O in a better format using linkstart href=https://www.molex.com/en-us/products/connectors/wire-to-board-connectors/clik-mate-connectors hrefend Molex Clik-Mate linkend connectors, as well as providing the ability to inject power for the" +
             "arduino using a locking connector, another molex favorite, the linkstart href=https://www.molex.com/en-us/products/connectors/wire-to-board-connectors/micro-fit-connectors hrefend Micro-Fit linkend ",
-
             Projects = new()
 			{
 				ProjectLoader.FireworkProject,
@@ -264,7 +272,8 @@
 		public static readonly Board Z25 = new()
         {
             BoardPN = "Z25",
-            BoardTitle = "Adafruit Bluefruit Adapter",
+			BoardDate = "2021",
+			BoardTitle = "Adafruit Bluefruit Adapter",
 			BoardHref = "boards/Z25",
 			BoardMainImage = "Z25-AdafruitBluefruitBreakout.png",
             BoardPDF = "Z25 - Adafruit Bluefruit LE UART Breakout Board.pdf",
@@ -274,8 +283,6 @@
             "\n\n hstart Design hend" +
             "This board serves as a means to break out the 0.1\" header to something more palatable for use inside of builds. " +
             "I should mention that I am very partial to the linkstart href=https://www.molex.com/en-us/products/connectors/wire-to-board-connectors/clik-mate-connectors hrefend Molex Clik-Mate linkend connector for its positive locking and reasonable pitch for 24-30AWG.",
-
-
             Projects = new()
 			{
 				ProjectLoader.ScoreboardProject,
@@ -285,17 +292,16 @@
 		public static readonly Board Z26 = new()
         {
             BoardPN = "Z26",
-            BoardTitle = "5V DC-DC",
+			BoardDate = "2021",
+			BoardTitle = "5V DC-DC",
 			BoardHref = "boards/Z26",
 			BoardMainImage = "Z26-TPS84A20DCDCConverter.png",
             BoardPDF = "Z26 - TPS84A20 DC-DC Converter.pdf",
             BoardDescription =
             "While I have only used this regulator for a single design so far, I was always finding myself needing a 5 volt source from batteries, and was tenative to use USB power banks when I needed higher currents. " +
             "\n\n hstart Design hend" +
-            "Introducing the linkstart href=https://www.ti.com/product/TPS84A20 hrefend TPS84A20 linkend capable of regulating up to 17 volts down to 5 with a current up to 10A. No more wishing I had more power.. yet." +
+            "Introducing the linkstart href=https://www.ti.com/product/TPS84A20 hrefend TPS84A20 linkend capable of regulating up to 17 volts down to 5 with a current up to 10A. No more wishing I had more power.. yet. " +
 			"While its a very simple design, simple is usually better.",
-
-
             Projects = new()
 			{
 				ProjectLoader.ScoreboardProject,
@@ -304,7 +310,8 @@
 		public static readonly Board Z27 = new()
         {
             BoardPN = "Z27",
-            BoardTitle = "7-Seg LED Digit",
+			BoardDate = "2021",
+			BoardTitle = "7-Seg LED Digit",
 			BoardHref = "boards/Z27",
 			BoardMainImage = "Z27-LEDDigit.png",
             BoardPDF = "Z27 - LED Digit Board.pdf",
@@ -314,7 +321,6 @@
             "\n\n hstart Design hend" +
             "Featuring 14 SMT linkstart href=https://www.adafruit.com/product/1655 hrefend NeoPixel 5050 RGB LEDs linkend, each of the segments of this 7-segment LED has 2 light sources that can provide any color. " +
 			"With two connectors allowing for daisy channing panels, as long as you have the current to support its operation, you can have as many 6in (150mm) digits you would like!",
-
             Projects = new()
 			{
 				ProjectLoader.ScoreboardProject,
@@ -323,7 +329,8 @@
 		public static readonly Board Z28 = new()
         {
             BoardPN = "Z28",
-            BoardTitle = "7-Seg LED Digit TH",
+			BoardDate = "2022",
+			BoardTitle = "7-Seg LED Digit TH",
 			BoardHref = "boards/Z28",
 			BoardMainImage = "Z28-LEDDigitTH.png",
             BoardPDF = "Z28 - LED Digit TH Board.pdf",

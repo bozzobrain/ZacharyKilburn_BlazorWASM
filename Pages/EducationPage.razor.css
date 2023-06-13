@@ -43,13 +43,16 @@ div.bulleted-item {
 }
 
 @media (max-width: 890.98px) {
+    .top-row {
+        height: 3rem;
+    }
     div.education-body {
-        margin: 0em 0.5em;
+        margin: 0.5em 0.5em;
         background-color: rgb(255,255,255);
     }
 
     div.education-header {
-        justify-content: flex-start;
+        justify-content: center;
         display: flex;
         width: 100%;
     }
@@ -61,7 +64,7 @@ div.bulleted-item {
     }
 
     div.education-title {
-        font-size: 1em;
+        font-size: 1.25em;
         text-align: center;
         width: 100%;
     }

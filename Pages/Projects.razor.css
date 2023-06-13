@@ -71,7 +71,7 @@
     }
     .project-title {
         width: 100%;
-        flex-direction: row;
+        flex-direction: column;
     }
     .project-title h4 {
        padding-left:10px;
