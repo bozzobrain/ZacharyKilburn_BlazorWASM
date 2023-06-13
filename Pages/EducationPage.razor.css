@@ -41,3 +41,94 @@ div.bulleted-header {
 div.bulleted-item {
     padding-left: 40px;
 }
+
+@media (max-width: 890.98px) {
+    div.education-body {
+        margin: 0em 0.5em;
+        background-color: rgb(255,255,255);
+    }
+
+    div.education-header {
+        justify-content: flex-start;
+        display: flex;
+        width: 100%;
+    }
+
+    div.education-container {
+        font-size: 1em;
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    div.education-title {
+        font-size: 1em;
+        text-align: center;
+        width: 100%;
+    }
+
+    div.education-description {
+        padding-bottom: 20px;
+        width: 100%;
+    }
+
+    div.education-date {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: rgb(100,100,100);
+    }
+
+    div.bulleted-header {
+    }
+
+    div.bulleted-item {
+        padding-left: 0.5em;
+    }
+
+
+
+}
+
+@media (min-width: 891px) {
+
+
+    div.education-body {
+        margin: 0em 5em;
+        background-color: rgb(255,255,255);
+    }
+
+    div.education-header {
+        justify-content: flex-start;
+        display: flex;
+        width: 100%;
+    }
+
+    div.education-container {
+        font-size: 1.5em;
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    div.education-title {
+        font-size: 1.5em;
+        text-align: center;
+        width: 100%;
+    }
+
+    div.education-description {
+        padding-bottom: 20px;
+        width: 75%;
+    }
+
+    div.education-date {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: rgb(100,100,100);
+    }
+
+    div.bulleted-header {
+    }
+
+    div.bulleted-item {
+        padding-left: 40px;
+    }
+}

@@ -11,6 +11,7 @@ namespace ZacharyKilburn_BlazorWASM.Data
         public string ProjectHref { get; set; } = string.Empty;
         public string ProjectDate { get; set; } = string.Empty;
         public string ProjectMainImage { get; set; } = string.Empty;
+        public string ProjectSubImage { get; set; } = string.Empty;
         public string CollapsedImage { get; set; } = string.Empty;
         public string ExplodingImage { get; set; } = string.Empty;
         public string CollapsingImage { get; set; } = string.Empty;
@@ -27,16 +28,26 @@ namespace ZacharyKilburn_BlazorWASM.Data
             ProjectTitle = "Scoreboard",
             ProjectHref = "projects/Scoreboard",
             ProjectDate = "2021",
-            ProjectDescription = "A custom scoreboard with bluetooth and manual score entry featuring an Android application, custom PCB designs and lots of 3D printing",
+            ProjectDescription = "Motivated by constantly forgetting the score when playing cornhole as well as a deep need for a new project, the bluethooth enabled portable scoreboard was born. " +
+            "Based on an old PCB designed for my neopixel project, the scoreboard is powered by 3 26650 LiFeP04 cells in a custom 3D printed package. " +
+            "Initially developed using 8 copies of the large 7 segment displays using SMT LEDs, a trip outside showed that the SMT LEDs did not pack the punch necessary to cut throught the sun on a bright day, so it was back to the drawing board. " +
+            "Revision 2 was cobbled together utilizing all of the same 3D prints, but integrating much brighter through-hole LEDs, unconventionally bent into position to allow for clearance within the 3D printed fixturing. " +
+            "A bluefruit BLE device was added and an android app build to allow for remote control of the scoreboard, when walking is just too much work. " +
+            "A future revision will likely be make to customize the controller to allow for additional I/O to monitor the battery voltages to warn the user of impending battery death. Sill use this regularly in the backyard with the cornhole boards.",
             ProjectMainImage = "CornholeScoreViewer/Scoreboard-Iso.png",
 
             SubPages = new List<ProjectSubPage>()
             {
                 new ProjectSubPage() {
+                SubPageTitle = "Schematic",
+                SubPagePDF = "CornholeScoreViewer/CornholeScoreViewer-Schematic.pdf",
+                },
+                new ProjectSubPage() {
                 SubPageTitle = "App",
                 SubPageHref = "Android",
                 SubPageImage = "CornholeScoreViewer/AndroidFootballScreen.png",
-                SubPageDescription = "Android app to control the ScoreViewer",
+                SubPageDescription = "The scoreboard can be controlled either from the buttons located on the top of the unit, or via a custom android app over bluetooth. While the app does lack some aethetic appeal, the functionality allows you to control the scoreboard from a distance. " +
+                    "Since the LEDs of the scoreboard are based on the Neopixel WS2811 controller, RGB LEDs can be tailored to whatever team colors you want, both through the buttons or the app. ",
                 },
                 new ProjectSubPage() {
                 SubPageTitle = "3D",
@@ -44,7 +55,7 @@ namespace ZacharyKilburn_BlazorWASM.Data
                 threeDViews = new List<ThreeDView> {
                      new ThreeDView()
                     {
-                        ThreeDeeViewName = "Scorebord",
+                        ThreeDeeViewName = "Scoreboard",
                         ThreeDeeModel = "CornholeScoreViewer/CornholeScoreViewer.fbx",
                         CameraPosition = new Vector3(20, 10, 0),
                         CameraLook = new Vector3(0, 0, 0),
@@ -93,7 +104,9 @@ namespace ZacharyKilburn_BlazorWASM.Data
             ProjectTitle = "Fireworks Mortar Launcher",
             ProjectHref = "projects/Fireworks",
             ProjectDate = "2021",
-            ProjectDescription = "A 12 shot custom fireworks mortar launcher with bluetooth controlled app, automated timing, quick reloading connections, custom PCB designs and 3D printed enclosures.",
+            ProjectDescription = "I was always wishing there was a better way to launch more fireworks faster on the 4th of July. Instead of doing what most others do and just wiring a long fuse to multiple cannons, I decided to use my engineering mind to create something much more exciting. " +
+            "This 12 shot custom fireworks mortar launcher features a bluetooth controlled app, variable timing delays, manual shot selection, quick reloading connections, custom PCB designs and 3D printed enclosures. " +
+            "The quick disconnecting control unit slides onto a bracket allowing for removal for charging, updaing firmware and housing inside when done shooting off the fireworks. ",
             ProjectMainImage = "FireworksMortar-Iso.png",
 
             SubPages = new List<ProjectSubPage>()
@@ -186,7 +199,11 @@ namespace ZacharyKilburn_BlazorWASM.Data
             ProjectTitle = "Sumo Bot Competition",
             ProjectHref = "projects/Sumo",
             ProjectDate = "2013",
-            ProjectDescription = "Competiting at RoboGames in San Mateo, California. As a team of three members, my role was for the software development. The team took 2nd place at the compeition.",
+            ProjectDescription = "Competiting locally at linkstart href=https://www.thenrc.org/ hrefend National Robotic Challenge linkend  and in a larger competition called linkstart href=http://robogames.net/index.php hrefend RoboGames linkend in San Mateo, California, this robot purpose was a Sumo Robot, competiting against the competition to be the last robot inside of the ring." +
+            "Utilizing ultrasonic sensors to locate the opponent, it is a compeition of speed and force. As a team of three members, my role was to develop the software to acquire the sensor information and control the motiion of the robot accordingly. " +
+            "Our robot was arduino based and electrically build using COTS items (since we were freshman in college). With the limitation of a weight limit and knowing that the arena would be constructed from steel, we placed two large neodynium magnets on the bottom " +
+            "of the robot to effectively increase the weight of the robot. Also by removing the bootloader of the Ardunio, we were able to activate our control loop faster than competitors resulting in our team being nominated and winning the Honda Innovation Award at NRC and taking 2nd place at RoboGames. \n\n" +
+            "See the linkstart href=https://youtu.be/CH-LgnNnuQQ hrefend Video linkend here.",
             ProjectMainImage = "sumo-bot2.png",
         };
         public static readonly Project EDMPowerSupply = new()
@@ -195,7 +212,7 @@ namespace ZacharyKilburn_BlazorWASM.Data
             ProjectHref = "projects/EDMPSU",
             ProjectDate = "2013",
             ProjectDescription = "Designed as part of a contract engineering assignment, the EDM PSU was conceived as a variable AC/DC power supply intended for use with a CNC controlled manufacturing machine." +
-            "Providing constant current / constant voltage over the range of 10-100V and 5mA - 10A. \n\n" +
+            "Providing constant current / constant voltage over the range of 10-100V and 5mA - 10A. It was enclosed in a industrial cabinet and featured custom circuit boards for the AC/DC conversion and a second custom PCB for the HMI.  \n\n" +
             "While never fully validated by the client, and not short of its limitations, it was a challenging project that functioned well during bench testing.",
             ProjectMainImage = "EDMPSU.png",
            
@@ -232,8 +249,9 @@ namespace ZacharyKilburn_BlazorWASM.Data
             ProjectTitle = "Outreach - Assisted Bike Brake",
             ProjectHref = "projects/BMEBike",
             ProjectDate = "2018",
-            ProjectDescription = "A small team of The University of Akron engineering students designed/constructed a local boy a device that helped him utilize a bicycle despite his disability." +
-            "The design consisted of an assisted braking method powered by batteries and a servo as well as larger pedals with straps for holding his feet into the pedals.",
+            ProjectDescription = "A small team of The University of Akron engineering students designed/constructed a handicapable assisted bicycle that helped a local boy with spinocerebellar ataxia able to ride. " +
+            "He had difficulty controlling the bicycle brakes by pedaling backward, so we engineered a motor to pull a handbrake for him with the press of a button. In addition 3D printed pedal adapters were made to strap his feet to the pedals to help him maintain control and balance while riding. " +
+            "I was involved in the design of the electrically assisted braking mechanism consisting of a power supply, servo for pulling the brake cable and a power recoving generator. The battery was modestly sized so a wheel driven generator and a circuit to charge the batteries from it helped to extend the life of the batteries. ",
             ProjectMainImage = "BMEBike.jpg",
             Link = new HyperLink()
             {
@@ -264,6 +282,7 @@ namespace ZacharyKilburn_BlazorWASM.Data
         public string SubPageImage = string.Empty;
         public string SubPageHref = string.Empty;
         public string SubPageDescription = string.Empty;
+        public string SubPagePDF = string.Empty;
         public List<ThreeDView> threeDViews { get; set; } = new List<ThreeDView>();
         public List<string>? ContainedBoardDesigns { get; set; } = null;
     }
