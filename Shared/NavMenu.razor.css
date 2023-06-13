@@ -1,20 +1,3 @@
-.navbar-toggler {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.top-row {
-    height: 5rem;
-    background-color: rgba(0,0,0,0.4);
-}
-
-.navbar-brand {
-    font-size: 1.1rem;
-}
-.navbar-sub {
-    font-size: 0.9rem;
-    color: rgb(128, 128, 128);
-}
-
 .oi {
     width: 2rem;
     font-size: 1.1rem;
@@ -32,14 +15,6 @@
     padding-bottom: 0.5rem;
 }
 
-    .nav-item:first-of-type {
-        padding-top: 1rem;
-    }
-
-    .nav-item:last-of-type {
-        padding-bottom: 1rem;
-    }
-
     .nav-item ::deep a {
         color: #d7d7d7;
         border-radius: 4px;
@@ -47,6 +22,13 @@
         display: flex;
         align-items: center;
         line-height: 1rem;
+    }
+    .nav-item:first-of-type {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type {
+        padding-bottom: 1rem;
     }
 
         .nav-item ::deep a.active {
@@ -58,13 +40,44 @@
             background-color: rgba(255,255,255,0.1);
             color: white;
         }
-
-
+.nav-bar{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+}
+.top-row {
+    display: flex;
+    width: 100%;
+    height: 5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+        
 @media (min-width: 891px) {
+    .top-row {
+        display: flex;
+        width: 100%;
+        height: 5rem;
+        background-color: rgba(0,0,0,0.4);
+    }
     .navbar-toggler {
         display: none;
     }
 
+    .nav-item-collapsible {
+        width: 100% !important;
+        padding-left: 2.25rem;
+        display: flex;
+    }
+    .nav-bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .nav-item {
+        font-size: 0.9rem;
+        padding-bottom: 0.5rem;
+        display: flex;
+    }
     .collapse {
         /* Never collapse the sidebar for wide screens */
         display: block;
@@ -72,7 +85,52 @@
 
     .nav-scrollable {
         /* Allow sidebar to scroll for tall menus */
+        height: 5rem;
+        overflow-y: auto;
+        display:flex;
+        justify-content:center;
+    }
+    .nav-item {
+        font-size: 0.9rem;
+        padding-bottom: 0.5rem;
+        display: flex;
+    }
+        .nav-item:first-of-type {
+            padding-top:0rem;
+        }
+
+        .nav-item:last-of-type {
+            padding-bottom: 0.5rem;
+        }
+
+
+        .nav-item ::deep a {
+            color: #d7d7d7;
+            border-radius: 4px;
+            min-height: 3rem;
+            display: flex;
+            align-items: center;
+            line-height: 1rem;
+        }
+
+            .nav-item ::deep a.active {
+                text-decoration: underline;
+                background-color: rgba(255,255,255,0);
+                text-underline-offset: 8px;
+                color: white;
+            }
+
+            .nav-item ::deep a:hover {
+                background-color: rgba(255,255,255,0.1);
+                color: white;
+            }
+
+    .nav-scrollable {
+        /* Allow sidebar to scroll for tall menus */
         height: calc(100vh - 5rem);
         overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 }
