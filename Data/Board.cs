@@ -242,7 +242,7 @@
             BoardPDF = "Z25 - Adafruit Bluefruit LE UART Breakout Board.pdf",
             BoardDescription =
             "A very simple breakout board to breakout linkstart href=https://www.adafruit.com/product/2479 hrefend Adafruits bluetooth adapter linkend. Need I say anymore? I mean it breaks out the 0.1\" header to something more palatable for use inside of builds. " +
-            "I should mentio that I am very partial to the linkstart href=https://www.molex.com/en-us/products/connectors/wire-to-board-connectors/clik-mate-connectors hrefend Molex Clik-Mate linkend connector for its positive locking and reasonable pitch for 24-30AWG.",
+            "I should mention that I am very partial to the linkstart href=https://www.molex.com/en-us/products/connectors/wire-to-board-connectors/clik-mate-connectors hrefend Molex Clik-Mate linkend connector for its positive locking and reasonable pitch for 24-30AWG.",
 
 
             Projects = new()

@@ -37,7 +37,17 @@
     .boardlanding-container {
         display: flex;
         flex-direction: column;
-    }    
+    }
+    .boardlanding-partof {
+        padding: 5px;
+        width: 100%;
+        font-size: 0.8em;
+    }
+    .boardlanding-description {
+        padding: 5px;
+        width: 100%;
+        margin: 0 0;
+    }
 }
 
 @media (min-width: 891px) {
