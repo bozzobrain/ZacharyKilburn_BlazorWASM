@@ -23,9 +23,9 @@
             BoardDescription =
             "This power supply board... makes me very nostaglic for knowing as little as I did at the time. While this board did work, its approach was very different to the approach that I would take considering the 5 years of experience that I have now." +
 			" Somehow this board did not immediately blow up while testing. Anyway, I digress. AC input to the board was filtered and rectified into a large capacitor bank and then fed to a buck regulator that could be controlled by " +
-            "linkstart href=boards/Z2 hrefend Z2 - Brainbox linkend " +
-			". " +
-			"Its intention was to be the power supply of an EDM CNC unit. Probably one of the scariest devices I have built and it never did get its chance to do some serious regulation and power delivery. The YouTuber that this was created for is still making videos," +
+            "linkstart href=boards/Z2 hrefend Z2 - Brainbox linkend. " +		
+             "\n\n hstart Design hend" +
+            "Its intention was to be the power supply of an EDM CNC unit. Probably one of the scariest devices I have built and it never did get its chance to do some serious regulation and power delivery. The YouTuber that this was created for is still making videos," +
 			"so I am very sure he is still alive, but the unit never did get the chance to have its own video. We all have to start our design experience somewhere.",
             Projects = new()
             {
@@ -40,7 +40,8 @@
 			BoardMainImage = "Z2-Brainbox.png",
             BoardPDF = "Z2 - Brainbox.pdf",
             BoardDescription =
-            "This board was build with purpose in mind. As both a HMI device and control unit for the EDM Power Supply project, this board served as the face of the enclosure. It also interfaced with the " +
+            "This board was build with purpose in mind. As both a HMI device and control unit for the EDM Power Supply project, this board served as the face of the enclosure. " +
+            "It also interfaced with the " +
             "linkstart href=boards/Z1 hrefend Z1 - Power Supply board linkend" +
 			" to " +
 			"gather feedback and close the loop for the constant voltage and constant current control.",
@@ -57,9 +58,13 @@
 			BoardMainImage = "Z3-NeopixelBoard.png",
             BoardPDF = "Z3 - Neopixel Board.pdf",
             BoardDescription =
-            "The initial NeoPixel driving board, build on the Arduino platform architecture. It has served its purpose being a quick time-to-market development platform that for some reason I tend to use in my designs, " +
-			"despite my general disagreement that Arduino is a true engineering platform. It definitely has its place. This board also accepts a microphone input and amplifier front end to allow for timing NeoPixel effects with" +
-			" incomming audio patterns. Although anything more complicated seriously suffered from the limitations of the AVR core, the " +
+            "The initial NeoPixel driving board, build on the Arduino platform architecture. " +
+            "It has served its purpose being a quick time-to-market development platform that for some reason I tend to use in my designs, " +
+			"despite my general disagreement that Arduino is a true engineering platform. It definitely has its place. " +
+             "\n\n hstart Design hend" +
+            "Housing an arduino AVR controller very similar to the Arduino Uno, the board breaks out a few I/O for connections to NeoPixel LED strips." +
+            "This board also accepts a microphone input and amplifier front end to allow for timing NeoPixel effects with incomming audio patterns. " +
+            "Although anything more complicated seriously suffered from the limitations of the AVR core, the " +
             "linkstart href=boards/Z4 hrefend Z4 - PIC32 board linkend" +
 			"solved some of these problems.",
         };
@@ -71,8 +76,12 @@
 			BoardMainImage = "Z4-PIC32Board.png",
             BoardPDF = "Z4 - PIC32 Board.pdf",
             BoardDescription =
-            "This board was build to support some of the NeoPixel audio sampling workload I was playing with on the Arduino platform. " +
-			"It turns out that attempting to push 16MHz architectures to perform FFT maths can be a major bottleneck in your development process. " +
+            "This board was build to expand some of the NeoPixel audio sampling workload I was playing with on the Arduino platform. " +
+            "Previously I was utilizing" + 
+            "linkstart href=boards/Z3 hrefend Z4 - NeoPixel Board linkend" +
+            " as a platform for my NeoPixel development."+
+            "\n\n hstart Design hend" +
+            "It turns out that attempting to push 16MHz architectures to perform FFT maths can be a major bottleneck in your development process. " +
 			"With the PIC32s internal floating point ALU, it really accelerated the computation rate for realtime FFT approximations with its analog front end. " +
 			"The board was also build to be generic enough to provide a platform for developing any other crazy ideas that came to mind.",
         };
@@ -98,7 +107,8 @@
             BoardPDF = "Z6 - RF Amp Array Board.pdf",
 			BoardDescription =
 			"Board was never actually ordered, due to cost and lack of pushing the project further. "+
-			"This board would adapt to 16 of the " +
+            "\n\n hstart Design hend" +
+            "This board would adapt to 16 of the " +
             "linkstart href=boards/Z5 hrefend Z5 - RF Amp boards linkend" +
 			" in an array to measure " +
 			"RF signals in a 2D plane, providing an 4x4 pixel image of RF power " +
@@ -118,7 +128,8 @@
 			"Based on the " +
             "linkstart href=https://www.ti.com/product/SN74LV4T125 hrefend SN74LV4T125 linkend, " +
 			"the board supports 4 channels of up-converting from 2 volts up to 5V signals with 16mA of drive current. " +
-			"Measuring a meager 1.1\" x 0.74\" makes it an awesome tool to have lying around when you get into a bind. " +
+            "\n\n hstart Design hend" +
+            "Measuring a meager 1.1\" x 0.74\" makes it an awesome tool to have lying around when you get into a bind. " +
 			"I have also found use for this board when I have a weak driving signal that needs to drive a moderate load.",
 		};
 		public static readonly Board Z12 = new()
@@ -142,7 +153,9 @@
             BoardPDF = "Z18 - Index Frunk Fan.pdf",
             BoardDescription =
             "Just before 2019's eruption of stay at home happened, I ordered myself a Valve Index VR headset. " +
-            "Over the next 2 years I got a lot of time playing some pretty sweaty games. I decided to design and build my own solution for cooling myself during extended play. Combined with " +
+            "Over the next 2 years I got a lot of time playing some pretty sweaty games. " +
+            "\n\n hstart Design hend" +
+            "I decided to design and build my own solution for cooling myself during extended play. Combined with " +
             "linkstart href=boards/Z19 hrefend Z19 - Index Frunk Power linkend, " +
             "this design inserts into the front of the index and provides a bit of airflow, benefiting both the electronics in the headset, and the VR players sweaty forehead."
         };
@@ -155,7 +168,9 @@
             BoardPDF = "Z19 - Index Frunk Power.pdf",
             BoardDescription =
             "Just before 2019's eruption of stay at home happened, I ordered myself a Valve Index VR headset. " +
-			"Over the next 2 years I got a lot of time playing some pretty sweaty games. I decided to design and build my own solution for cooling myself during extended play. Combined with " +
+			"Over the next 2 years I got a lot of time playing some pretty sweaty games. " +
+            "\n\n hstart Design hend" +
+            "I decided to design and build my own solution for cooling myself during extended play. Combined with " +
             "linkstart href=boards/Z18 hrefend Z18 - Index Frunk Fan linkend, " +
 			"this design inserts into the front of the index and provides a bit of airflow, benefiting both the electronics in the headset, and the VR players sweaty forehead."
         };
@@ -167,9 +182,13 @@
 			BoardMainImage = "Z20-ESPBreakout.png",
             BoardPDF = "Z20 - ESP32 Breakout.pdf",
             BoardDescription =
-            "This board was intended to be a development platform for some projects that I had been dreaming up involving smart home and other remote control ideas that I had been playing with. Very similar to " +
+            "This board was intended to be a development platform for some projects that I had been dreaming up involving smart home and other remote control ideas that I had been playing with. " +
+            "\n\n hstart Design hend" +
+            "Very similar to " +
             "linkstart href=boards/Z21 hrefend Z21 - ESP Holder linkend, " +
-			"except that this variant was intended to utilize the SMT package to simplify the BOM cost of the platform. " +
+			"except that this variant was intended to utilize the " +
+            "linkstart href=https://www.digikey.com/short/h8j7mmqr hrefend ESP32-WROOM-32E-H4 linkend" +
+            " in an SMT package instead of the finished 0.1\" pitch header version to simplify the BOM cost of the platform. " +
             "I'm 100% sure that I never ordered this, and for that, I feel much shame. It will live on in my data library and my heart. "
         };
 		public static readonly Board Z21 = new()
@@ -181,7 +200,11 @@
             BoardPDF = "Z21 - ESP32 Holder.pdf",
             BoardDescription =
             "This board was intended to be a development platform for some projects that I had been dreaming up involving smart home and other remote control ideas that I had been playing with. " +
-			"I'm 99% sure that I never ordered this but dont quote me on it. I would have to check the stockroom. "
+			"\n\n hstart Design hend" +
+            "Based on the " +
+            "linkstart href=https://www.digikey.com/short/hw5tvz75 hrefend ESP32 Development Module linkend" +
+            ", this board was intended to be a rapid deployment breakout for developing ESP32 enabled projects." +
+            "I'm 99% sure that I never ordered this but dont quote me on it. I would have to check the stockroom. "
         };
 		public static readonly Board Z22 = new()
         {
@@ -191,7 +214,10 @@
 			BoardMainImage = "Z22-RelayPlatform.png",
             BoardPDF = "Z22 - Relay Platform.pdf",
             BoardDescription =
-            "Build specifically for the fireworks mortar project, this board was the backbone of the fireworks ignitor. Its job was to take 5V CMOS control signals to actuate relays that would short the battery terminals over a small electric ignitor. While the battery is sure to complain about the sudden short appearing on it for a very brief moment," +
+            "Build specifically for the fireworks mortar project, this board was the backbone of the fireworks ignitor. " +
+            "\n\n hstart Design hend" +
+            "This relay board was designed to take 5V CMOS control signals to actuate relays that would short the battery terminals over a small electric ignitor. " +
+			"While the battery is sure to complain about the sudden short appearing on it for a very brief moment," +
 			" it would be relieved a few microseconds later when the filament bursts into sparky flames and opens the circuit. Not sure what the lifetime of these relays will be over time, but surely they are a wear component when it comes to firework goodness.",
 
             Projects = new()
@@ -208,7 +234,8 @@
             BoardPDF = "Z23 - Quick Connect 2Pos.pdf",
             BoardDescription =
             "Build specifically for the fireworks mortar project, this small interconnect board provides what was planned to be a rapid connection point for firework ignitors to be connected between reloads of the mortar tubes. " +
-			"Hindsight showed that these quick connectors were not as robust as one would have hoped, or nearly as easy to insert wires into when the sun goes down (typically when you are reloading fireworks). A new revision is definitely necessary to improve this in the future, " +
+            "\n\n hstart Design hend" +
+            "Hindsight showed that these quick connectors were not as robust as one would have hoped, or nearly as easy to insert wires into when the sun goes down (typically when you are reloading fireworks). A new revision is definitely necessary to improve this in the future, " +
 			"but that is what engineering is all about, right?",
 
             Projects = new()
@@ -225,7 +252,8 @@
             BoardPDF = "Z24 - Arduino Mega Adapter.pdf",
             BoardDescription =
             "Somewhat customized for use in the Firework Mortar Launcher, I wanted a way to breakout multiple I/O to a connector that was more robust than jamming 0.1\" dupont leads into an arduino. " +
-            "This breakout board provides 30 I/O in a better format using linkstart href=https://www.molex.com/en-us/products/connectors/wire-to-board-connectors/clik-mate-connectors hrefend Molex Clik-Mate linkend connectors, as well as providing the ability to inject power for the" +
+            "\n\n hstart Design hend" +
+			"This breakout board provides 30 I/O in a better format using linkstart href=https://www.molex.com/en-us/products/connectors/wire-to-board-connectors/clik-mate-connectors hrefend Molex Clik-Mate linkend connectors, as well as providing the ability to inject power for the" +
             "arduino using a locking connector, another molex favorite, the linkstart href=https://www.molex.com/en-us/products/connectors/wire-to-board-connectors/micro-fit-connectors hrefend Micro-Fit linkend ",
 
             Projects = new()
@@ -241,7 +269,10 @@
 			BoardMainImage = "Z25-AdafruitBluefruitBreakout.png",
             BoardPDF = "Z25 - Adafruit Bluefruit LE UART Breakout Board.pdf",
             BoardDescription =
-            "A very simple breakout board to breakout linkstart href=https://www.adafruit.com/product/2479 hrefend Adafruits bluetooth adapter linkend. Need I say anymore? I mean it breaks out the 0.1\" header to something more palatable for use inside of builds. " +
+            "A very simple breakout board to breakout linkstart href=https://www.adafruit.com/product/2479 hrefend Adafruits bluetooth adapter linkend. " +
+            "Need I say anymore? " +
+            "\n\n hstart Design hend" +
+            "This board serves as a means to break out the 0.1\" header to something more palatable for use inside of builds. " +
             "I should mention that I am very partial to the linkstart href=https://www.molex.com/en-us/products/connectors/wire-to-board-connectors/clik-mate-connectors hrefend Molex Clik-Mate linkend connector for its positive locking and reasonable pitch for 24-30AWG.",
 
 
@@ -260,6 +291,7 @@
             BoardPDF = "Z26 - TPS84A20 DC-DC Converter.pdf",
             BoardDescription =
             "While I have only used this regulator for a single design so far, I was always finding myself needing a 5 volt source from batteries, and was tenative to use USB power banks when I needed higher currents. " +
+            "\n\n hstart Design hend" +
             "Introducing the linkstart href=https://www.ti.com/product/TPS84A20 hrefend TPS84A20 linkend capable of regulating up to 17 volts down to 5 with a current up to 10A. No more wishing I had more power.. yet." +
 			"While its a very simple design, simple is usually better.",
 
@@ -279,7 +311,8 @@
             BoardDescription =
             "For when you want a 7-segment display that is larger than most COTS devices on Digi-Key, just make your own. " +
             "At least thats what I thought when it came to designing my own scoreboard." +
-			" Featuring 14 SMT linkstart href=https://www.adafruit.com/product/1655 hrefend NeoPixel 5050 RGB LEDs linkend, each of the segments of this 7-segment LED has 2 light sources that can provide any color. " +
+            "\n\n hstart Design hend" +
+            "Featuring 14 SMT linkstart href=https://www.adafruit.com/product/1655 hrefend NeoPixel 5050 RGB LEDs linkend, each of the segments of this 7-segment LED has 2 light sources that can provide any color. " +
 			"With two connectors allowing for daisy channing panels, as long as you have the current to support its operation, you can have as many 6in (150mm) digits you would like!",
 
             Projects = new()
@@ -295,18 +328,14 @@
 			BoardMainImage = "Z28-LEDDigitTH.png",
             BoardPDF = "Z28 - LED Digit TH Board.pdf",
 			BoardDescription = 
-            "This 7-Segment Display was an unconventional iteration of the LED Digit Board  " +
+            "This 7-Segment Display was an unconventional iteration of the " +
+            "linkstart href=boards/Z27 hrefend Z27 - LED Digit Board linkend " +
             "with the functional change being the brightness of the LEDs. " +
-			"Based on the linkstart href=https://cdn-shop.adafruit.com/datasheets/WS2811.pdf hrefend WS2811 linkend chip which is the same chipset embedded into the NeoPixel LEDs used in " +
-            "linkstart href=boards/Z27 hrefend Z27 - LED Digit Board linkend" +
-            " " +
-            "When it comes to viewing the 7-Segment digit in a well lit environment it " +
-            "would be difficult to see the segments using the prior versions SMT LEDs " +
-            " " +
-            "By changing to through hole LEDs, bending them with a jig and inserting from the " +
-            "rear of the board, it was possible to keep all of the existing mechanical structure " +
-            "and simply drop in the new revision into the existing product." +
-            "",
+            "\n\n hstart Design hend" +
+            "Based on the linkstart href=https://cdn-shop.adafruit.com/datasheets/WS2811.pdf hrefend WS2811 linkend chip which is the same chipset embedded into the NeoPixel LEDs used in " +
+            "linkstart href=boards/Z27 hrefend Z27 - LED Digit Board linkend." +       
+            "When it comes to viewing the 7-Segment digit in a well lit environment it would be difficult to see the segments using the prior versions SMT LEDs. " +
+            "By changing to through hole LEDs, bending them with a jig and inserting from the rear of the board, it was possible to keep all of the existing mechanical structure and simply drop in the new revision into the existing product.",
             Projects = new()
             {
                 ProjectLoader.ScoreboardProject,
