@@ -22,3 +22,23 @@
     display: flex;
     width: 100%;
 }
+@media (max-width: 890.98px) {
+    .top-row {
+        height: 5rem;
+    }
+    .index-top-row {
+        justify-content: center;
+    }
+    .index-header-name {
+        justify-content: center;
+    }
+    .index-header-sub {
+        justify-content: center;
+    }
+}
+
+@media (min-width: 891px) {
+
+
+  
+}

@@ -5,7 +5,7 @@
 
 @if (selectedBoard == null)
 {
-	<div class="top-row">
+	<div class="top-row" style="height:3em;">
 		<h3>Boards</h3>
 	</div>
 	<div class="px-4">
@@ -17,7 +17,7 @@
 				{
 					<div class="grid-item" @onclick="(()=>SelectProject(b.BoardHref))">
 
-						<img src="@b.BoardMainImage" >
+						<img src="@b.BoardMainImage">
 						<br />
 						<br />
 						<h5 style="align-items:center;">@b.BoardPN - @b.BoardTitle</h5>
@@ -36,28 +36,27 @@
 else if (selectedBoard != null)
 {
 	<div class="top-row">
+		<div class="board-title">
+			<div class="board-header">
+				<h3>@selectedBoard.BoardPN - @selectedBoard.BoardTitle</h3>
+			</div>
+			<div class="board-header-sub">
+				<h3>@selectedBoard.BoardDate</h3>
+			</div>
+		</div>
 		@if (ViewMode == modeOverview)
 		{
-			<div class="board-title">
-				<h3>@selectedBoard.BoardPN - @selectedBoard.BoardTitle - Overview</h3>
-
-			</div>
 			<div class="board-controls">
 				<button class="mode-btn active" @onclick="(()=>ViewMode=modeOverview)">Overview</button>
 				<button class="mode-btn" @onclick="(()=>ViewMode=modePDF)">Design</button>
 			</div>
-
 		}
 		else if (ViewMode == modePDF)
 		{
-			<div class="board-title">
-				<h3>@selectedBoard.BoardPN - @selectedBoard.BoardTitle - PDF</h3>
-			</div>
 			<div class="board-controls">
 				<button class="mode-btn" @onclick="(()=>ViewMode=modeOverview)">Overview</button>
 				<button class="mode-btn active" @onclick="(()=>ViewMode=modePDF)">Design</button>
 			</div>
-
 		}
 	</div>
 	<div class="px-4">

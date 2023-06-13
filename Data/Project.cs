@@ -201,7 +201,7 @@ namespace ZacharyKilburn_BlazorWASM.Data
 
         public static readonly Project SumoRobot = new()
         {
-            ProjectTitle = "Sumo Bot Competition",
+            ProjectTitle = "Sumo Bot",
             ProjectHref = "projects/Sumo",
             ProjectDate = "2013",
             ProjectDescription = "Competiting locally at linkstart href=https://www.thenrc.org/ hrefend National Robotic Challenge linkend  and in a larger competition called linkstart href=http://robogames.net/index.php hrefend RoboGames linkend in San Mateo, California, this robot purpose was a Sumo Robot, competiting against the competition to be the last robot inside of the ring." +
@@ -263,7 +263,7 @@ namespace ZacharyKilburn_BlazorWASM.Data
         };
         public static readonly Project BMEBike = new()
         {
-            ProjectTitle = "Outreach - Assisted Bike Brake",
+            ProjectTitle = "Outreach - Bicycle Brake",
             ProjectHref = "projects/BMEBike",
             ProjectDate = "2018",
             ProjectDescription = "A small team of The University of Akron engineering students designed/constructed a handicapable assisted bicycle that helped a local boy with spinocerebellar ataxia able to ride. " +

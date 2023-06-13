@@ -24,6 +24,9 @@
 }
 @media (max-width: 890.98px) {
 
+    .top-row {
+        height: 3rem;
+    }
    
     .about-me-description {
         padding: 5px;
