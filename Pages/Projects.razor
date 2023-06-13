@@ -26,7 +26,7 @@
 @if (selectedProject == null)
 {
     <div class="top-row">
-        <h3>Projects</h3>
+        <h3>Projects</h3> 
     </div>
     <div class="px-4">
         <div class="grid-container">
@@ -56,7 +56,12 @@ else if (selectedProject != null)
 {
     <div class="top-row">
         <div class="project-title">
-            <h3>@selectedProject.ProjectTitle</h3>
+            <div class="project-header">
+                <h3>@selectedProject.ProjectTitle</h3>
+            </div>
+            <div class="project-header-sub">
+                <h4>@selectedProject.ProjectDate</h4>
+            </div>
         </div>
         <div class="project-controls">
             @if (currentViewMode == ViewMode.Main)
