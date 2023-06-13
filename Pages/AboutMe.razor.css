@@ -1,0 +1,39 @@
+﻿body {
+}
+
+.about-me-container {
+    display: flex;
+    flex-direction: column;
+}
+.about-me-image {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+.about-me-image img {
+    height:25vh;
+}
+.about-me-description {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    justify-content: center;
+    width: 80%;
+    margin: 0 10%;
+    background-color: rgb(240,240,240);
+}
+@media (max-width: 890.98px) {
+
+   
+    .about-me-description {
+        padding: 5px;
+        width: 100%;
+        margin: 0 0;
+    }
+    .about-me-image img {
+        height: 25vh;
+    }
+}
+
+@media (min-width: 891px) {
+}
