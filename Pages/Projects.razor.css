@@ -1,6 +1,9 @@
 ﻿body {
 }
 
+.active {
+    background-color: rgba(0, 148, 255, 1) !important;
+}
 .project-title {
     justify-content: flex-start;
     display: flex;

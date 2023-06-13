@@ -30,7 +30,7 @@ a, .btn-link {
     display: flex;
     align-items: center;
     line-height: 3rem;
-    background-color: rgba(0, 148, 255, 0.5);
+    background-color: rgba(0, 148, 255, 0.3);
     width: 6em;
     align-content: center;
 }
