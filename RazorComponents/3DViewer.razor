@@ -50,7 +50,8 @@
 
     private void Select3dView(ThreeDView v)
     {
-        threeDView = v; 
+        threeDView = v;
+        SetCamera();
         OnClearAllClick();
         LoadModel();
     }

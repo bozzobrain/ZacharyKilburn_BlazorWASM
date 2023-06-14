@@ -33,19 +33,26 @@ a, .btn-link {
     background-color: rgba(0, 148, 255, 0.3);
     width: 6em;
     align-content: center;
+    justify-content: center;
+}
+a.mode-btn {
+    appearance: button;
+    border-color: black;
+    border-style: outset;
+    border-width: 2px;
+    text-decoration: none;
+    justify-content: center;
 }
 
-    .mode-btn button:active {
+    .mode-btn button:active, .mode-btn a:active {
         background-color: rgba(0, 148, 255, 0.25) !important;
     }
 
-    .mode-btn:hover {
+    .mode-btn:hover,  {
         background-color: rgba(0, 148, 255, 0.1) !important;
     }
 
 .top-row {
-    background-color: rgba(180,180,180);
-    border-bottom: 1px solid rgb(200,200,200);
     justify-content: flex-start;
     height: 5rem;
     display: flex;
@@ -66,9 +73,12 @@ a, .btn-link {
             overflow: hidden;
             text-overflow: ellipsis;
         }
-
+/* For Mobile Devices */
 @media (max-width: 890.98px) {
-
+    .page-header{
+        display:flex;
+        justify-content:center;
+    }
     .top-row {
         flex-direction: column;
         padding-left: 2px;
@@ -87,13 +97,18 @@ a, .btn-link {
     }
 }
 
+/* For Desktop Devices */
 @media (min-width: 891px) {
     .page {
-        flex-direction: row;
+        flex-direction: column;
+    }
+
+    .page-header {
+        display: none;
     }
 
     .sidebar {
-        width: 250px;
+        width: 100%;
         height: 100vh;
         position: sticky;
         top: 0;
@@ -105,6 +120,8 @@ a, .btn-link {
         top: 0;
         z-index: 1;
         padding-left: 50px;
+        width: 80vw;
+        justify-content: center;
     }
 
         .top-row.auth a:first-child {
@@ -116,6 +133,12 @@ a, .btn-link {
     .top-row {
         padding-left: 1.5rem !important;
         padding-right: 1.5rem !important;
+    }
+
+    .top-row-body {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
     }
 
     .article {
@@ -136,6 +159,18 @@ a, .btn-link {
         /* Allow sidebar to scroll for tall menus */
         height: calc(100vh - 3.5rem);
         overflow-y: auto;
+    }
+
+    .mode-btn {
+        font-size: 1.5em;
+        justify-content: center;
+        height: 3rem;
+    }
+
+    a.mode-btn {
+        font-size: 1.5em;
+        justify-content: center;
+        height: 3rem;
     }
 }
 
@@ -429,6 +464,7 @@ a, .btn-link {
         background-color: rgba(255,255,255,0.1) !important;
     }
 
+/* For Desktop Devices */
 @media (min-width: 891px) {
     .grid-container {
         grid-template-columns: auto auto;

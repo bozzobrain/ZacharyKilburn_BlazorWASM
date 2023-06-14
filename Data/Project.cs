@@ -5,9 +5,10 @@ using ZacharyKilburn_BlazorWASM.Pages;
 namespace ZacharyKilburn_BlazorWASM.Data
 {
     public class Project
-    {
-        public string ProjectTitle { get; set; } = string.Empty;
-        public string ProjectDescription { get; set; } = string.Empty;
+	{
+		public string ProjectTitle { get; set; } = string.Empty;
+		public string ProjectTitleShort { get; set; } = string.Empty;
+		public string ProjectDescription { get; set; } = string.Empty;
         public string ProjectHref { get; set; } = string.Empty;
         public string ProjectDate { get; set; } = string.Empty;
         public string ProjectMainImage { get; set; } = string.Empty;
@@ -28,7 +29,7 @@ namespace ZacharyKilburn_BlazorWASM.Data
             ProjectTitle = "Scoreboard",
             ProjectHref = "projects/Scoreboard",
             ProjectDate = "2021-Current",
-            ProjectDescription = "Motivated by constantly forgetting the score when playing cornhole as well as a deep need for a new project, the bluethooth enabled portable scoreboard was born. " +
+            ProjectDescription = "hstart Project Description hend Motivated by constantly forgetting the score when playing cornhole as well as a deep need for a new project, the bluethooth enabled portable scoreboard was born. " +
             "\n\nhstart Design hend" +
             "Based on an old PCB designed for my neopixel project, the scoreboard is powered by 3 26650 LiFeP04 cells in a custom 3D printed package. " +
             "Initially developed using 8 copies of the large 7 segment displays using SMT LEDs, a trip outside showed that the SMT LEDs did not pack the punch necessary to cut throught the sun on a bright day, so it was back to the drawing board. " +
@@ -54,31 +55,30 @@ namespace ZacharyKilburn_BlazorWASM.Data
                 },
                 new ProjectSubPage() {
                 SubPageTitle = "3D",
-                SubPageDescription = "One of the 8 LED segments",
                 threeDViews = new List<ThreeDView> {
                      new ThreeDView()
                     {
                         ThreeDeeViewName = "Scoreboard",
                         ThreeDeeModel = "CornholeScoreViewer/CornholeScoreViewer.fbx",
-                        CameraPosition = new Vector3(20, 10, 0),
-                        CameraLook = new Vector3(0, 0, 0),
-                        ScaleFactor = new Vector3(20, 20, 20),
+                        CameraPosition = new Vector3(3, 3.5, 0),
+                        CameraLook = new Vector3(0, 3.25, 0),
+                        ScaleFactor = new Vector3(10, 10, 10),
                     },
                     new ThreeDView()
                     {
                         ThreeDeeViewName = "LED Collapsed",
                         ThreeDeeModel = "CornholeScoreViewer/LEDDigit-Collapsed.fbx",
-                        CameraPosition = new Vector3(3, 2.5, 0),
-                        CameraLook = new Vector3(0, 3, 0),
-                        ScaleFactor = new Vector3(6,6,6),
+                        CameraPosition = new Vector3(3, 1.5, 0),
+                        CameraLook = new Vector3(0, 1, 0),
+                        ScaleFactor = new Vector3(5,5,5),
                     },
                     new ThreeDView()
                     {
                         ThreeDeeViewName = "LED Exploded",
                         ThreeDeeModel = "CornholeScoreViewer/LEDDigit-Exploded.fbx",
-                        CameraPosition = new Vector3(3, 3, 0),
-                        CameraLook = new Vector3(0, 3, 0),
-                        ScaleFactor = new Vector3(8, 8, 8),
+                        CameraPosition = new Vector3(3, 4.75, 0),
+                        CameraLook = new Vector3(0, 4.5, 0),
+                        ScaleFactor = new Vector3(5, 5, 5),
                     },
                 },
 
@@ -105,9 +105,11 @@ namespace ZacharyKilburn_BlazorWASM.Data
         public static readonly Project FireworkProject = new()
         {
             ProjectTitle = "Fireworks Mortar Launcher",
-            ProjectHref = "projects/Fireworks",
+			ProjectTitleShort="Mortar",
+			ProjectHref = "projects/Fireworks",
             ProjectDate = "2021-Current",
-            ProjectDescription = "I was always wishing there was a better way to launch more fireworks faster on the 4th of July. Instead of doing what most others do and just wiring a long fuse to multiple cannons, I decided to use my engineering mind to create something much more exciting. " +
+            ProjectDescription = "hstart Project Description hend I was always wishing there was a better way to launch more fireworks faster on the 4th of July. " +
+            "Instead of doing what most others do and just wiring a long fuse to multiple cannons, I decided to use my engineering mind to create something much more exciting. " +
             "\n\n hstart Design hend" +
             "This 12 shot custom fireworks mortar launcher features a bluetooth controlled app, variable timing delays, manual shot selection, quick reloading connections, custom PCB designs and 3D printed enclosures. " +
             "\n\n hstart Electronics Box hend" +
@@ -163,7 +165,9 @@ namespace ZacharyKilburn_BlazorWASM.Data
             ProjectTitle = "200lb Combat Robot",
             ProjectHref = "projects/Combot",
             ProjectDate = "2017-2018",
-            ProjectDescription = "Senior Capstone project from The University of Akron. The robot received the name Nigel (Thornberry) for no obvious reason. Nigel competed in linkstart href=http://robogames.net/index.php hrefend RoboGames linkend, a robotics competition in San Mateo, California. \n\n" +
+            ProjectDescription = "hstart Project Description hend Senior Capstone project from The University of Akron. " +
+            "The robot received the name Nigel (Thornberry) for no obvious reason. " +
+            "Nigel competed in linkstart href=http://robogames.net/index.php hrefend RoboGameslinkend, a robotics competition in San Mateo, California." +
             "\n\n hstart Design hend" +
             "Nigel had drive wheels that protruded outside of the body on top and bottom, meaning that the robot was capable of driving after being inverted, which often occurs when other robots try to flip their opponent into the air. " +
             "Wielding a 60lb spinning outer shell as an impacting weapon, two impacting hammers layered with solid steel provided a rigid and powerful weapon for Nigel. " +
@@ -189,9 +193,9 @@ namespace ZacharyKilburn_BlazorWASM.Data
                         {
                             ThreeDeeViewName = "Combat Robot",
                             ThreeDeeModel = "CombatRobot.obj",
-                            CameraPosition = new Vector3(600, 300, 0),
+                            CameraPosition = new Vector3(300, 100, 0),
                             CameraLook = new Vector3(0, 50, 0),
-                            ScaleFactor = new Vector3(500, 500, 500),
+                            ScaleFactor = new Vector3(175, 175, 175),
                         },
                           
                         }
@@ -204,7 +208,7 @@ namespace ZacharyKilburn_BlazorWASM.Data
             ProjectTitle = "Sumo Bot",
             ProjectHref = "projects/Sumo",
             ProjectDate = "2013",
-            ProjectDescription = "Competiting locally at linkstart href=https://www.thenrc.org/ hrefend National Robotic Challenge linkend  and in a larger competition called linkstart href=http://robogames.net/index.php hrefend RoboGames linkend in San Mateo, California, this robot purpose was a Sumo Robot, competiting against the competition to be the last robot inside of the ring." +
+            ProjectDescription = "hstart Project Description hend Competiting locally at linkstart href=https://www.thenrc.org/ hrefend National Robotic Challenge linkend  and in a larger competition called linkstart href=http://robogames.net/index.php hrefend RoboGames linkend in San Mateo, California, this robot purpose was a Sumo Robot, competiting against the competition to be the last robot inside of the ring." +
             "\n\n hstart Design hend" +
             "Utilizing ultrasonic sensors to locate the opponent, it is a compeition of speed and force. As a team of three members, my role was to develop the software to acquire the sensor information and control the motiion of the robot accordingly. " +
             "Our robot was arduino based and electrically build using COTS items (since we were freshman in college). " +
@@ -227,7 +231,7 @@ namespace ZacharyKilburn_BlazorWASM.Data
             ProjectTitle = "EDM Power Supply",
             ProjectHref = "projects/EDMPSU",
             ProjectDate = "2013",
-            ProjectDescription = "Designed as part of a contract engineering assignment, the EDM PSU was conceived as a variable AC/DC power supply intended for use with a CNC controlled manufacturing machine." +
+            ProjectDescription = "hstart Project Description hend Designed as part of a contract engineering assignment, the EDM PSU was conceived as a variable AC/DC power supply intended for use with a CNC controlled manufacturing machine." +
             "\n\n hstart Design hend" +
             "Providing constant current / constant voltage over the range of 10-100V and 5mA - 10A. It was enclosed in a industrial cabinet and featured custom circuit boards for the AC/DC conversion and a second custom PCB for the HMI.  \n\n" +
             "While never fully validated by the client, and not short of its limitations, it was a challenging project that functioned well during bench testing.",
@@ -266,7 +270,7 @@ namespace ZacharyKilburn_BlazorWASM.Data
             ProjectTitle = "Outreach - Bicycle Brake",
             ProjectHref = "projects/BMEBike",
             ProjectDate = "2018",
-            ProjectDescription = "A small team of The University of Akron engineering students designed/constructed a handicapable assisted bicycle that helped a local boy with spinocerebellar ataxia able to ride. " +
+            ProjectDescription = "hstart Project Description hend A small team of The University of Akron engineering students designed/constructed a handicapable assisted bicycle that helped a local boy with spinocerebellar ataxia able to ride. " +
             "\n\n hstart Design hend" +
             "Westley had difficulty controlling the bicycle brakes by pedaling backward, so we engineered a motor to pull a handbrake for him with the press of a button. " +
             "In addition 3D printed pedal adapters were made to strap his feet to the pedals to help him maintain control and balance while riding. " +

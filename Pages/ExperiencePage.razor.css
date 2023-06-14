@@ -1,66 +1,12 @@
 ﻿body {
 }
 
-div.job-header {
-    justify-content: flex-start;
-    display: flex;
-    width: 100%;
-    font-size: 1em;
-}
-
-div.experience-body {
-    background-color: rgb(255,255,255);
-    margin: 0em 5em;
-}
-
-
-div.job-container {
-    margin: 0em 5em;
-}
-
-div.job-title {
-
-    font-size: 1.5em;
-    text-align: center;
-}
-div.job-location {
-    text-align: center;
-}
-
-div.job-description {
-    text-align: center;
-    padding-bottom: 20px;
-    padding-top: 20px;
-    margin: 0em 5em;
-}
-
-div.job-description-list {
-    display:flex;
-    flex-direction:column;
-    padding-bottom: 20px;
-    padding-top: 20px;
-    justify-content:center;
-    align-items:center;
-}
-
-div.job-date {
-    text-align: center;
-    color: rgb(100,100,100);
-}
-
-div.bulleted-header {
-    width:30vw;
-    font-weight: bold;
-}
-
-div.bulleted-item {
-    width: 30vw;
-    padding-left: 3em;
-}
+/* For Mobile Devices */
 @media (max-width: 890.98px) {
-    .top-row {
+/*    .top-row {
         height: 3rem;
-    }
+    }*/
+
     div.job-header {
         justify-content: center;
         display: flex;
@@ -102,25 +48,54 @@ div.bulleted-item {
         color: rgb(100,100,100);
     }
 
-    div.bulleted-header {
+    div.job-description-list {
+        font-size: 0.9em;
+    }
+
+    div .bulleted-header {
         margin: 0em 0vw;
-        width:100%;
+        width: 100%;
+        font-weight:bold;
     }
 
     div.bulleted-item {
-        font-size: 0.9em;
         margin: 0em 0.5vw;
         padding-left: 1em;
         width: 100%;
     }
 }
 
+/* For Desktop Devices */
 @media (min-width: 891px) {
     div.job-header {
-        justify-content: flex-start;
-        display: flex;
-        width: 100%;
-        font-size: 1em;
+        display: none;
+    }
+    div.job-title {
+        font-size: 2.5em;
+        text-align: center;
+    }
+
+    div.job-date {
+        font-size: 1.5em;
+        text-align: center;
+        color: rgb(100,100,100);
+    }
+
+    div.job-container {
+        margin: 0em 5em;
+    }
+
+    div.job-location {
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    div.job-description {
+        font-size: 1.5em;
+        margin: 0em 10vw;
+        text-align: center;
+        padding-bottom: 20px;
+        padding-top: 20px;
     }
 
     div.experience-body {
@@ -128,67 +103,54 @@ div.bulleted-item {
         margin: 0em 5em;
     }
 
+    div.job-description-list {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        font-size: 1.5em;
+        justify-content: center;
+        align-items: center;
+    }
 
-    div.job-container {
+    div.experience-body {
+        background-color: rgb(255,255,255);
         margin: 0em 5em;
     }
 
-    div.job-title {
-        font-size: 1.5em;
-        text-align: center;
+    div.bulleted-header {
+        width: 30vw;
+        font-weight: bold;
     }
 
-    div.job-location {
-        text-align: center;
+    div.bulleted-item {
+        width: 30vw;
+        padding-left: 3em;
     }
+    div.bulleted-header, div.bulleted-item {
+        width: 70vw;
+    }
+}
+
+@media (min-width: 1300px) {
+    div.bulleted-header, div.bulleted-item {
+        width: 60vw;
+    }
+}
+
+@media (min-width: 1600px) {
+    div.bulleted-header, div.bulleted-item {
+        width: 50vw;
+    }
+}
+
+@media (min-width: 1900px) {
+    div.bulleted-header, div.bulleted-item {
+        width: 40vw;
+    }
+
 
     div.job-description {
         margin: 0em 10vw;
-    }
-
-    div.job-date {
-        text-align: center;
-        color: rgb(100,100,100);
-    }
-
-    div.bulleted-header {
-        width: 40vw;
-    }
-
-    div.bulleted-item {
-        width: 40vw;
-    }
-
-
-}
-@media (min-width: 1300px) {
-    div.bulleted-header {
-        width: 50vw;
-    }
-
-    div.bulleted-item {
-        width: 50vw;
-    }
-}
-@media (min-width: 1600px) {
-    div.bulleted-header {
-        width: 30vw;
-    }
-
-    div.bulleted-item {
-        width: 30vw;
-    }
-}
-@media (min-width: 1900px) {
-    div.bulleted-header {
-        width: 30vw;
-    }
-
-    div.bulleted-item {
-        width: 30vw;
-    }
-
-    div.job-description {
-        margin: 0em 20vw;
     }
 }

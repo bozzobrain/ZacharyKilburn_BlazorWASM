@@ -1,13 +1,12 @@
 ﻿body {
 }
+/* For Mobile Devices */
 @media (max-width: 890.98px) {
-
-    .top-row {
+/*    .top-row {
         height: 3rem;
-    }
-
-  
+    }*/
 }
 
+/* For Desktop Devices */
 @media (min-width: 891px) {
 }

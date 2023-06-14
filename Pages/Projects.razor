@@ -5,318 +5,324 @@
 @using System.Text.RegularExpressions;
 @using System.Web
 <style>
-    .pdf-embed {
-        overflow: hidden !important;
-        height: calc(100vh - 7rem);
-        width: 100%;
-        padding-bottom: 47%;
-        position: relative;
-        margin: auto;
-    }
+	.pdf-embed {
+		overflow: hidden !important;
+		height: calc(100vh - 7rem);
+		width: 100%;
+		padding-bottom: 47%;
+		position: relative;
+		margin: auto;
+	}
 
-        .pdf-embed embed,
-        .pdf-embed iframe,
-        .pdf-embed object {
-            height: 100%;
-            position: absolute;
-            margin: auto;
-            width: 100%;
-        }</style>
+		.pdf-embed embed,
+		.pdf-embed iframe,
+		.pdf-embed object {
+			height: 100%;
+			position: absolute;
+			margin: auto;
+			width: 100%;
+		}</style>
 
 @if (selectedProject == null)
 {
-    <div class="top-row" style="height:3em;">
-        <h3>Projects</h3> 
-    </div>
-    <div class="px-4">
-        <div class="grid-container">
-            @{
+	<div class="top-row-body">
+		<div class="page-header">
+			<h3>Projects</h3>
+		</div>
+	</div>
+	<div class="px-4">
+		<div class="grid-container">
+			@{
 
-                int index = 0;
-                foreach (var p in _projects.projects)
-                {
-                    <div class="grid-item" @onclick="(()=>SelectProject(p.ProjectHref))">
-                        <img src="@p.ProjectMainImage" >
-                        <br />
-                        <br />
-                        <h5 style="align-items:center; ">@p.ProjectTitle</h5>
-                    </div>
-                    index++;
-                }
-                @while (index % 3 != 0)
-                {
-                    index++;
-                    <div class="grid-item"> Coming Soon	</div>
-                }
-            }
-        </div>
-    </div>
+				int index = 0;
+				foreach (var p in _projects.projects)
+				{
+					<a class="grid-item" href="@p.ProjectHref" @onclick="(()=>SelectProject(p.ProjectHref))">
+						<img src="@p.ProjectMainImage">
+						<br />
+						<br />
+						<h5 style="align-items:center; ">@p.ProjectTitle</h5>
+					</a>
+					index++;
+				}
+				@while (index % 3 != 0)
+				{
+					index++;
+					<div class="grid-item"> Coming Soon	</div>
+				}
+			}
+		</div>
+	</div>
 }
 else if (selectedProject != null)
 {
-    <div class="top-row">
-        <div class="project-title">
-            <div class="project-header">
-                <h3>@selectedProject.ProjectTitle</h3>
-            </div>
-            <div class="project-header-sub">
-                <h4>@selectedProject.ProjectDate</h4>
-            </div>
-        </div>
-        <div class="project-controls">
-            @if (currentViewMode == ViewMode.Main)
-            {
-                <button class="mode-btn active" @onclick="(()=>SelectPage(ViewMode.Main))">Overview</button>
-                @if (selectedProject.ThreeDView != null)
-                {
-                    <button class="mode-btn" @onclick="(()=>SelectPage(ViewMode.ThreeDModel))">3D Model</button>
-                }
-                foreach (var p in selectedProject.SubPages)
-                {
-                    <button class="mode-btn" @onclick="(()=>SelectPage(p))">@p.SubPageTitle</button>
-                }
-            }
-            else if (currentViewMode == ViewMode.ThreeDModel)
-            {
-                <button class="mode-btn" @onclick="(()=>SelectPage(ViewMode.Main))">Overview</button>
-                @if (selectedProject.ThreeDView != null)
-                {
-                    <button class="mode-btn active" @onclick="(()=>SelectPage(ViewMode.ThreeDModel))">3D Model</button>
-                }
-                foreach (var p in selectedProject.SubPages)
-                {
-                    <button class="mode-btn" @onclick="(()=>SelectPage(p))">@p.SubPageTitle</button>
-                }
-            }
-            else if (currentViewMode == ViewMode.Subpages)
-            {
-                <button class="mode-btn" @onclick="(()=>SelectPage(ViewMode.Main))">Overview</button>
-                @if (selectedProject.ThreeDView != null)
-                {
-                    <button class="mode-btn" @onclick="(()=>SelectPage(ViewMode.ThreeDModel))">3D Model</button>
-                }
-                foreach (var p in selectedProject.SubPages)
-                {
-                    if (currentSubPage == p)
-                    {
-                        <button class="mode-btn active" @onclick="(()=>SelectPage(p))">@p.SubPageTitle</button>
-                    }
-                    else
-                    {
-                        <button class="mode-btn" @onclick="(()=>SelectPage(p))">@p.SubPageTitle</button>
-                    }
-                }
-            }
-        </div>
-    </div>
-    <div class="px-4">
-        @if (currentViewMode == ViewMode.Main)
-        {
-            <div class="project-container">
-                <div class="project-subcontainer">
-                    <div class="project-image">
+	<div class="top-row-body">
+		<div class="project-header">
+			<div class="project-title">
+				@selectedProject.ProjectTitle
+			</div>
+			<div class="project-date">
+				@selectedProject.ProjectDate
+			</div>
+		</div>
+		<hr/>
+		<div class="project-controls">
+			@if (currentViewMode == ViewMode.Main)
+			{
+				<button class="mode-btn active" @onclick="(()=>SelectPage(ViewMode.Main))">Overview</button>
+				@if (selectedProject.ThreeDView != null)
+				{
+					<button class="mode-btn" @onclick="(()=>SelectPage(ViewMode.ThreeDModel))">3D Model</button>
+				}
+				foreach (var p in selectedProject.SubPages)
+				{
+					<button class="mode-btn" @onclick="(()=>SelectPage(p))">@p.SubPageTitle</button>
+				}
+			}
+			else if (currentViewMode == ViewMode.ThreeDModel)
+			{
+				<button class="mode-btn" @onclick="(()=>SelectPage(ViewMode.Main))">Overview</button>
+				@if (selectedProject.ThreeDView != null)
+				{
+					<button class="mode-btn active" @onclick="(()=>SelectPage(ViewMode.ThreeDModel))">3D Model</button>
+				}
+				foreach (var p in selectedProject.SubPages)
+				{
+					<button class="mode-btn" @onclick="(()=>SelectPage(p))">@p.SubPageTitle</button>
+				}
+			}
+			else if (currentViewMode == ViewMode.Subpages)
+			{
+				<button class="mode-btn" @onclick="(()=>SelectPage(ViewMode.Main))">Overview</button>
+				@if (selectedProject.ThreeDView != null)
+				{
+					<button class="mode-btn" @onclick="(()=>SelectPage(ViewMode.ThreeDModel))">3D Model</button>
+				}
+				foreach (var p in selectedProject.SubPages)
+				{
+					if (currentSubPage == p)
+					{
+						<button class="mode-btn active" @onclick="(()=>SelectPage(p))">@p.SubPageTitle</button>
+					}
+					else
+					{
+						<button class="mode-btn" @onclick="(()=>SelectPage(p))">@p.SubPageTitle</button>
+					}
+				}
+			}
+		</div>
+	</div>
+	<div class="px-4">
+		@if (currentViewMode == ViewMode.Main)
+		{
+			<div class="project-container">
+				<div class="project-subcontainer">
+					<div class="project-image">
 
-                        <img src="@selectedProject.ProjectMainImage">
+						<img src="@selectedProject.ProjectMainImage">
 
-                    </div>
+					</div>
 
-                </div>
-                <div class="project-description">
-                    @((MarkupString)Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(HttpUtility.HtmlEncode(selectedProject.ProjectDescription), "\n", "<br/>"), "hstart", "<h4>"), "hend", "</h4>"), "linkstart", "<a style=\"display:contents;\""), "hrefend", ">"), "linkend", "</a>"))
-                    
-                </div>
-                <div class="project-description">
-                    @if (selectedProject.Link != null)
-                    {
-                        <p>Click to view  <a href="@selectedProject.Link.Link">@selectedProject.Link.Name</a></p>
-                        <br />
-                    }
-                </div>
-               
-                @if (selectedProject.DownloadLink != "")
-                {
-                    <div class="project-description">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="42" viewBox="0 0 40 42" class="MM7Wh">
-                            <g fill="none" fill-rule="evenodd">
-                                <path d="M0 0H4823V3877H0z" transform="translate(-1717 -3612)">
+				</div>
+				<div class="project-description">
+					@((MarkupString)Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(HttpUtility.HtmlEncode(selectedProject.ProjectDescription), "\n", "<br/>"), "hstart", "<div style=\"font-weight:bold;\">"), "hend", "</div>"), "linkstart", "<a style=\"display:contents;\""), "hrefend", ">"), "linkend", "</a>"))
 
-                                </path>
-                                <path d="M1717 3612H1757V3654H1717z" transform="translate(-1717 -3612)">
+				</div>
+				<div class="project-description">
+					@if (selectedProject.Link != null)
+					{
+						<p>Click to view  <a href="@selectedProject.Link.Link">@selectedProject.Link.Name</a></p>
+						<br />
+					}
+				</div>
 
-                                </path>
-                                <g>
-                                    <path fill="white" d="M13.6 0.9L7.9 8.3 4.9 4.7 0.5 9.9 6.7 9.9 9.2 9.9 20.5 9.9z" transform="translate(-1717 -3612) translate(1720 3613) translate(6 21)">
+				@if (selectedProject.DownloadLink != "")
+				{
+					<div class="project-description">
+						<svg xmlns="http://www.w3.org/2000/svg" width="40" height="42" viewBox="0 0 40 42" class="MM7Wh">
+							<g fill="none" fill-rule="evenodd">
+								<path d="M0 0H4823V3877H0z" transform="translate(-1717 -3612)">
 
-                                    </path>
-                                    <path fill="white" fill-rule="nonzero" d="M3.3 11.5L0.6 11.5 4.2 5.9 0.8 0.6 3.5 0.6 5.5 4.1 7.5 0.6 10.2 0.6 6.8 5.9 10.4 11.5 7.6 11.5 5.5 7.8z" transform="translate(-1717 -3612) translate(1720 3613) translate(11 19)">
+								</path>
+								<path d="M1717 3612H1757V3654H1717z" transform="translate(-1717 -3612)">
 
-                                    </path>
-                                    <path fill="white" fill-rule="nonzero" d="M18.4 23.2c0-.6-.2-1-.5-1.2-.3-.2-.7-.4-1.3-.4h-2.1v3.2h2.1c.5 0 1-.1 1.3-.4.4-.3.5-.7.5-1.2zm2.3-.1c0 1.3-.3 2.2-1 2.8-.7.5-1.6.8-2.8.8h-2.3v4h-2.3v-11h4.8c1.1 0 2 .3 2.6.9.7.5 1 1.4 1 2.5z" transform="translate(-1717 -3612) translate(1720 3613)">
+								</path>
+								<g>
+									<path fill="white" d="M13.6 0.9L7.9 8.3 4.9 4.7 0.5 9.9 6.7 9.9 9.2 9.9 20.5 9.9z" transform="translate(-1717 -3612) translate(1720 3613) translate(6 21)">
 
-                                    </path>
-                                    <path fill="white" d="M10.3 5.8L0.2 10.9 0.2 0.7z" transform="translate(-1717 -3612) translate(1720 3613) translate(12 19)">
+									</path>
+									<path fill="white" fill-rule="nonzero" d="M3.3 11.5L0.6 11.5 4.2 5.9 0.8 0.6 3.5 0.6 5.5 4.1 7.5 0.6 10.2 0.6 6.8 5.9 10.4 11.5 7.6 11.5 5.5 7.8z" transform="translate(-1717 -3612) translate(1720 3613) translate(11 19)">
 
-                                    </path>
-                                    <g class="xsGsu" stroke-linejoin="bevel" stroke-width="1.003">
-                                        <path fill="blue" d="M32.5 41.5L0.5 41.5 0.5 0.5 20 0.5 32.5 13.4z" transform="translate(-1717 -3612) translate(1720 3613)">
+									</path>
+									<path fill="white" fill-rule="nonzero" d="M18.4 23.2c0-.6-.2-1-.5-1.2-.3-.2-.7-.4-1.3-.4h-2.1v3.2h2.1c.5 0 1-.1 1.3-.4.4-.3.5-.7.5-1.2zm2.3-.1c0 1.3-.3 2.2-1 2.8-.7.5-1.6.8-2.8.8h-2.3v4h-2.3v-11h4.8c1.1 0 2 .3 2.6.9.7.5 1 1.4 1 2.5z" transform="translate(-1717 -3612) translate(1720 3613)">
 
-                                        </path>
-                                        <path d="M19 13.4L31.9 13.4 31.3 12.7 20 1.2 19.4 0.5z" transform="translate(-1717 -3612) translate(1720 3613)">
+									</path>
+									<path fill="white" d="M10.3 5.8L0.2 10.9 0.2 0.7z" transform="translate(-1717 -3612) translate(1720 3613) translate(12 19)">
 
-                                        </path>
-                                    </g>
-                                    <g fill="white">
-                                        <path fill="white" d="M.5 4H10.5V5H.5zM.5 0H10.5V1H.5zM5.5 12L10.5 8 .5 8z" transform="translate(-1717 -3612) translate(1720 3613) translate(10.963 19.09)">
+									</path>
+									<g class="xsGsu" stroke-linejoin="bevel" stroke-width="1.003">
+										<path fill="blue" d="M32.5 41.5L0.5 41.5 0.5 0.5 20 0.5 32.5 13.4z" transform="translate(-1717 -3612) translate(1720 3613)">
 
-                                        </path>
-                                    </g>
-                                </g>
-                            </g>
-                        </svg>
-                        <a href="@selectedProject.DownloadLink">Download Report</a>
-                    </div>
-                }
-            </div>
-        }
-        else if (currentViewMode == ViewMode.ThreeDModel)
-        {
-            <div>
-                <ZacharyKilburn_BlazorWASM.RazorComponents._3DViewer threeDView=@selectedProject.ThreeDView />
-            </div>
-        }
-        else if (currentViewMode == ViewMode.Subpages)
-        {
-            <div class="project-container">
-                <div class="project-subcontainer">
-                    @if (currentSubPage.threeDViews.Count > 0)
-                    {
-                        <div>
-                            <ZacharyKilburn_BlazorWASM.RazorComponents._3DViewer threeDViews=@currentSubPage.threeDViews />
-                        </div>
-                    }
-                    else if (currentSubPage.SubPageImage!="")
-                    {
-                        <div class="project-image">
+										</path>
+										<path d="M19 13.4L31.9 13.4 31.3 12.7 20 1.2 19.4 0.5z" transform="translate(-1717 -3612) translate(1720 3613)">
 
-                            <img src="@currentSubPage.SubPageImage">
+										</path>
+									</g>
+									<g fill="white">
+										<path fill="white" d="M.5 4H10.5V5H.5zM.5 0H10.5V1H.5zM5.5 12L10.5 8 .5 8z" transform="translate(-1717 -3612) translate(1720 3613) translate(10.963 19.09)">
 
-                        </div>
-                    }
-                    @if(currentSubPage.SubPagePDF!="")
-                    {
+										</path>
+									</g>
+								</g>
+							</g>
+						</svg>
+						<a href="@selectedProject.DownloadLink">Download Report</a>
+					</div>
+				}
+			</div>
+		}
+		else if (currentViewMode == ViewMode.ThreeDModel)
+		{
+			<div>
+				<ZacharyKilburn_BlazorWASM.RazorComponents._3DViewer threeDView=@selectedProject.ThreeDView />
+			</div>
+		}
+		else if (currentViewMode == ViewMode.Subpages)
+		{
+			<div class="project-container">
+				<div class="project-subcontainer">
+					@if (currentSubPage.threeDViews.Count > 0)
+					{
+						<div>
+							<ZacharyKilburn_BlazorWASM.RazorComponents._3DViewer threeDViews=@currentSubPage.threeDViews />
+						</div>
+					}
+					else if (currentSubPage.SubPageImage != "")
+					{
+						<div class="project-image">
 
-                        <div class="pdf-embed">
-                            <object data="@normalPDF(currentSubPage.SubPagePDF)" type="application/pdf">
-                            </object>
-                        </div>
-                    }
-                    @if (currentSubPage.ContainedBoardDesigns != null)
-                    {
-                        <div class="project-boards">
-                            <table class=" board-table">
-                                <tbody>
-                                    @foreach (var b in currentSubPage.ContainedBoardDesigns)
-                                    {
-                                        Board brd = BoardLoader.GetBoardByPN(b);
-                                        if (brd != null)
-                                        {
-                                            <tr>
+							<img src="@currentSubPage.SubPageImage">
 
-                                                <td> <img src="@brd.BoardMainImage" /></td>
-                                                <td> <a href="@brd.BoardHref">@brd.BoardTitle</a></td>
+						</div>
+					}
+					else if (currentSubPage.SubPagePDF != "")
+					{
 
-                                            </tr>
-                                        }
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
-                    }
-                </div>
-                <div class="project-description">
-                    <p>@currentSubPage.SubPageDescription</p>
-                </div>
+						<div class="pdf-embed">
+							<object data="@normalPDF(currentSubPage.SubPagePDF)" type="application/pdf">
+							</object>
+						</div>
+					}
+					else if (currentSubPage.ContainedBoardDesigns != null)
+					{
+						<div class="project-boards">
+							<table class=" board-table">
+								<tbody>
+									@foreach (var b in currentSubPage.ContainedBoardDesigns)
+									{
+										Board brd = BoardLoader.GetBoardByPN(b);
+										if (brd != null)
+										{
+											<tr>
+
+												<td> <img src="@brd.BoardMainImage" /></td>
+												<td> <a href="@brd.BoardHref">@brd.BoardTitle</a></td>
+
+											</tr>
+										}
+									}
+								</tbody>
+							</table>
+						</div>
+					}
+				</div>
+				@if (currentSubPage.SubPageDescription != string.Empty)
+				{
+					<div class="project-description">
+						<p>@currentSubPage.SubPageDescription</p>
+					</div>
+				}
 
 
-            </div>
+			</div>
 
-        }
-    </div>
+		}
+	</div>
 }
 
 @code {
-    [Parameter] public string? projectTitle { get; set; }
+	[Parameter] public string? projectTitle { get; set; }
 
-    enum ViewMode
-    {
-        Main,
-        ThreeDModel,
-        Subpages,
-    }
+	enum ViewMode
+	{
+		Main,
+		ThreeDModel,
+		Subpages,
+	}
 
-    public ProjectSubPage? currentSubPage = null;
+	public ProjectSubPage? currentSubPage = null;
 
-    private ViewMode currentViewMode = ViewMode.Main;
+	private ViewMode currentViewMode = ViewMode.Main;
 
-    private Project? selectedProject;
+	private Project? selectedProject;
 
-    private void SelectProject(string pref)
-    {
-        _nav.NavigateTo(pref);
+	private void SelectProject(string pref)
+	{
+		_nav.NavigateTo(pref);
 
-    }
+	}
 
-    private string PDFsuffix = @"#toolbar=0&navpanes=0&view=FitWidth";
+	private string PDFsuffix = @"#toolbar=0&navpanes=0&view=FitWidth";
 
-    //<iframe src="@buildgoogleURL(board.BoardPDF)" style="width:100%; height:650px;" frameborder="0"></iframe>
-    private string normalPDF(string pdffile)
-    {
-        return pdffile + PDFsuffix;
-    }
-    private void SelectPage(ProjectSubPage page)
-    {
-        currentViewMode = ViewMode.Subpages;
-        currentSubPage = page;
+	//<iframe src="@buildgoogleURL(board.BoardPDF)" style="width:100%; height:650px;" frameborder="0"></iframe>
+	private string normalPDF(string pdffile)
+	{
+		return pdffile + PDFsuffix;
+	}
+	private void SelectPage(ProjectSubPage page)
+	{
+		currentViewMode = ViewMode.Subpages;
+		currentSubPage = page;
 
-    }
-    private void SelectPage(ViewMode v)
-    {
+	}
+	private void SelectPage(ViewMode v)
+	{
 
-        currentViewMode = v;
-        currentSubPage = null;
-    }
+		currentViewMode = v;
+		currentSubPage = null;
+	}
 
-    protected override void OnParametersSet()
-    {
-        if (projectTitle != null)
-        {
-            currentViewMode = ViewMode.Main;
-            selectedProject = _projects.GetProjectByHref(projectTitle);
-        }
-        else
-        {
-            selectedProject = null;
-        }
-        MessageService.SendMessage("projectsload");
-        base.OnParametersSet();
-    }
+	protected override void OnParametersSet()
+	{
+		if (projectTitle != null)
+		{
+			currentViewMode = ViewMode.Main;
+			selectedProject = _projects.GetProjectByHref(projectTitle);
+		}
+		else
+		{
+			selectedProject = null;
+		}
+		MessageService.SendMessage("projectsload");
+		base.OnParametersSet();
+	}
 
 
-    private List<string> messages = new List<string>();
-    protected override void OnInitialized()
-    {
-        // subscribe to OnMessage event
-        MessageService.OnMessage += MessageHandler;
-    }
+	private List<string> messages = new List<string>();
+	protected override void OnInitialized()
+	{
+		// subscribe to OnMessage event
+		MessageService.OnMessage += MessageHandler;
+	}
 
-    public void Dispose()
-    {
-        // unsubscribe from OnMessage event
-        MessageService.OnMessage -= MessageHandler;
-    }
+	public void Dispose()
+	{
+		// unsubscribe from OnMessage event
+		MessageService.OnMessage -= MessageHandler;
+	}
 
-    private void MessageHandler(string message)
-    {
+	private void MessageHandler(string message)
+	{
 
-    }
+	}
 }
