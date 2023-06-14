@@ -24,25 +24,13 @@
 
     <div class="boardlanding-container">
 
-        @if (board.Projects != null)
-        {
-            if (board.Projects.Count == 1)
-            {
-                <div class="boardlanding-partof">Part of the &nbsp<a href="@board.Projects.First().ProjectHref">@board.Projects.First().ProjectTitle</a>&nbsp Project</div>
-            }
-            else if (board.Projects.Count == 2)
-            {
-                <div class="boardlanding-partof">Part of &nbsp<a href="@board.Projects.First().ProjectHref">@board.Projects.First().ProjectTitle</a>&nbsp and &nbsp<a href="@board.Projects.ElementAt(1).ProjectHref">@board.Projects.ElementAt(1).ProjectTitle</a> </div>
-            }
-        }
+      
         <div class="boardlanding-image">
             <img src="@board.BoardMainImage">
         </div>
-    </div>
     <div class="boardlanding-description">
 
-        <div>
-            @((MarkupString)Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(HttpUtility.HtmlEncode(board.BoardDescription), "\n", "<br/>"), "hstart", "<h4>"), "hend", "</h4>"), "linkstart", "<a style=\"display:contents;\""), "hrefend", ">"), "linkend", "</a>"))
+            @((MarkupString)Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(HttpUtility.HtmlEncode(board.BoardDescription), "\n", "<br/>"), "hstart", "<div style=\"font-weight:bold;\">"), "hend", "</div>"), "linkstart", "<a style=\"display:contents;\""), "hrefend", ">"), "linkend", "</a>"))
 
         </div>
     </div>

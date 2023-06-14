@@ -4,6 +4,10 @@
     vertical-align: text-top;
     top: -2px;
 }
+.title {
+    font-size: 1.5em;
+}
+
 
 .nav-item-collapsible {
     width: 100% !important;
@@ -51,8 +55,17 @@
     height: 5rem;
     background-color: rgba(0,0,0,0.4);
 }
-        
+
+/* For Desktop Devices */
 @media (min-width: 891px) {
+    .title {
+        display:flex;
+        font-size: 3em;
+    }
+    .container-fluid {
+        display: flex;
+        justify-content: center;
+    }
     .top-row {
         display: flex;
         width: 100%;
@@ -73,11 +86,6 @@
         flex-direction: row;
         justify-content: center;
     }
-    .nav-item {
-        font-size: 0.9rem;
-        padding-bottom: 0.5rem;
-        display: flex;
-    }
     .collapse {
         /* Never collapse the sidebar for wide screens */
         display: block;
@@ -91,7 +99,7 @@
         justify-content:center;
     }
     .nav-item {
-        font-size: 0.9rem;
+        font-size: 1.3rem;
         padding-bottom: 0.5rem;
         display: flex;
     }
