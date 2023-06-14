@@ -5,8 +5,10 @@
 
 @if (selectedBoard == null)
 {
-	<div class="top-row" style="height:3em;">
-		<h3>Boards</h3>
+	<div class="top-row-body">
+		<div class="page-header">
+			<h3>Boards</h3>
+		</div>
 	</div>
 	<div class="px-4">
 		<div class="grid-container">
@@ -15,13 +17,13 @@
 				int index = 0;
 				foreach (var b in BoardLoader.Boards)
 				{
-					<div class="grid-item" @onclick="(()=>SelectProject(b.BoardHref))">
+					<a class="grid-item" href="@b.BoardHref" @onclick="(()=>SelectProject(b.BoardHref))">
 
 						<img src="@b.BoardMainImage">
 						<br />
 						<br />
 						<h5 style="align-items:center;">@b.BoardPN - @b.BoardTitle</h5>
-					</div>
+					</a>
 					index++;
 				}
 				@while (index % 3 != 0)
@@ -35,29 +37,46 @@
 }
 else if (selectedBoard != null)
 {
-	<div class="top-row">
-		<div class="board-title">
-			<div class="board-header">
-				<h3>@selectedBoard.BoardPN - @selectedBoard.BoardTitle</h3>
+	<div class="top-row-body">
+		<div class="board-header">
+			<div class="board-title">
+				@selectedBoard.BoardPN - @selectedBoard.BoardTitle
 			</div>
-			<div class="board-header-sub">
-				<h3>@selectedBoard.BoardDate</h3>
+			<div class="board-date">
+				@selectedBoard.BoardDate
 			</div>
 		</div>
-		@if (ViewMode == modeOverview)
-		{
-			<div class="board-controls">
+		<hr />
+		<div class="board-controls">
+			@if (ViewMode == modeOverview)
+			{
 				<button class="mode-btn active" @onclick="(()=>ViewMode=modeOverview)">Overview</button>
 				<button class="mode-btn" @onclick="(()=>ViewMode=modePDF)">Design</button>
-			</div>
-		}
-		else if (ViewMode == modePDF)
-		{
-			<div class="board-controls">
+			}
+			else if (ViewMode == modePDF)
+			{
 				<button class="mode-btn" @onclick="(()=>ViewMode=modeOverview)">Overview</button>
 				<button class="mode-btn active" @onclick="(()=>ViewMode=modePDF)">Design</button>
-			</div>
-		}
+			}
+			@if (selectedBoard.Projects != null)
+			{
+				foreach (var p in selectedBoard.Projects)
+				{
+					if(p.ProjectTitleShort!=string.Empty)
+					{
+						<a class="mode-btn button" href="@p.ProjectHref">@p.ProjectTitleShort</a>
+					}
+					else
+					{
+						<a class="mode-btn button" href="@p.ProjectHref">@p.ProjectTitle</a>
+						
+					}
+
+				}
+
+
+			}
+		</div>
 	</div>
 	<div class="px-4">
 		<div class="board-container">

@@ -6,11 +6,6 @@ div.education-body {
     background-color: rgb(255,255,255);
 }
 
-div.education-header {
-    justify-content: flex-start;
-    display: flex;
-    width: 100%;
-}
 
 div.education-container {
     font-size: 1.5em;
@@ -41,22 +36,17 @@ div.bulleted-header {
 div.bulleted-item {
     padding-left: 40px;
 }
-
+/* For Mobile Devices */
 @media (max-width: 890.98px) {
-    .top-row {
+/*    .top-row {
         height: 3rem;
-    }
+    }*/
+
+
     div.education-body {
         margin: 0.5em 0.5em;
         background-color: rgb(255,255,255);
     }
-
-    div.education-header {
-        justify-content: center;
-        display: flex;
-        width: 100%;
-    }
-
     div.education-container {
         font-size: 1em;
         text-align: center;
@@ -91,18 +81,14 @@ div.bulleted-item {
 
 }
 
+/* For Desktop Devices */
 @media (min-width: 891px) {
+
 
 
     div.education-body {
         margin: 0em 5em;
         background-color: rgb(255,255,255);
-    }
-
-    div.education-header {
-        justify-content: flex-start;
-        display: flex;
-        width: 100%;
     }
 
     div.education-container {

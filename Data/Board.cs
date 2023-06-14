@@ -23,7 +23,7 @@
 			BoardMainImage = "Z1-PowerSupply.png",
 			BoardPDF = "Z1 - PowerSupply.pdf",
             BoardDescription =
-            "This power supply board... makes me very nostaglic for knowing as little as I did at the time. While this board did work, its approach was very different to the approach that I would take considering the 5 years of experience that I have now. " +
+            "hstart Board Description hend This power supply board... makes me very nostaglic for knowing as little as I did at the time. While this board did work, its approach was very different to the approach that I would take considering the 5 years of experience that I have now. " +
 			"Somehow this board did not immediately blow up while testing. Anyway, I digress. AC input to the board was filtered and rectified into a large capacitor bank and then fed to a buck regulator that could be controlled by " +
             "linkstart href=boards/Z2 hrefend Z2 - Brainbox linkend." +		
              "\n\n hstart Design hend" +
@@ -43,7 +43,7 @@
 			BoardMainImage = "Z2-Brainbox.png",
             BoardPDF = "Z2 - Brainbox.pdf",
             BoardDescription =
-            "This board was build with purpose in mind. As both a HMI device and control unit for the EDM Power Supply project, this board served as the face of the enclosure. " +
+            "hstart Board Description hend This board was build with purpose in mind. As both a HMI device and control unit for the EDM Power Supply project, this board served as the face of the enclosure. " +
             "It also interfaced with the " +
             "linkstart href=boards/Z1 hrefend Z1 - Power Supply board linkend" +
 			" to gather feedback and close the loop for the constant voltage and constant current control.",
@@ -61,7 +61,7 @@
 			BoardMainImage = "Z3-NeopixelBoard.png",
             BoardPDF = "Z3 - Neopixel Board.pdf",
             BoardDescription =
-            "The initial NeoPixel driving board, build on the Arduino platform architecture. " +
+            "hstart Board Description hend The initial NeoPixel driving board, build on the Arduino platform architecture. " +
             "It has served its purpose being a quick time-to-market development platform that for some reason I tend to use in my designs, " +
 			"despite my general disagreement that Arduino is a true engineering platform. It definitely has its place. " +
              "\n\n hstart Design hend" +
@@ -80,7 +80,7 @@
 			BoardMainImage = "Z4-PIC32Board.png",
             BoardPDF = "Z4 - PIC32 Board.pdf",
             BoardDescription =
-            "This board was build to expand some of the NeoPixel audio sampling workload I was playing with on the Arduino platform. " +
+            "hstart Board Description hend This board was build to expand some of the NeoPixel audio sampling workload I was playing with on the Arduino platform. " +
             "Previously I was utilizing" + 
             "linkstart href=boards/Z3 hrefend Z4 - NeoPixel Board linkend" +
             " as a platform for my NeoPixel development."+
@@ -98,7 +98,7 @@
 			BoardMainImage = "Z5-RFAmp.png",
             BoardPDF = "Z5 - RF Amp.pdf",
 			BoardDescription =
-			"A research concept piece that allows for amplification of RF signals for monitoring with an embedded controller. " +
+            "hstart Board Description hend A research concept piece that allows for amplification of RF signals for monitoring with an embedded controller. " +
 			"More of a curiousity and fun project that never really went into a finalized version. Maybe more usage coming in the future",
 		};
 		public static readonly Board Z6 = new()
@@ -110,7 +110,7 @@
 			BoardMainImage = "Z6-RFAmpArray.png",
             BoardPDF = "Z6 - RF Amp Array Board.pdf",
 			BoardDescription =
-			"Board was never actually ordered, due to cost and lack of pushing the project further. "+
+            "hstart Board Description hend Board was never actually ordered, due to cost and lack of pushing the project further. " +
             "\n\n hstart Design hend" +
             "This board would adapt to 16 of the " +
             "linkstart href=boards/Z5 hrefend Z5 - RF Amp boards linkend " +
@@ -127,7 +127,7 @@
 			BoardMainImage = "Z7-LevelTranslator.png",
             BoardPDF = "Z7 - Level Translator.pdf",
 			BoardDescription =
-			"This board has actually come in handy multiple times when needing to level translate signals between different voltage domains on an odds and ends project. " +
+            "hstart Board Description hend This board has actually come in handy multiple times when needing to level translate signals between different voltage domains on an odds and ends project. " +
 			"Based on the " +
             "linkstart href=https://www.ti.com/product/SN74LV4T125 hrefend SN74LV4T125 linkend, " +
 			"the board supports 4 channels of up-converting from 2 volts up to 5V signals with 16mA of drive current. " +
@@ -144,7 +144,7 @@
 			BoardMainImage = "Z12-NeopixelBoardV2.png",
             BoardPDF = "Z12 - Neopixel Board V2.pdf",
 			BoardDescription =
-			"The second generation Neopixel driving board with many new features " +
+            "hstart Board Description hend The second generation Neopixel driving board with many new features " +
 			"The board was actually never procured, and there are likely show stopping issues " +
 			"with it that have yet to be discovered",
 		};
@@ -157,7 +157,7 @@
 			BoardMainImage = "Z18-IndexFrunkFan.png",
             BoardPDF = "Z18 - Index Frunk Fan.pdf",
             BoardDescription =
-            "Just before 2019's eruption of stay at home happened, I ordered myself a Valve Index VR headset. " +
+            "hstart Board Description hend Just before 2019's eruption of stay at home happened, I ordered myself a Valve Index VR headset. " +
             "Over the next 2 years I got a lot of time playing some pretty sweaty games. " +
             "\n\n hstart Design hend" +
             "I decided to design and build my own solution for cooling myself during extended play. Combined with " +
@@ -173,7 +173,7 @@
 			BoardMainImage = "Z19-IndexFrunkPower.png",
             BoardPDF = "Z19 - Index Frunk Power.pdf",
             BoardDescription =
-            "Just before 2019's eruption of stay at home happened, I ordered myself a Valve Index VR headset. " +
+            "hstart Board Description hend Just before 2019's eruption of stay at home happened, I ordered myself a Valve Index VR headset. " +
 			"Over the next 2 years I got a lot of time playing some pretty sweaty games. " +
             "\n\n hstart Design hend" +
             "I decided to design and build my own solution for cooling myself during extended play. Combined with " +
@@ -189,7 +189,7 @@
 			BoardMainImage = "Z20-ESPBreakout.png",
             BoardPDF = "Z20 - ESP32 Breakout.pdf",
             BoardDescription =
-            "This board was intended to be a development platform for some projects that I had been dreaming up involving smart home and other remote control ideas that I had been playing with. " +
+            "hstart Board Description hend This board was intended to be a development platform for some projects that I had been dreaming up involving smart home and other remote control ideas that I had been playing with. " +
             "\n\n hstart Design hend" +
             "Very similar to " +
             "linkstart href=boards/Z21 hrefend Z21 - ESP Holder linkend, " +
@@ -207,7 +207,7 @@
 			BoardMainImage = "Z21-ESPHolder.png",
             BoardPDF = "Z21 - ESP32 Holder.pdf",
             BoardDescription =
-            "This board was intended to be a development platform for some projects that I had been dreaming up involving smart home and other remote control ideas that I had been playing with. " +
+            "hstart Board Description hend This board was intended to be a development platform for some projects that I had been dreaming up involving smart home and other remote control ideas that I had been playing with. " +
 			"\n\n hstart Design hend" +
             "Based on the " +
             "linkstart href=https://www.digikey.com/short/hw5tvz75 hrefend ESP32 Development Module linkend" +
@@ -223,7 +223,7 @@
 			BoardMainImage = "Z22-RelayPlatform.png",
             BoardPDF = "Z22 - Relay Platform.pdf",
             BoardDescription =
-            "Build specifically for the fireworks mortar project, this board was the backbone of the fireworks ignitor. " +
+            "hstart Board Description hend Build specifically for the fireworks mortar project, this board was the backbone of the fireworks ignitor. " +
             "\n\n hstart Design hend" +
             "This relay board was designed to take 5V CMOS control signals to actuate relays that would short the battery terminals over a small electric ignitor. " +
 			"While the battery is sure to complain about the sudden short appearing on it for a very brief moment, it would be relieved a few microseconds later when the filament bursts into sparky flames and opens the circuit. " +
@@ -242,7 +242,7 @@
 			BoardMainImage = "Z23-QuickConnect2Pos.png",
             BoardPDF = "Z23 - Quick Connect 2Pos.pdf",
             BoardDescription =
-            "Build specifically for the fireworks mortar project, this small interconnect board provides what was planned to be a rapid connection point for firework ignitors to be connected between reloads of the mortar tubes. " +
+            "hstart Board Description hend Build specifically for the fireworks mortar project, this small interconnect board provides what was planned to be a rapid connection point for firework ignitors to be connected between reloads of the mortar tubes. " +
             "\n\n hstart Design hend" +
             "Hindsight showed that these quick connectors were not as robust as one would have hoped, or nearly as easy to insert wires into when the sun goes down (typically when you are reloading fireworks). " +
             "A new revision is definitely necessary to improve this in the future, but that is what engineering is all about, right?",
@@ -260,7 +260,7 @@
 			BoardMainImage = "Z24-ArduinoMegaAdapter.png",
             BoardPDF = "Z24 - Arduino Mega Adapter.pdf",
             BoardDescription =
-            "Somewhat customized for use in the Firework Mortar Launcher, I wanted a way to breakout multiple I/O to a connector that was more robust than jamming 0.1\" dupont leads into an arduino. " +
+            "hstart Board Description hend Somewhat customized for use in the Firework Mortar Launcher, I wanted a way to breakout multiple I/O to a connector that was more robust than jamming 0.1\" dupont leads into an arduino. " +
             "\n\n hstart Design hend" +
 			"This breakout board provides 30 I/O in a better format using linkstart href=https://www.molex.com/en-us/products/connectors/wire-to-board-connectors/clik-mate-connectors hrefend Molex Clik-Mate linkend connectors, as well as providing the ability to inject power for the" +
             "arduino using a locking connector, another molex favorite, the linkstart href=https://www.molex.com/en-us/products/connectors/wire-to-board-connectors/micro-fit-connectors hrefend Micro-Fit linkend ",
@@ -278,7 +278,7 @@
 			BoardMainImage = "Z25-AdafruitBluefruitBreakout.png",
             BoardPDF = "Z25 - Adafruit Bluefruit LE UART Breakout Board.pdf",
             BoardDescription =
-            "A very simple breakout board to breakout linkstart href=https://www.adafruit.com/product/2479 hrefend Adafruits bluetooth adapter linkend. " +
+            "hstart Board Description hend A very simple breakout board to breakout linkstart href=https://www.adafruit.com/product/2479 hrefend Adafruits bluetooth adapter linkend. " +
             "Need I say anymore? " +
             "\n\n hstart Design hend" +
             "This board serves as a means to break out the 0.1\" header to something more palatable for use inside of builds. " +
@@ -298,7 +298,7 @@
 			BoardMainImage = "Z26-TPS84A20DCDCConverter.png",
             BoardPDF = "Z26 - TPS84A20 DC-DC Converter.pdf",
             BoardDescription =
-            "While I have only used this regulator for a single design so far, I was always finding myself needing a 5 volt source from batteries, and was tenative to use USB power banks when I needed higher currents. " +
+            "hstart Board Description hend While I have only used this regulator for a single design so far, I was always finding myself needing a 5 volt source from batteries, and was tenative to use USB power banks when I needed higher currents. " +
             "\n\n hstart Design hend" +
             "Introducing the linkstart href=https://www.ti.com/product/TPS84A20 hrefend TPS84A20 linkend capable of regulating up to 17 volts down to 5 with a current up to 10A. No more wishing I had more power.. yet. " +
 			"While its a very simple design, simple is usually better.",
@@ -316,7 +316,7 @@
 			BoardMainImage = "Z27-LEDDigit.png",
             BoardPDF = "Z27 - LED Digit Board.pdf",
             BoardDescription =
-            "For when you want a 7-segment display that is larger than most COTS devices on Digi-Key, just make your own. " +
+            "hstart Board Description hend For when you want a 7-segment display that is larger than most COTS devices on Digi-Key, just make your own. " +
             "At least thats what I thought when it came to designing my own scoreboard." +
             "\n\n hstart Design hend" +
             "Featuring 14 SMT linkstart href=https://www.adafruit.com/product/1655 hrefend NeoPixel 5050 RGB LEDs linkend, each of the segments of this 7-segment LED has 2 light sources that can provide any color. " +
@@ -334,8 +334,8 @@
 			BoardHref = "boards/Z28",
 			BoardMainImage = "Z28-LEDDigitTH.png",
             BoardPDF = "Z28 - LED Digit TH Board.pdf",
-			BoardDescription = 
-            "This 7-Segment Display was an unconventional iteration of the " +
+			BoardDescription =
+            "hstart Board Description hend This 7-Segment Display was an unconventional iteration of the " +
             "linkstart href=boards/Z27 hrefend Z27 - LED Digit Board linkend " +
             "with the functional change being the brightness of the LEDs. " +
             "\n\n hstart Design hend" +
