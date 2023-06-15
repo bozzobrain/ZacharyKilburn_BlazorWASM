@@ -2,22 +2,27 @@
 }
 
 .board-header {
-    justify-content: flex-start;
+    justify-content: center;
     display: flex;
     width: 100%;
     flex-direction: column;
+    height:10em;
+    text-align:center;
 }
-.board-title{
-    display:flex;
+.board-title {
+    display: flex;
+    justify-content: center;
 }
 .board-date {
     color: rgb(128, 128, 128);
+    justify-content: center;
 }
 
 .board-controls {
     display: flex;
     width: 100%;
     padding-bottom:5px;
+    height:4em;
 }
 
 

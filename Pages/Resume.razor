@@ -1,22 +1,4 @@
 ﻿@page "/resume"
-<style>
-	.pdf-embed {
-		overflow: hidden !important;
-		height: calc(100vh - 7rem);
-		width: 100%;
-		padding-bottom: 47%;
-		position: relative;
-		margin: auto;
-	}
-
-		.pdf-embed embed,
-		.pdf-embed iframe,
-		.pdf-embed object {
-			height: 100%;
-			position: absolute;
-			margin: auto;
-			width: 100%;
-		}</style>
 <div class="top-row-body">
 	<div class="page-header">
 		<h3>Resume</h3>
@@ -24,7 +6,7 @@
 </div>
 <div class="px-4">
 	<div class="pdf-embed">
-		<object data="Zachary Kilburn.pdf#toolbar=0&navpanes=0&view=FitWidth" type="application/pdf" />
+		<object data="Zachary Kilburn.pdf#navpanes=0&view=FitWidth" type="application/pdf" />
 	</div>
 </div>
 

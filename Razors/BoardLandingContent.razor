@@ -1,23 +1,5 @@
 ﻿@using System.Text.RegularExpressions;
 @using System.Web
-<style>
-    .pdf-embed {
-        overflow: hidden !important;
-        height: calc(100vh - 7rem);
-        width: 100%;
-        padding-bottom: 47%;
-        position: relative;
-        margin: auto;
-    }
-
-        .pdf-embed embed,
-        .pdf-embed iframe,
-        .pdf-embed object {
-            height: 100%;
-            position: absolute;
-            margin: auto;
-            width: 100%;
-        }</style>
 
 @if (ViewMode == "overview")
 {
@@ -30,14 +12,14 @@
         </div>
     <div class="boardlanding-description">
 
-            @((MarkupString)Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(HttpUtility.HtmlEncode(board.BoardDescription), "\n", "<br/>"), "hstart", "<div style=\"font-weight:bold;\">"), "hend", "</div>"), "linkstart", "<a style=\"display:contents;\""), "hrefend", ">"), "linkend", "</a>"))
+            @((MarkupString)Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(HttpUtility.HtmlEncode(board.BoardDescription), "\n", "<br/>"), "hstart", "<div style=\"font-family: questrial, sans-serif;font-weight:bold;\">"), "hend", "</div>"), "linkstart", "<a style=\"display:contents;\""), "hrefend", ">"), "linkend", "</a>"))
 
         </div>
     </div>
 }
 else if (ViewMode == "pdf")
 {
-    <div class="pdf-embed">
+    <div class="pdf-embed pdf-boards-projects">
         <object data="@normalPDF(board.BoardPDF)" type="application/pdf">
         </object>
     </div>

@@ -51,7 +51,27 @@ a.mode-btn {
     .mode-btn:hover,  {
         background-color: rgba(0, 148, 255, 0.1) !important;
     }
+.pdf-embed {
+    overflow: hidden !important;
+    height: calc(100vh - 15em);
+    width: 100%;
+    padding-bottom: calc(100vh - 15em);
+    position: relative;
+    margin: auto;
+}
 
+    .pdf-embed embed,
+    .pdf-embed iframe,
+    .pdf-embed object {
+        height: 100%;
+        position: absolute;
+        margin: auto;
+        width: 100%;
+    }
+.pdf-boards-projects {
+    height: calc(100vh - 29em) !important;
+    padding-bottom: calc(100vh - 29em) !important;
+}
 .top-row {
     justify-content: flex-start;
     height: 5rem;

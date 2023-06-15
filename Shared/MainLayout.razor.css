@@ -8,6 +8,8 @@
 main {
     display:flex;
     flex-direction:column;
+    height:calc(100vh - 15em);
+    overflow-y:auto;
 }
 
 .sidebar {
@@ -37,12 +39,22 @@ main {
         overflow: hidden;
         text-overflow: ellipsis;
     }
-
+footer {
+    display:flex;
+    justify-content: center;
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+    padding-left: 0rem !important;
+    padding-right: 0rem !important;
+    height:5em;
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+}
 @media (max-width: 890.98px) {
     .top-row:not(.auth) {
         display: none;
     }
-   
+
 
     .top-row.auth {
         justify-content: space-between;
@@ -51,8 +63,12 @@ main {
     .top-row ::deep a, .top-row ::deep .btn-link {
         margin-left: 0;
     }
-}
 
+    main {
+        height: calc(100vh - 10em);
+        overflow-y: hidden;
+    }
+}
 @media (min-width: 891px) {
     .page {
         flex-direction: column;

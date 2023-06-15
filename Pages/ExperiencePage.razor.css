@@ -1,6 +1,9 @@
 ﻿body {
 }
-
+.bulleted-header {
+    font-family: questrial, sans-serif;
+    font-weight: bold;
+}
 /* For Mobile Devices */
 @media (max-width: 890.98px) {
 /*    .top-row {
@@ -55,7 +58,6 @@
     div .bulleted-header {
         margin: 0em 0vw;
         width: 100%;
-        font-weight:bold;
     }
 
     div.bulleted-item {
@@ -120,7 +122,6 @@
 
     div.bulleted-header {
         width: 30vw;
-        font-weight: bold;
     }
 
     div.bulleted-item {
