@@ -19,10 +19,11 @@
 }
 
 .board-controls {
+    justify-content: center;
     display: flex;
     width: 100%;
-    padding-bottom:5px;
-    height:4em;
+    padding-bottom: 5px;
+    height: 4em;
 }
 
 
@@ -36,7 +37,10 @@
 /*    .top-row {
         height: 8rem;
     }*/
-    .board-title {
+    .board-header {
+        height:5em;
+    }
+        .board-title {
         flex-direction: column;
     }
     .board-title h3 {
@@ -50,7 +54,7 @@
     }
 
     .board-controls {
-        justify-content: flex-start;
+        height:3em;
         width: 100%;
     }
 }
