@@ -88,7 +88,11 @@
             "It turns out that attempting to push 16MHz architectures to perform FFT maths can be a major bottleneck in your development process. " +
 			"With the PIC32s internal floating point ALU, it really accelerated the computation rate for realtime FFT approximations with its analog front end. " +
 			"The board was also build to be generic enough to provide a platform for developing any other crazy ideas that came to mind.",
-        };
+			Projects = new()
+			{
+				ProjectLoader.NeoPixelFFT,
+			},
+		};
 		public static readonly Board Z5 = new()
         {
             BoardPN = "Z5",
@@ -134,6 +138,10 @@
             "\n\n hstart Design hend" +
             "Measuring a meager 1.1\" x 0.74\" makes it an awesome tool to have lying around when you get into a bind. " +
 			"I have also found use for this board when I have a weak driving signal that needs to drive a moderate load.",
+			Projects = new()
+			{
+				ProjectLoader.NeoPixelFFT,
+			},
 		};
 		public static readonly Board Z12 = new()
         {
@@ -162,8 +170,12 @@
             "\n\n hstart Design hend" +
             "I decided to design and build my own solution for cooling myself during extended play. Combined with " +
             "linkstart href=boards/Z19 hrefend Z19 - Index Frunk Power linkend, " +
-            "this design inserts into the front of the index and provides a bit of airflow, benefiting both the electronics in the headset, and the VR players sweaty forehead."
-        };
+            "this design inserts into the front of the index and provides a bit of airflow, benefiting both the electronics in the headset, and the VR players sweaty forehead.",
+			Projects = new()
+			{
+				ProjectLoader.IndexFan,
+			}
+		};
 		public static readonly Board Z19 = new()
         {
             BoardPN = "Z19",
@@ -178,8 +190,12 @@
             "\n\n hstart Design hend" +
             "I decided to design and build my own solution for cooling myself during extended play. Combined with " +
             "linkstart href=boards/Z18 hrefend Z18 - Index Frunk Fan linkend, " +
-			"this design inserts into the front of the index and provides a bit of airflow, benefiting both the electronics in the headset, and the VR players sweaty forehead."
-        };
+			"this design inserts into the front of the index and provides a bit of airflow, benefiting both the electronics in the headset, and the VR players sweaty forehead.",
+			Projects = new()
+			{
+				ProjectLoader.IndexFan,
+			}
+		};
 		public static readonly Board Z20 = new()
         {
             BoardPN = "Z20",
@@ -286,7 +302,6 @@
             Projects = new()
 			{
 				ProjectLoader.ScoreboardProject,
-				ProjectLoader.FireworkProject,
 			},
 		};
 		public static readonly Board Z26 = new()

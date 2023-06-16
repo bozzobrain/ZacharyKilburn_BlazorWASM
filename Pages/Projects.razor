@@ -118,14 +118,22 @@ else if (selectedProject != null)
 			<div class="project-container">
 				<div class="project-subcontainer">
 					<div class="project-image">
+						@if (selectedProject.ProjectMainVideoLink == string.Empty)
+						{
 
-						<img src="@selectedProject.ProjectMainImage">
+							<img src="@selectedProject.ProjectMainImage">
+						}
+						else
+						{
+							<iframe width="560" height="315" src="@selectedProject.ProjectMainVideoLink" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+							</iframe>
+						}
 
 					</div>
 
 				</div>
 				<div class="project-description">
-					@((MarkupString)Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(HttpUtility.HtmlEncode(selectedProject.ProjectDescription), "\n", "<br/>"), "hstart", "<div style=\"font-family: questrial, sans-serif;font-weight:bold;\">"), "hend", "</div>"), "linkstart", "<a style=\"display:contents;\""), "hrefend", ">"), "linkend", "</a>"))
+					@((MarkupString)Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(HttpUtility.HtmlEncode(selectedProject.ProjectDescription), "\n", "<br/>"), "hstart", "<div style=\"font-family: questrial, sans-serif;font-weight:bold;\">"), "hend", "</div>"), "linkstart", "<a style=\"display:contents;\""), "hrefend", ">"), "linkend", "</a>"), "imgstart", "<img style=\"width=50vw; min-height=50px;\" src="), "imgend", "/>"))
 
 				</div>
 				<div class="project-description">
@@ -139,7 +147,7 @@ else if (selectedProject != null)
 				@if (selectedProject.DownloadLink != "")
 				{
 					<div class="project-description">
-					<ZacharyKilburn_BlazorWASM.RazorComponents.DownloadItem DownloadHref="@selectedProject.DownloadLink" DownloadText="Download Report"></ZacharyKilburn_BlazorWASM.RazorComponents.DownloadItem>
+						<ZacharyKilburn_BlazorWASM.RazorComponents.DownloadItem DownloadHref="@selectedProject.DownloadLink" DownloadText="Download Report"></ZacharyKilburn_BlazorWASM.RazorComponents.DownloadItem>
 					</div>
 				}
 			</div>

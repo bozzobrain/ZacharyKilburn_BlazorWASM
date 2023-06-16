@@ -1,235 +1,346 @@
 ﻿@implements IDisposable
 
 <div class="threed-container">
-    <div class="flex-column col-6 threed-viewer">
-        <Viewer @ref="View3D1" Scene=scene />
-    </div>
+	<div class="flex-column col-6 threed-viewer">
+		<Viewer @ref="View3D1" Scene=scene />
+	</div>
 
-    <div class="threed-controls">
-        <div class="threed-control-button">
-            <button @onclick=SetCamera>Reset Camera</button>
-        </div>
-        @if(threeDViews.Count>0)
-        {
-            foreach(var v in threeDViews)
-            {
-                <div class="threed-control-button">
-                    <button @onclick="(()=>Select3dView(v))">View: @v.ThreeDeeViewName</button>
-                </div>
-            }
-        }
-    </div>
+	<div class="threed-controls">
+		<div class="threed-control-button">
+			<button @onclick="(()=>SetCamera())">Reset Camera</button>
+		</div>
+		@if (threeDViews.Count > 0)
+		{
+			foreach (var v in threeDViews)
+			{
+				<div class="threed-control-button">
+					<button @onclick="(()=>Select3dView(v))">View: @v.ThreeDeeViewName</button>
+				</div>
+			}
+		}
+		@if (EnableToolset)
+		{
+			<div class="threed-control-button">
+				<button @onclick="(()=>changeCameraPos(-toolsetPrecision,0,0))">PosX-</button>
+				<button @onclick="(()=>changeCameraPos(toolsetPrecision,0,0))">PosX+</button>
+			</div>
+			<div class="threed-control-button">
+				<button @onclick="(()=>changeCameraPos(0,-toolsetPrecision,0))">PosY-</button>
+				<button @onclick="(()=>changeCameraPos(0,toolsetPrecision,0))">PosY+</button>
+			</div>
+			<div class="threed-control-button">
+				<button @onclick="(()=>changeCameraPos(0,0,-toolsetPrecision))">PosZ-</button>
+				<button @onclick="(()=>changeCameraPos(0,0,toolsetPrecision))">PosZ+</button>
+			</div>
+
+			<div class="threed-control-button">
+				<button @onclick="(()=>changeCameraLook(-toolsetPrecision,0,0))">LookX-</button>
+				<button @onclick="(()=>changeCameraLook(toolsetPrecision,0,0))">LookX+</button>
+			</div>
+			<div class="threed-control-button">
+				<button @onclick="(()=>changeCameraLook(0,-toolsetPrecision,0))">LookY-</button>
+				<button @onclick="(()=>changeCameraLook(0,toolsetPrecision,0))">LookY+</button>
+			</div>
+			<div class="threed-control-button">
+				<button @onclick="(()=>changeCameraLook(0,0,-toolsetPrecision))">LookZ-</button>
+				<button @onclick="(()=>changeCameraLook(0,0,toolsetPrecision))">LookZ+</button>
+			</div>
+
+			<div class="threed-control-button">
+				<button @onclick="(()=>changeScale(-toolsetPrecision,0,0))">ScaleX-</button>
+				<button @onclick="(()=>changeScale(toolsetPrecision,0,0))">ScaleX+</button>
+			</div>
+			<div class="threed-control-button">
+				<button @onclick="(()=>changeScale(0,-toolsetPrecision,0))">ScaleY-</button>
+				<button @onclick="(()=>changeScale(0,toolsetPrecision,0))">ScaleY+</button>
+			</div>
+			<div class="threed-control-button">
+				<button @onclick="(()=>changeScale(0,0,-toolsetPrecision))">ScaleZ-</button>
+				<button @onclick="(()=>changeScale(0,0,toolsetPrecision))">ScaleZ+</button>
+			</div>
+		}
+	</div>
 </div>
 
+@if (EnableToolset)
+{
+	<div class="threed-control-button">
+
+		<button @onclick="(()=>toolsetPrecision-=10)">- 10</button>
+		<button @onclick="(()=>toolsetPrecision-=1)">- 1</button>
+		<button @onclick="(()=>toolsetPrecision-=0.1f)">-0.1</button>
+		<button>@toolsetPrecision.ToString(".0")</button>
+		<button @onclick="(()=>toolsetPrecision+=0.1f)">+ 0.1</button>
+		<button @onclick="(()=>toolsetPrecision+=1)">+ 1</button>
+		<button @onclick="(()=>toolsetPrecision+=10)">+ 10</button>
+	</div>
+	<div>
+		Camera Pos: @_cameraPos.X.ToString(".0") ,@_cameraPos.Y.ToString(".0") ,@_cameraPos.Z.ToString(".0")
+	</div>
+	<div>
+		Camera Look: @_cameraLook.X.ToString(".0") ,@_cameraLook.Y.ToString(".0") ,@_cameraLook.Z.ToString(".0")
+	</div>
+	<div>
+		Scale: @_scale.X.ToString(".0") ,@_scale.Y.ToString(".0") ,@_scale.Z.ToString(".0")
+	</div>
+}
 @code {
+	private bool EnableToolset = true;
+	private Viewer View3D1 = new();
+	private Scene scene = new Scene();
+	private Guid loadedObjectGuid = Guid.NewGuid();
+	private string msg = string.Empty;
 
-    private Viewer View3D1 = new();
-    private Scene scene = new Scene();
-    private Guid loadedObjectGuid = Guid.NewGuid();
-    private string msg = string.Empty;
+	[Parameter]
+	public ThreeDView? threeDView { get; set; } = null;
+	[Parameter]
+	public List<ThreeDView> threeDViews { get; set; } = new List<ThreeDView>();
 
-    [Parameter]
-    public ThreeDView? threeDView { get; set; } = null;
-    [Parameter]
-    public List<ThreeDView> threeDViews { get; set; } = new List<ThreeDView>();
+	[Parameter]
+	public string DivWidth { get; set; } = "90%";
+	[Parameter]
+	public string DivHeight { get; set; } = "500px";
 
-    [Parameter]
-    public string DivWidth { get; set; } = "90%";
-    [Parameter]
-    public string DivHeight { get; set; } = "500px";
+	private Camera camera;
+	private float toolsetPrecision = 0.1f;
+	Vector3 _cameraPos = new(0, 0, 0), _cameraLook = new(0, 0, 0), _scale = new(0, 0, 0);
 
-    private Camera camera;
+	private void changeCameraPos(float x, float y, float z)
+	{
+		_cameraPos.X += x;
+		_cameraPos.Y += y;
+		_cameraPos.Z += z;
+		SetCamera(_cameraPos, _cameraLook, _scale);
+	}
+	private void changeCameraLook(float x, float y, float z)
+	{
 
+		_cameraLook.X += x;
+		_cameraLook.Y += y;
+		_cameraLook.Z += z;
+		SetCamera(_cameraPos, _cameraLook, _scale);
+	}
+	private void changeScale(float x, float y, float z)
+	{
 
-    private async Task LoadModel()
-    {
-        await Task.Delay(1000);
-        await OnLoadObjNoTexturesButtonClick();
+		_scale.X += x;
+		_scale.Y += y;
+		_scale.Z += z;
+		SetCamera(_cameraPos, _cameraLook, _scale);
+	}
 
-    }
+	private async Task LoadModel()
+	{
+		await Task.Delay(1000);
+		_cameraPos = threeDView.CameraPosition;
+		_cameraLook = threeDView.CameraLook;
+		_scale = threeDView.ScaleFactor;
+		await OnLoadObjNoTexturesButtonClick();
 
-    private void Select3dView(ThreeDView v)
-    {
-        threeDView = v;
-        SetCamera();
-        OnClearAllClick();
-        LoadModel();
-    }
-    private void SetCamera()
-    {
-        if(threeDView!=null)
-        {
-            camera = new OrthographicCamera(left: -2, right: 2, top: 2, bottom: -2, zoom: 0.5f, near:-10, far: 100)
-            {
-                    Position = threeDView.CameraPosition,
-                    AnimateRotationSettings = new AnimateRotationSettings(true, 0.1, 0, 0.1, radius: threeDView.CameraPosition.X)
-                {
-                    StopAnimationOnOrbitControlMove = true
-                },
-                    LookAt = threeDView.CameraLook,
-                    Scale = threeDView.ScaleFactor,
-            };
-        }
-        else
-        {
+	}
 
-        }
-        View3D1.UpdateCamera(camera);
-    }
+	private void Select3dView(ThreeDView v)
+	{
+		threeDView = v;
+		SetCamera();
+		OnClearAllClick();
+		LoadModel();
+	}
+	private void SetCamera()
+	{
+		if (threeDView != null)
+		{
+			camera = new OrthographicCamera(left: -2, right: 2, top: 2, bottom: -2, zoom: 0.5f, near: -10, far: 100)
+				{
+					Position = threeDView.CameraPosition,
+					AnimateRotationSettings = new AnimateRotationSettings(true, 0.1, 0, 0.1, radius: threeDView.CameraPosition.X)
+					{
+						StopAnimationOnOrbitControlMove = true
+					},
+					LookAt = threeDView.CameraLook,
+					Scale = threeDView.ScaleFactor,
+				};
 
-    public void Dispose()
-    {
-        View3D1.ObjectLoaded -= OnObjectLoaded;
-        View3D1.JsModuleLoaded -= OnJsModuleLoaded;
-    }
+			_cameraPos = threeDView.CameraPosition;
+			_cameraLook = threeDView.CameraLook;
+			_scale = threeDView.ScaleFactor;
+		}
+		else
+		{
 
-    protected override async Task OnInitializedAsync()
-    {
-        if (threeDViews.Count > 0)
-        {
-            threeDView = threeDViews.First();
-        }
-        scene.BackGroundColor = "rgb(210,210,210)";
-        AddLights();
-        SetCamera();
-        await base.OnInitializedAsync();
-    }
-    protected override async Task OnParametersSetAsync()
-    {
-        await base.OnParametersSetAsync();
-    }
-    private void AddLights()
-    {
-        scene.Add(new AmbientLight()
-        {
-                Intensity = 0.2f,
-            });
-        scene.Add(new PointLight()
-            {
-                Intensity = 0.2f,
-                Position = new Vector3(400, 200, 300)
-            });
-        scene.Add(new PointLight()
-            {
-                Intensity = 0.2f,
-                Position = new Vector3(-400, 200, 300)
-            });
-        scene.Add(new PointLight()
-            {
-                Intensity = 0.5f,
-                Position = new Vector3(20, 20, 20)
-            });
-        scene.Add(new PointLight()
-            {
-                Intensity = 0.5f,
-                Position = new Vector3(-20, 20, 20)
-            });
-        //scene.Add(new ArrowHelper(new Vector3(1, 1, 1), new Vector3(1, 1, 1), 600, "red", 1, 0.2));
-    }
+		}
+		View3D1.UpdateCamera(camera);
+	}
+	private void SetCamera(Vector3 cameraPos, Vector3 cameraLook, Vector3 scale)
+	{
+		if (threeDView != null)
+		{
+			camera = new OrthographicCamera(left: -2, right: 2, top: 2, bottom: -2, zoom: 0.5f, near: -10, far: 100)
+				{
+					Position = cameraPos,
+					AnimateRotationSettings = new AnimateRotationSettings(true, 0.1, 0, 0.1, radius: cameraPos.X)
+					{
+						StopAnimationOnOrbitControlMove = true
+					},
+					LookAt = cameraLook,
+					Scale = scale,
+				};
+		}
+		else
+		{
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            // subscribe events only once
-            View3D1.ObjectLoaded += OnObjectLoaded;
-            await LoadModel();
-        }
+		}
+		View3D1.UpdateCamera(camera);
+	}
 
-        await base.OnAfterRenderAsync(firstRender);
-    }
+	public void Dispose()
+	{
+		View3D1.ObjectLoaded -= OnObjectLoaded;
+		View3D1.JsModuleLoaded -= OnJsModuleLoaded;
+	}
 
+	protected override async Task OnInitializedAsync()
+	{
+		if (threeDViews.Count > 0)
+		{
+			threeDView = threeDViews.First();
+		}
+		scene.BackGroundColor = "rgb(210,210,210)";
+		AddLights();
+		SetCamera();
+		await base.OnInitializedAsync();
+	}
+	protected override async Task OnParametersSetAsync()
+	{
+		await base.OnParametersSetAsync();
+	}
+	private void AddLights()
+	{
+		scene.Add(new AmbientLight()
+			{
+				Intensity = 0.2f,
+			});
+		scene.Add(new PointLight()
+			{
+				Intensity = 0.5f,
+				Position = new Vector3(20, 20, 20)
+			});
+		scene.Add(new PointLight()
+			{
+				Intensity = 0.5f,
+				Position = new Vector3(25, 25, 25)
+			});
+		scene.Add(new PointLight()
+			{
+				Intensity = 0.5f,
+				Position = new Vector3(-20, 20, 20)
+			});
+		//scene.Add(new ArrowHelper(new Vector3(1, 1, 1), new Vector3(1, 1, 1), 600, "red", 1, 0.2));
+	}
 
-    private async Task OnJsModuleLoaded()
-    {
-        var settings = new ImportSettings
-            {
-                Format = Import3DFormats.Gltf,
-                FileURL = "/assets/blazor3d.glb",
-            };
-        loadedObjectGuid = await View3D1.Import3DModelAsync(settings);
-        await View3D1.UpdateCamera(camera);
-    }
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		if (firstRender)
+		{
+			// subscribe events only once
+			View3D1.ObjectLoaded += OnObjectLoaded;
+			await LoadModel();
+		}
 
-
-    private Task OnObjectLoaded(Object3DArgs e)
-    {
-        // After object is loaded to component scene, you can locate it's C# clone in the scene.Children
-        // At the moment, only  Object3D.Uuid and Object3D.Type properties are syncronized.
-        foreach (var item in scene.Children)
-        {
-            if (item.Uuid == e.UUID)
-            {
-                this.msg = $"loaded object with id = {e.UUID} and type {item.Type}. Initial guid was {loadedObjectGuid}";
-                StateHasChanged();
-                break;
-            }
-        }
-        return Task.CompletedTask;
-    }
-
-
-    private async Task OnLoadObjButtonClick()
-    {
-        // if you need to control the loaded object uuid, generate it here.
-        loadedObjectGuid = Guid.NewGuid();
-        var settings = new ImportSettings
-            {
-                Format = Import3DFormats.Obj,//choose appropriate format
-                FileURL = threeDView.ThreeDeeModel,// link to your model file
-                //TextureURL = objTexture, // link to the texture or skip this,
-                Uuid = loadedObjectGuid //// skip this, or set null if you don't care the uuid of loaded mesh or group
-            };
-       if (threeDView.ThreeDeeModel.Contains("fbx"))
-        {
-            settings.Format = Import3DFormats.Fbx;
-        }
-        else if (threeDView.ThreeDeeModel.Contains("gltf"))
-        {
-            settings.Format = Import3DFormats.Gltf;            
-        }
-        await View3D1.Import3DModelAsync(settings);
-
-        // set camera position to view your loaded model
-        await View3D1.UpdateCamera(camera);
-        //await View3D1.SetCameraPositionAsync(CameraPosition, CameraLook);
-    }
-
-    private async Task OnLoadObjNoTexturesButtonClick()
-    {
-        var settings = new ImportSettings
-            {
-                Format = Import3DFormats.Obj,
-                FileURL = threeDView.ThreeDeeModel,
-            };
-        if (threeDView.ThreeDeeModel.Contains("fbx"))
-        {
-            settings.Format = Import3DFormats.Fbx;
-        }
-        // Also you can get the uuid of object to be imported before its loaded completely
-        loadedObjectGuid = await View3D1.Import3DModelAsync(settings);
-        await View3D1.UpdateCamera(camera);
-    }
+		await base.OnAfterRenderAsync(firstRender);
+	}
 
 
+	private async Task OnJsModuleLoaded()
+	{
+		var settings = new ImportSettings
+			{
+				Format = Import3DFormats.Gltf,
+				FileURL = "/assets/blazor3d.glb",
+			};
+		loadedObjectGuid = await View3D1.Import3DModelAsync(settings);
+		await View3D1.UpdateCamera(camera);
+	}
 
-    // this one clears scene completely. it removes all items: lights, helpers, meshes, etc.
-    private async Task OnClearAllClick()
-    {
-        await View3D1.ClearSceneAsync();
-        AddLights();
-        await View3D1.UpdateScene();
-    }
 
-    // this one removes last item in scene.Children collection.
-    // notice, that first two items are lights
-    private async Task OnDeleteLast()
-    {
-        if (scene.Children.Count > 0)
-        {
-            var last = scene.Children.Last();
-            // removes item by its unique identifier
-            await View3D1.RemoveByUuidAsync(last.Uuid);
-        }
-    }
+	private Task OnObjectLoaded(Object3DArgs e)
+	{
+		// After object is loaded to component scene, you can locate it's C# clone in the scene.Children
+		// At the moment, only  Object3D.Uuid and Object3D.Type properties are syncronized.
+		foreach (var item in scene.Children)
+		{
+			if (item.Uuid == e.UUID)
+			{
+				this.msg = $"loaded object with id = {e.UUID} and type {item.Type}. Initial guid was {loadedObjectGuid}";
+				StateHasChanged();
+				break;
+			}
+		}
+		return Task.CompletedTask;
+	}
+
+
+	private async Task OnLoadObjButtonClick()
+	{
+		// if you need to control the loaded object uuid, generate it here.
+		loadedObjectGuid = Guid.NewGuid();
+		var settings = new ImportSettings
+			{
+				Format = Import3DFormats.Obj,//choose appropriate format
+				FileURL = threeDView.ThreeDeeModel,// link to your model file
+												   //TextureURL = objTexture, // link to the texture or skip this,
+				Uuid = loadedObjectGuid //// skip this, or set null if you don't care the uuid of loaded mesh or group
+			};
+		if (threeDView.ThreeDeeModel.Contains("fbx"))
+		{
+			settings.Format = Import3DFormats.Fbx;
+		}
+		else if (threeDView.ThreeDeeModel.Contains("gltf"))
+		{
+			settings.Format = Import3DFormats.Gltf;
+		}
+		await View3D1.Import3DModelAsync(settings);
+
+		// set camera position to view your loaded model
+		await View3D1.UpdateCamera(camera);
+		//await View3D1.SetCameraPositionAsync(CameraPosition, CameraLook);
+	}
+
+	private async Task OnLoadObjNoTexturesButtonClick()
+	{
+		var settings = new ImportSettings
+			{
+				Format = Import3DFormats.Obj,
+				FileURL = threeDView.ThreeDeeModel,
+			};
+		if (threeDView.ThreeDeeModel.Contains("fbx"))
+		{
+			settings.Format = Import3DFormats.Fbx;
+		}
+		// Also you can get the uuid of object to be imported before its loaded completely
+		loadedObjectGuid = await View3D1.Import3DModelAsync(settings);
+		await View3D1.UpdateCamera(camera);
+	}
+
+
+
+	// this one clears scene completely. it removes all items: lights, helpers, meshes, etc.
+	private async Task OnClearAllClick()
+	{
+		await View3D1.ClearSceneAsync();
+		AddLights();
+		await View3D1.UpdateScene();
+	}
+
+	// this one removes last item in scene.Children collection.
+	// notice, that first two items are lights
+	private async Task OnDeleteLast()
+	{
+		if (scene.Children.Count > 0)
+		{
+			var last = scene.Children.Last();
+			// removes item by its unique identifier
+			await View3D1.RemoveByUuidAsync(last.Uuid);
+		}
+	}
 }
