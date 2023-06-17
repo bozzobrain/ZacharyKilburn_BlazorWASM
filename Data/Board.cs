@@ -82,7 +82,7 @@
             BoardDescription =
             "hstart Board Description hend This board was build to expand some of the NeoPixel audio sampling workload I was playing with on the Arduino platform. " +
             "Previously I was utilizing" + 
-            "linkstart href=boards/Z3 hrefend Z4 - NeoPixel Board linkend" +
+            "linkstart href=boards/Z3 hrefend Z3 - NeoPixel Board linkend" +
             " as a platform for my NeoPixel development."+
             "\n\n hstart Design hend" +
             "It turns out that attempting to push 16MHz architectures to perform FFT maths can be a major bottleneck in your development process. " +

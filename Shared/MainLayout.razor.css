@@ -75,7 +75,11 @@ footer {
     .page {
         overflow-y:hidden;
     }
-}
+    footer {
+        font-size:0.8em;
+    }
+
+    }
 @media (min-width: 891px) {
     .page {
         flex-direction: column;

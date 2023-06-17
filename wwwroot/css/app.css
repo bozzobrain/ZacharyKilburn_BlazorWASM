@@ -122,8 +122,9 @@ a.mode-btn {
     }
     .content {
     }
-    .px-4{
-        padding:0 !important;
+    .px-4 {
+        padding: 0 !important;
+        background-color: white !important;
     }
 }
 

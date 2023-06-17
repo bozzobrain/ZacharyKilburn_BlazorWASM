@@ -209,6 +209,7 @@ namespace ZacharyKilburn_BlazorWASM.Data
 		{
 			ProjectTitle = "NeoPixel FFT",
 			ProjectHref = "projects/NeoFFT",
+			ProjectTitleShort = "Neo FFT",
 			ProjectDate = "2020",
 			ProjectMainVideoLink = "https://youtube.com/embed/daN55iL3Ups",
 			ProjectDescription = "hstart Project Description hend" +
@@ -268,6 +269,7 @@ namespace ZacharyKilburn_BlazorWASM.Data
 		public static readonly Project IndexFan = new()
 		{
 			ProjectTitle = "Index Frunk Fan",
+			ProjectTitleShort = "Frunk Fan",
 			ProjectHref = "projects/IndexFan",
 			ProjectDate = "2020",
 			ProjectDescription = "hstart Project Description hend " +
@@ -322,6 +324,7 @@ namespace ZacharyKilburn_BlazorWASM.Data
 		public static readonly Project EDMPowerSupply = new()
 		{
 			ProjectTitle = "EDM Power Supply",
+			ProjectTitleShort = "EDM PSU",
 			ProjectHref = "projects/EDMPSU",
 			ProjectDate = "2013",
 			ProjectDescription = "hstart Project Description hend Designed as part of a contract engineering assignment, the EDM PSU was conceived as a variable AC/DC power supply intended for use with a CNC controlled manufacturing machine." +

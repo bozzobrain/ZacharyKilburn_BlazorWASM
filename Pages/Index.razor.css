@@ -24,7 +24,7 @@
 .index-body-container {
     position: relative;
     z-index: 0;
-    width: 100%;
+    width: 80%;
         margin: 0 10%;
     background-color: white;
 /*    padding-left: 1.5em;
@@ -32,10 +32,12 @@
 }
 
 .image-container {
-    background: url("assets/shutterstock_1857159844.jpg") no-repeat top center fixed;
+    background: url("assets/shutterstock_1857159844.jpg") no-repeat center fixed;
+    background-position-y:-5em;
+    
     background-size: cover;
     z-index: -1;
-    min-height: 400px;
+    min-height: 20em;
 /*    margin: 0 10%;*/
     padding-left: 1.5em;
     padding-right: 1.5em;
@@ -74,8 +76,9 @@
     flex-direction: column;
     padding: 25px;
     justify-content: center;
-/*    width: 80%;*/
-/*    margin: 0 10%;*/
+    background-position-y: -5em;
+    /*    width: 80%;*/
+    /*    margin: 0 10%;*/
     background-color: rgb(240,240,240);
     font-size: 1.5em;
 }
@@ -132,17 +135,21 @@
     }
 
     .index-body-container {
-        padding: 0;
+        padding: 0 0.5em;
         margin: 0;
+        width: 100%;
     }
     .image-container {
         margin:0;
-        background-size: auto 60%;
+        background-size: 275%;
+        background-position-x:0em 1em;
+        min-height:10em;
     }
-        .index-my-description {
+    .index-my-description {
+        background-color: white;
         padding: 0;
         margin: 0;
-        width:100%;
+        width: 100%;
     }
     .index-my-description p {
         font-size: 0.7em;
