@@ -280,7 +280,7 @@ namespace ZacharyKilburn_BlazorWASM.Data
 		  "\n\n hstart Design hend" +
 		  "Due to the tight packaging of the enclosing area as well as a limited height, it was proved to be a difficult engineering problem. " +
 			"I selected a fan, " +
-			"linkstart href=https://www.delta-fan.com/products/BFB0305MA-CR00.html hrefend Dekta Electronics BFB0305MA-Alinkend," +
+			"linkstart href=https://www.delta-fan.com/products/BFB0305MA-CR00.html hrefend Delta Electronics BFB0305MA-Alinkend," +
 			" that had the correct profile that could fit within the enclosed area and blow sideways into a slotted area, pushing pressure into the electronics enclosure. " +
 			"I designed a board that would surround the fan and provide a mounting profile, but struggled with the height of the fan compared to the USB port. " +
 			"A small USB interface board with a vertical header allowed the fan holder to float above the USB interface. " +

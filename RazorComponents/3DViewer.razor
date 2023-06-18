@@ -14,7 +14,16 @@
 			foreach (var v in threeDViews)
 			{
 				<div class="threed-control-button">
-					<button @onclick="(()=>Select3dView(v))">View: @v.ThreeDeeViewName</button>
+					@if(v == threeDView)
+					{
+						<button class="threed-control-button-button-active" @onclick="(()=>Select3dView(v))">View: @v.ThreeDeeViewName</button>
+						
+					}
+					else
+					{
+						<button class="threed-control-button-button" @onclick="(()=>Select3dView(v))">View: @v.ThreeDeeViewName</button>
+						
+					}
 				</div>
 			}
 		}

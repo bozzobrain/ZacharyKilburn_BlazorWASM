@@ -6,7 +6,32 @@
 }
 .threed-control-button button {
     width: 100%;
+    appearance: button;
+    border-color: black;
+    border-style: outset;
+    border-width: 2px;
+    text-decoration: none;
+    color: #FFFFFF;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    line-height: 3rem;
+    background-color: rgba(0, 148, 255, 0.3);
+    align-content: center;
+    justify-content: center;
 }
+    .threed-control-button button:hover {
+        background-color: rgba(0, 148, 255, 0.1) !important;
+    }
+    .threed-control-button-button-active {
+        background-color: rgba(0, 148, 255, 1) !important;
+    }
+    .threed-control-button-button button:hover {
+        background-color: rgba(0, 148, 255, 0.1) !important;
+    }
+    .threed-control-button-button button:active {
+        background-color: rgba(0, 148, 255, 0.25) !important;
+    }
 div.threed-viewer {
     border: 3px solid black;
     height: 500px;
@@ -53,5 +78,8 @@ div.threed-viewer {
         height: 3em;
         display: flex;
         justify-content: flex-end;
+    }
+    .threed-control-button button{
+        font-size:1.5em;
     }
 }

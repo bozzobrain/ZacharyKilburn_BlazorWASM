@@ -59,6 +59,12 @@
     .board-table img {
         height: 10em;
     }
+.project-board-list a {
+    background-color: rgba(0, 148, 255, 0.8) !important;
+}
+.project-board-list a:hover {
+    background-color: rgba(0, 148, 255, 0.1) !important;
+}
 
 /* For Mobile Devices */
 @media (max-width: 890.98px) {
@@ -137,7 +143,9 @@
     .project-page-title {
         display: none;
     }
-
+    .project-board-list{
+        font-size:1.5em;
+    }
     .project-subcontainer {
         display: flex;
         flex-direction: column;

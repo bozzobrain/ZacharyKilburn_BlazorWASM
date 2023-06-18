@@ -48,9 +48,12 @@ a.mode-btn {
         background-color: rgba(0, 148, 255, 0.25) !important;
     }
 
-    .mode-btn:hover,  {
+    .mode-btn:hover  {
         background-color: rgba(0, 148, 255, 0.1) !important;
     }
+a:hover {
+    color: rgba(0, 148, 255, 0.3) !important;
+}
 .pdf-embed {
     overflow: hidden !important;
     height: calc(100vh - 15em);
@@ -490,6 +493,7 @@ a.mode-btn {
 
     .grid-item:hover {
         background-color: rgba(255,255,255,0.1) !important;
+        color: rgba(255,255,255,0.5) !important;
     }
 
 /* For Desktop Devices */
