@@ -229,7 +229,7 @@ namespace ZacharyKilburn_BlazorWASM.Data
 			ProjectMainImage = "NeoPixelFFT/NeoPixelFFT.png",
 			SubPages = new List<ProjectSubPage>()
 			{
-				
+
 				new ProjectSubPage() {
 				SubPageTitle = "Boards",
 				SubPageHref = "Boards",
@@ -380,10 +380,83 @@ namespace ZacharyKilburn_BlazorWASM.Data
 
 		};
 
+		public static readonly Project NASARMC = new()
+		{
+			ProjectTitle = "NASA RMC",
+			ProjectHref = "projects/NASARMC",
+			ProjectMainImage = "CHRISTEE/CHRISTEE.png",
+			ProjectMainVideoLink = "https://youtube.com/embed/ltmr64m7aK0",
+			ProjectDate = "2013-2018",
+			ProjectDescription = "hstart Project Description hend" +
+			"The concept for the competition was to design, build and compete with a mining robot built in the spirit of NASA's goal to mine elements from the surface of other planets prior to humans arriving. " +
+			"Since there are elements trapped within the regolith, robots could harvest these elements for use when humans arrive. " +
+			"These elements include fuels that could be used for rockets, air to breath and water to drink." +
+					
+		
+			"\n\n hstart The Competitionhend" +
+			"The arena was an environmentally controlled space with simulated regolith that is very abrasive and difficult to manage when it comes to electronics and moving components. " +
+			"Remotely piloting the robot was an threshold with the objective being an autonomous operation. " +
+			"This was due to the delay for communications that would occur when interfacing with a system on another planet. "+
+					"\n\n hstart My Role hend" +
+			"I spend 5 years both as a member of the team and as the team leader. " +
+			"I had a long run with the team, learning a lot about software, electrical and mechnaical integration. " +
+			"In addition to practical design experience, I got a crash course in leadership, leading up to 60 members during a single year." +
+			"\n\n hstart STACEE - 2013 - 2014hend" +
+			"As a software team member, I got acquainted with the team and it workings. " +
+			"\n\n hstart CHRISTEE - 2014 - 2015hend" +
+			"My second year I took over the development of the software as the leader of the software team. " +
+			"Our goal was to get the autonomous operation functional and we made great strides by enabling autonomous sub-routines in the robot to do more of the complex tasks.  " +
+			"\n\n hstart CHRISTEE - 2015 - 2016hend" +
+			"Upon taking over the team, I had to learn how to manage personal, navigate the university's inner workings and motivate a group of volunteer students. "+
+			"I was able to bring the group together and led them to a 2nd place finish, the best of any year prior and to come in my time. " +
+			"Continuing the development on CHRISTEE, the design was polished, and a second design was started in the background " +
+			"\n\n hstart SPACEE - 2016 - 2017hend" +
+			"The team began attempting to overhaul the design that we had been recycling to introduce some new and novel ideas. " +
+			"\n\n hstart ROCKEE - 2017 - 2018hend" +
+			"I relinquished my role as team leader to allow for younger team members to take over before I graduated in an attempt to provide guidance and shift control to the younger group before I left the team. " ,
+
+			SubPages = new List<ProjectSubPage>()
+			{
+				new ProjectSubPage()
+				{
+					SubPageTitle = "CHRISTEE",
+					SubPageImage= "CHRISTEE/CHRISTEE.png",
+					SubPageDescription="hstart Design hend" +
+					"Sharing many of the design concepts from her sister STACEE, CHRISTEE (Celestial High-Powered Robotic Intelligence System Timely Excavating Elements) would also feature a track for mobility. " +
+					"The bucket design also remained as a staple of the design due to its simplicity and low failure rate. " +
+					"Slight tuning the the depth of the bucket and the addition of a plow were the biggest changes from the previous design." +
+					"\n\n hstart My Role hend" +
+					"2015 was my second year on the project, and my first year leading the team. " +
+					"In my prior year, I was a software developer, and worked to introduce some autonomous features and improve the communications protocol with the robot. " +
+					"This year would be my first leadership experience, where I led a group of roughly 30 members to NASA's Kennedy Space Center for compeition." +
+					"\n\n hstart Competition Results hend" +
+					"The team and CHRISTEE performed so well that year, that we took home 2nd place out of 50 teams across the nation. " +
+					"\n\n hstart Interview hend" +
+					"View the linkstart href=https://www.youtube.com/watch?v=tCAUiAGvK-Q hrefend Interviewlinkend",
+
+
+
+				},
+				new ProjectSubPage() {
+					SubPageTitle = "STACEE",
+					SubPageImage= "STACEE/STACEE.png",
+					SubPageDescription="hstart Design hend" +
+					"Featuring a tracked design, STACEE would have a wide suface area of contact, allowing her to stay on top of the somewhat fluid terrain. " +
+					"A simple bucket allowed for minimal dynamic systems that would introduce points of failure. " +
+					"Once dirt was placed in the bucket, it could continue to elevate the bucket and dump the material out the backside of the robot, allowing the robot to never make a full rotation during the mining cycle." +
+					"\n\n hstart My Role hend" +
+					"As my first year of competition, my role was somewhat limited as a developer for autonomous operation. " +
+					"",
+
+				},
+			},
+		};
+
 
 
 		public List<Project> projects { get; set; } = new()
 		{
+			NASARMC,
 			ScoreboardProject,
 			FireworkProject,
 			IndexFan,

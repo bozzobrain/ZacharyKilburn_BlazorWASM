@@ -210,7 +210,8 @@ else if (selectedProject != null)
 				@if (currentSubPage.SubPageDescription != string.Empty)
 				{
 					<div class="project-description">
-						<p>@currentSubPage.SubPageDescription</p>
+						@((MarkupString)Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(HttpUtility.HtmlEncode(currentSubPage.SubPageDescription), "\n", "<br/>"), "hstart", "<div style=\"font-family: questrial, sans-serif;font-weight:bold;\">"), "hend", "</div>"), "linkstart", "<a style=\"display:contents;\""), "hrefend", ">"), "linkend", "</a>"), "imgstart", "<img style=\"width=50vw; min-height=50px;\" src="), "imgend", "/>"))
+
 					</div>
 				}
 

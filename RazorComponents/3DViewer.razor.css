@@ -49,7 +49,7 @@ div.threed-viewer {
     .threed-controls {
         width: 100%;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         background-color: rgb(210,210,210);
     }
     .threed-control-button {
