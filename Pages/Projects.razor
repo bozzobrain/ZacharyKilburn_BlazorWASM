@@ -60,6 +60,7 @@ else if (selectedProject != null)
 		<div class="project-header">
 			<div class="project-title">
 				@selectedProject.ProjectTitle
+				
 			</div>
 			<div class="project-date">
 				@selectedProject.ProjectDate
@@ -110,6 +111,11 @@ else if (selectedProject != null)
 					}
 				}
 			}
+			@if (selectedProject.ProjectFacebook != string.Empty)
+			{
+				<a class="mode-btn button" href="@selectedProject.ProjectFacebook">Facebook</a>
+			}
+			
 		</div>
 	</div>
 	<div class="px-4">
