@@ -1,0 +1,9 @@
+﻿@using System.Text.RegularExpressions;
+@using System.Web
+
+@((MarkupString)Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(HttpUtility.HtmlEncode(DescriptionContents), "\n\n", "paraend \n"), "\n", "<br/>"), "hstart", "<div style=\"font-weight:bold;\"><h2>"), "hend", "</h2></div> <div class=\"html-encoded-description-para\"><p>"), "linkstart", "<a style=\"display:contents;\""), "hrefend", ">"), "linkend", "</a>"), "paraend", "</p></div>"))
+
+@code {
+    [Parameter]
+    public string DescriptionContents { get; set; } = string.Empty;
+}

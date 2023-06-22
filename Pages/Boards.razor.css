@@ -6,13 +6,22 @@
     display: flex;
     width: 100%;
     flex-direction: column;
-    height:10em;
-    text-align:center;
+    height: 10em;
+    text-align: center;
 }
+
 .board-title {
     display: flex;
     justify-content: center;
 }
+.board-title-pn {
+    display: inline-flex;
+}
+.board-title-title {
+    justify-content: center;
+    display: inline-flex;
+}
+
 .board-date {
     color: rgb(128, 128, 128);
     justify-content: center;
@@ -34,18 +43,22 @@
 /* For Mobile Devices */
 @media (max-width: 890.98px) {
 
-/*    .top-row {
+    /*    .top-row {
         height: 8rem;
     }*/
     .board-header {
-        height:5em;
+        height: 5em;
     }
-        .board-title {
+
+    .board-title {
         flex-direction: column;
+        font-size: 1.5em;
     }
-    .board-title h3 {
-     font-size:1.5em;
-    }
+
+        .board-title-pn{
+            display:none;
+        }
+
     .board-container ::deep {
         justify-content: center;
         display: flex;
@@ -54,7 +67,7 @@
     }
 
     .board-controls {
-        height:3em;
+        height: 3em;
         width: 100%;
     }
 }
@@ -62,7 +75,7 @@
 /* For Desktop Devices */
 @media (min-width: 891px) {
 
-/*    .top-row{
+    /*    .top-row{
         justify-content:center !important;
     }*/
 
@@ -70,15 +83,18 @@
         padding-left: 1.5rem !important;
         padding-right: 1.5rem !important;
     }
-    .board-header{
-        display:flex;
-        justify-content:center;
+
+    .board-header {
+        display: flex;
+        justify-content: center;
     }
+
     .board-title {
         display: flex;
         justify-content: center;
         font-size: 2.5em;
     }
+
     .board-date {
         display: flex;
         justify-content: center;

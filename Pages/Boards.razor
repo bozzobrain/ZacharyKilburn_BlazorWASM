@@ -40,7 +40,12 @@ else if (selectedBoard != null)
 	<div class="top-row-body">
 		<div class="board-header">
 			<div class="board-title">
-				@selectedBoard.BoardPN - @selectedBoard.BoardTitle
+				<div class="board-title-pn">
+					@selectedBoard.BoardPN - &nbsp
+				</div>
+				<div class="board-title-title">
+					@selectedBoard.BoardTitle
+				</div>
 			</div>
 			<div class="board-date">
 				@selectedBoard.BoardDate

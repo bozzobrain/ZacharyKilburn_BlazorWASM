@@ -11,9 +11,8 @@
             <img src="@board.BoardMainImage">
         </div>
     <div class="boardlanding-description">
-
-            @((MarkupString)Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(HttpUtility.HtmlEncode(board.BoardDescription), "\n", "<br/>"), "hstart", "<div style=\"font-family: questrial, sans-serif;font-weight:bold;\">"), "hend", "</div>"), "linkstart", "<a style=\"display:contents;\""), "hrefend", ">"), "linkend", "</a>"))
-
+        <ZacharyKilburn_BlazorWASM.RazorComponents.HtmlEncodedDescription DescriptionContents="@board.BoardDescription"></ZacharyKilburn_BlazorWASM.RazorComponents.HtmlEncodedDescription>
+          
         </div>
     </div>
 }

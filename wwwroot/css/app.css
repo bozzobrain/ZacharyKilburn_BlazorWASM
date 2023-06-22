@@ -1,8 +1,9 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
-/*    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;*/
-    font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+    /*    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;*/
+/*    font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;*/
+    font-family: 'Open Sans', sans-serif;
     font-size: 15px;
 }
 
@@ -98,6 +99,9 @@ a:hover {
         }
 /* For Mobile Devices */
 @media (max-width: 890.98px) {
+    .html-encoded-description-para{
+        font-size:0.7em;
+    }
     .page-header{
         display:flex;
         justify-content:center;
@@ -133,6 +137,9 @@ a:hover {
 
 /* For Desktop Devices */
 @media (min-width: 891px) {
+    .html-encoded-description-para {
+        font-size: 0.7em;
+    }
     .page {
         flex-direction: column;
     }

@@ -139,8 +139,8 @@ else if (selectedProject != null)
 
 				</div>
 				<div class="project-description">
-					@((MarkupString)Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(HttpUtility.HtmlEncode(selectedProject.ProjectDescription), "\n", "<br/>"), "hstart", "<div style=\"font-family: questrial, sans-serif;font-weight:bold;\">"), "hend", "</div>"), "linkstart", "<a style=\"display:contents;\""), "hrefend", ">"), "linkend", "</a>"), "imgstart", "<img style=\"width=50vw; min-height=50px;\" src="), "imgend", "/>"))
-
+					
+					<ZacharyKilburn_BlazorWASM.RazorComponents.HtmlEncodedDescription DescriptionContents="@selectedProject.ProjectDescription"></ZacharyKilburn_BlazorWASM.RazorComponents.HtmlEncodedDescription>
 				</div>
 				<div class="project-description">
 					@if (selectedProject.Link != null)
@@ -216,8 +216,8 @@ else if (selectedProject != null)
 				@if (currentSubPage.SubPageDescription != string.Empty)
 				{
 					<div class="project-description">
-						@((MarkupString)Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(Regex.Replace(HttpUtility.HtmlEncode(currentSubPage.SubPageDescription), "\n", "<br/>"), "hstart", "<div style=\"font-family: questrial, sans-serif;font-weight:bold;\">"), "hend", "</div>"), "linkstart", "<a style=\"display:contents;\""), "hrefend", ">"), "linkend", "</a>"), "imgstart", "<img style=\"width=50vw; min-height=50px;\" src="), "imgend", "/>"))
-
+						
+						<ZacharyKilburn_BlazorWASM.RazorComponents.HtmlEncodedDescription DescriptionContents="@currentSubPage.SubPageDescription"></ZacharyKilburn_BlazorWASM.RazorComponents.HtmlEncodedDescription>
 					</div>
 				}
 

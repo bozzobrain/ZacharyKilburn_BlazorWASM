@@ -48,8 +48,9 @@ namespace ZacharyKilburn_BlazorWASM.Data
 			"linkstart href=boards/Z28 hrefend through-hole LEDslinkend" +
 			", unconventionally bent into position to allow for clearance within the 3D printed fixturing. " +
 			"A future revision will likely be made to customize the controller to allow for additional I/O to monitor the battery voltages to warn the user of impending battery death. " +
-			"I still use this regularly in the backyard with the cornhole boards.",
-			ProjectMainImage = "CornholeScoreViewer/Scoreboard-Iso.png",
+			"I still use this regularly in the backyard with the cornhole boards." +
+            "paraend",
+            ProjectMainImage = "CornholeScoreViewer/Scoreboard-Iso.png",
 
 			SubPages = new List<ProjectSubPage>()
 			{
@@ -61,8 +62,11 @@ namespace ZacharyKilburn_BlazorWASM.Data
 				SubPageTitle = "App",
 				SubPageHref = "Android",
 				SubPageImage = "CornholeScoreViewer/AndroidFootballScreen.png",
-				SubPageDescription = "The scoreboard can be controlled either from the buttons located on the top of the unit, or via a custom android app over bluetooth. While the app does lack some aethetic appeal, the functionality allows you to control the scoreboard from a distance. " +
-					"Since the LEDs of the scoreboard are based on the Neopixel WS2811 controller, RGB LEDs can be tailored to whatever team colors you want, both through the buttons or the app. ",
+				SubPageDescription = "hstart Android hend" + 
+					"The scoreboard can be controlled either from the buttons located on the top of the unit, or via a custom android app over bluetooth. " +
+					"While the app does lack some aethetic appeal, the functionality allows you to control the scoreboard from a distance. " +
+					"Since the LEDs of the scoreboard are based on the Neopixel WS2811 controller, RGB LEDs can be tailored to whatever team colors you want, both through the buttons or the app. "+
+			"paraend",
 				},
 				new ProjectSubPage() {
 				SubPageTitle = "3D",
@@ -124,8 +128,9 @@ namespace ZacharyKilburn_BlazorWASM.Data
 			"\n\n hstart Design hend" +
 			"This 12 shot custom fireworks mortar launcher features a Bluetooth controlled app, variable timing delays, manual shot selection, quick reloading connections, custom PCB designs and 3D printed enclosures. " +
 			"\n\n hstart Electronics Box hend" +
-			"The quick disconnecting control unit slides onto a bracket allowing for removal for charging, updating firmware and housing inside when done shooting off the fireworks. ",
-			ProjectMainImage = "FireworksMortar/FireworksMortar-Iso.png",
+			"The quick disconnecting control unit slides onto a bracket allowing for removal for charging, updating firmware and housing inside when done shooting off the fireworks. " +
+            "paraend",
+            ProjectMainImage = "FireworksMortar/FireworksMortar-Iso.png",
 
 			SubPages = new List<ProjectSubPage>()
 			{
@@ -133,7 +138,11 @@ namespace ZacharyKilburn_BlazorWASM.Data
 				SubPageTitle = "App",
 				SubPageHref = "Android",
 				SubPageImage = "FireworksMortar/FireworksMortarAndroid.png",
-				SubPageDescription = "Android app to control the ScoreViewer",
+				SubPageDescription = "hstart Android hend" + 
+					"The Fireworks Mortar Launcher is primarily controlled through an app that allows for control of each tube independently. " +
+					"It also allows for launching all of the tubes in a sequenced manner with variable timing between each of the tubes being ignited. " +
+					"So if you want to launch all 12 mortars in rapid fire or select only a single tube to be launched, all can be done from a safe distance with the custom app."+
+			"paraend",
 				},
 				new ProjectSubPage() {
 				SubPageTitle = "3D",
@@ -189,8 +198,9 @@ namespace ZacharyKilburn_BlazorWASM.Data
 			"Competing in the 200lb weight class, Nigel was praised as the first combat robot in the competition to feature autonomous operation. " +
 			"Nested within the exterior rotating weapon, 8 unidirectional LIDAR sensors gathered data about the robot's position within the arena. " +
 			"The sensors were timed to acquire measurements while the weapon windows were not obscuring the sensor view. " +
-			"Measurement data was then combined into robot position data via a neural network, trained in Matlab, running in an onboard microcontroller.",
-			ProjectMainImage = "CombatRobot/CombatRobot.png",
+			"Measurement data was then combined into robot position data via a neural network, trained in Matlab, running in an onboard microcontroller." +
+            "paraend",
+            ProjectMainImage = "CombatRobot/CombatRobot.png",
 
 			DownloadLink = "CombatRobot/Autonomous Combat Robot Report.pdf",
 			SubPages = new List<ProjectSubPage>()
@@ -235,8 +245,9 @@ namespace ZacharyKilburn_BlazorWASM.Data
 			"To get the 3.3V PIC32 board interfacing with the 5V logic, I designed the " +
 			"linkstart href=boards/Z7 hrefendLevel Translator Boardlinkend" +
 			" as a general use voltage level translator. " +
-			"After getting the code up and running in the new PIC core, I had myself a working project.",
-			ProjectMainImage = "NeoPixelFFT/NeoPixelFFT.png",
+			"After getting the code up and running in the new PIC core, I had myself a working project." +
+            "paraend",
+            ProjectMainImage = "NeoPixelFFT/NeoPixelFFT.png",
 			SubPages = new List<ProjectSubPage>()
 			{
 
@@ -275,8 +286,9 @@ namespace ZacharyKilburn_BlazorWASM.Data
 			"\n\n hstart Competition Results hend" +
 			"Our quick boot time, larger effective weight and simple control loop resulted in our team being nominated and winning the Honda Innovation Award at NRC and taking 2nd place in our weight class at RoboGames." +
 			"\n\n hstart Video hend" +
-			"See the linkstart href=https://youtu.be/CH-LgnNnuQQ hrefend Video linkend here.",
-			ProjectMainImage = "SumoBot/sumo-bot2.png",
+			"See the linkstart href=https://youtu.be/CH-LgnNnuQQ hrefend Video linkend here." +
+            "paraend",
+            ProjectMainImage = "SumoBot/sumo-bot2.png",
 		};
 
 		public static readonly Project IndexFan = new()
@@ -300,10 +312,11 @@ namespace ZacharyKilburn_BlazorWASM.Data
 		  "\n\n hstart Results hend" +
 			"Overall, the design provided a little bit of airflow into the enclosure and lowered the temperature of my face during long playtimes. " +
 			"It was a project I would consider a success." +
-			"imgstart IndexFrunk/IndexFrunkInstalled.jpg imgend",
+			"imgstart IndexFrunk/IndexFrunkInstalled.jpg imgend" +
+            "paraend",
 
 
-			ProjectMainImage = "IndexFrunk/IndexFrunkBoardStack.png",
+            ProjectMainImage = "IndexFrunk/IndexFrunkBoardStack.png",
 			SubPages = new List<ProjectSubPage>()
 			{
 				new ProjectSubPage()
@@ -343,8 +356,9 @@ namespace ZacharyKilburn_BlazorWASM.Data
 			ProjectDescription = "hstart Project Description hend Designed as part of a contract engineering assignment, the EDM PSU was conceived as a variable AC/DC power supply intended for use with a CNC controlled manufacturing machine." +
 			"\n\n hstart Design hend" +
 			"Providing constant current / constant voltage over the range of 10-100V and 5mA - 10A. It was enclosed in a industrial cabinet and featured custom circuit boards for the AC/DC conversion and a second custom PCB for the HMI.  \n\n" +
-			"While never fully validated by the client, and not short of its limitations, it was a challenging project that functioned well during bench testing.",
-			ProjectMainImage = "EDMPSU/EDMPSU.png",
+			"While never fully validated by the client, and not short of its limitations, it was a challenging project that functioned well during bench testing." +
+            "paraend",
+            ProjectMainImage = "EDMPSU/EDMPSU.png",
 
 			SubPages = new List<ProjectSubPage>()
 			{
@@ -388,8 +402,9 @@ namespace ZacharyKilburn_BlazorWASM.Data
 			"I was involved in the design of the electrically assisted braking mechanism consisting of a power supply, servo for pulling the brake cable and a power recovering generator. " +
 			"The battery was modestly sized so a wheel driven generator and a circuit to charge the batteries from it helped to extend the life of the batteries. " +
 			"\n\n hstart Article hend" +
-			"View the linkstart href=https://www.thepostnewspapers.com/norton/local_news/students-help-design-assemble-bike-for-norton-boy/article_7bab3de4-eaf0-575a-aa62-1edae7f0d13b.html hrefend Newspaper Article linkend",
-			ProjectMainImage = "BMEBike/BMEBike.jpg",
+			"View the linkstart href=https://www.thepostnewspapers.com/norton/local_news/students-help-design-assemble-bike-for-norton-boy/article_7bab3de4-eaf0-575a-aa62-1edae7f0d13b.html hrefend Newspaper Article linkend" +
+            "paraend",
+            ProjectMainImage = "BMEBike/BMEBike.jpg",
 
 		};
 
@@ -432,9 +447,10 @@ namespace ZacharyKilburn_BlazorWASM.Data
 			"The University of Akron placed 10th overall. " +
 			"\n\n hstart ROCKEE - 2017 - 2018hend" +
 			"I relinquished my role as team leader to allow for younger team members to take over before I graduated to provide guidance and shift control to the younger group before I left the team. " +
-			"The University of Akron team was awarded 5th place overall in the competition." ,
+			"The University of Akron team was awarded 5th place overall in the competition." +
+            "paraend",
 
-			SubPages = new List<ProjectSubPage>()
+            SubPages = new List<ProjectSubPage>()
 			{
 				new ProjectSubPage()
 				{
@@ -451,11 +467,12 @@ namespace ZacharyKilburn_BlazorWASM.Data
 					"During the 2014-2015 year, my work on the communication and autonomy subsystems led to the team being awarded the Effective Communications Award, having the lowest bandwidth utilized across all teams. " +
 					"My first year as the team lead, the team and CHRISTEE performed extremely well, and we took home 2nd place out of 50 teams across the nation. " +
 					"\n\n hstart Interview hend" +
-					"View the linkstart href=https://www.youtube.com/watch?v=tCAUiAGvK-Q hrefend Interviewlinkend",
+					"View the linkstart href=https://www.youtube.com/watch?v=tCAUiAGvK-Q hrefend Interviewlinkend"+
+            "paraend",
 
 
 
-				},
+                },
 				new ProjectSubPage() {
 					SubPageTitle = "STACEE",
 					SubPageImage= "STACEE/STACEE.png",
@@ -465,9 +482,9 @@ namespace ZacharyKilburn_BlazorWASM.Data
 					"Once dirt was placed in the bucket, it could continue to elevate the bucket and dump the material out the backside of the robot, allowing the robot to never make a full rotation during the mining cycle." +
 					"\n\n hstart My Role hend" +
 					"As my first year of competition, my role was somewhat limited to being a developer for autonomous operation. " +
-					"",
+            "paraend",
 
-				},
+                },
 			},
 		};
 
