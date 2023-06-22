@@ -40,6 +40,8 @@ namespace ZacharyKilburn_BlazorWASM.Data
 			"Initially developed using 8 copies of the large " +
 			"linkstart href=boards/Z27 hrefend 7 segment displays linkend" +
 			"using SMT LEDs, a trip outside showed that the SMT LEDs did not pack the punch necessary to cut through the sun on a bright day, so it was back to the drawing board. " +
+			"\n\nhstart Firmware hend" +
+			"See my code linkstart href=https://github.com/bozzobrain/CornholeScoreViewer hrefend herelinkend" +
 			"\n\nhstart Remote Controlled hend" +
 			"The linkstart href=https://www.adafruit.com/product/2479 hrefend Adafruit Bluefruitlinkend adapter " +
 			"was added and an android app build to allow for remote control of the scoreboard, when walking is just too much work. " +
@@ -66,6 +68,8 @@ namespace ZacharyKilburn_BlazorWASM.Data
 					"The scoreboard can be controlled either from the buttons located on the top of the unit, or via a custom android app over bluetooth. " +
 					"While the app does lack some aethetic appeal, the functionality allows you to control the scoreboard from a distance. " +
 					"Since the LEDs of the scoreboard are based on the Neopixel WS2811 controller, RGB LEDs can be tailored to whatever team colors you want, both through the buttons or the app. "+
+					"\n\nhstart Software hend" + 
+					"See my code linkstart href=https://github.com/bozzobrain/ScoreviewerAndroid hrefend herelinkend"+
 			"paraend",
 				},
 				new ProjectSubPage() {
@@ -129,7 +133,10 @@ namespace ZacharyKilburn_BlazorWASM.Data
 			"This 12 shot custom fireworks mortar launcher features a Bluetooth controlled app, variable timing delays, manual shot selection, quick reloading connections, custom PCB designs and 3D printed enclosures. " +
 			"\n\n hstart Electronics Box hend" +
 			"The quick disconnecting control unit slides onto a bracket allowing for removal for charging, updating firmware and housing inside when done shooting off the fireworks. " +
-            "paraend",
+
+					"\n\nhstart Software hend" +
+					"View the Arduino control code linkstart href=https://github.com/bozzobrain/FireworkMortarLauncher hrefend herelinkend" + 
+			"paraend",
             ProjectMainImage = "FireworksMortar/FireworksMortar-Iso.png",
 
 			SubPages = new List<ProjectSubPage>()
@@ -141,8 +148,10 @@ namespace ZacharyKilburn_BlazorWASM.Data
 				SubPageDescription = "hstart Android hend" + 
 					"The Fireworks Mortar Launcher is primarily controlled through an app that allows for control of each tube independently. " +
 					"It also allows for launching all of the tubes in a sequenced manner with variable timing between each of the tubes being ignited. " +
-					"So if you want to launch all 12 mortars in rapid fire or select only a single tube to be launched, all can be done from a safe distance with the custom app."+
-			"paraend",
+					"So if you want to launch all 12 mortars in rapid fire or select only a single tube to be launched, all can be done from a safe distance with the custom app. " +
+					"\n\nhstart Software hend" +
+					"View my questionable source code linkstart href=https://github.com/bozzobrain/FireworksControllerAndroid hrefend herelinkend"+
+					"paraend",
 				},
 				new ProjectSubPage() {
 				SubPageTitle = "3D",
@@ -239,14 +248,18 @@ namespace ZacharyKilburn_BlazorWASM.Data
 			"Originally bench tested on the Arduino platform using the " +
 			"linkstart href=boards/Z3 hrefendNeoPixel Boardlinkend. " +
 			"I quickly realized that the 16MHz AVR core was not going to have the umph necessary for the discrete FFT processing, it simply couldn't handle the floating-point math. " +
-			"I then decided to design a new PCB, the " +
-			"linkstart href=boards/Z4 hrefendPIC32 Boardlinkend" +
-			" to utilize the PIC32MZ as a general development platform for myself. " +
+			"After trying to port the FFT to the Arduino Due (" +
+			"linkstart href=https://github.com/bozzobrain/FFT_Due hrefend See the codelinkend" +
+			") to increase the cycles per second, I gave up and decided to design a new PCB with a more powerful processor. " +
+			"The linkstart href=boards/Z4 hrefendPIC32 Boardlinkend" +
+			" utilizes the PIC32MZ, and was made for this project and as a general development platform for myself. " +
 			"To get the 3.3V PIC32 board interfacing with the 5V logic, I designed the " +
 			"linkstart href=boards/Z7 hrefendLevel Translator Boardlinkend" +
 			" as a general use voltage level translator. " +
 			"After getting the code up and running in the new PIC core, I had myself a working project." +
-            "paraend",
+			"\n\nhstart Software hend" +
+			"View the PIC32 code linkstart href=https://github.com/bozzobrain/FFT_PIC32/tree/master hrefend herelinkend" +
+			"paraend",
             ProjectMainImage = "NeoPixelFFT/NeoPixelFFT.png",
 			SubPages = new List<ProjectSubPage>()
 			{
