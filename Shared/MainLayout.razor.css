@@ -42,17 +42,20 @@ main {
         text-overflow: ellipsis;
     }
 footer {
-    display:flex;
+    display: flex;
     justify-content: center;
-    position:relative;
+    position: relative;
     bottom: 0;
     padding-left: 0rem !important;
     padding-right: 0rem !important;
-    height:5em;
+    text-align: center;
+    height: 5em;
     background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
 }
-.footer-content{
-    color:white;
+.footer-content {
+    justify-content: center;
+    color: white;
+    text-align: center;
 }
 @media (max-width: 890.98px) {
     .top-row:not(.auth) {
